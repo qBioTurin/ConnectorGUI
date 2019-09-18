@@ -1,0 +1,3 @@
+sudo nmcli device wifi list
+sudo nmcli device wifi connect <SSID|BSSID> password <password>
+

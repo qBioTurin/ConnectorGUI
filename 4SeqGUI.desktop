@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=Application;
+Comment[en_US]=
+Comment=
+Exec=/home/user/4SeqGUI/4SeqGUIxBox.sh
+GenericName[en_US]=
+GenericName=
+Icon=/home/user/4SeqGUI/src/pkg4seqgui/images/iconDNA.png
+MimeType=
+Name[en_US]=4SeqGUI
+Name=4SeqGUI
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-RunOnDiscreteGpu=false
+X-KDE-SubstituteUID=false
+X-KDE-Username=
