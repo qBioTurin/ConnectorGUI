@@ -2,10 +2,10 @@
 
 inputfile=$1
 outputPlotFolder=$2
-feature=$3
-title=$4
-labelsx=$5
-labelsy=$6
+feature=${3}
+title=${4}
+labelsx=${5}
+labelsy=${6}
 output=${7}
 path=${PWD}
 

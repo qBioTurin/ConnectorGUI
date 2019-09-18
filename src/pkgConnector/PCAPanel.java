@@ -607,7 +607,7 @@ public class PCAPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ANDockerRadioButton1ActionPerformed
 
     private void PlotViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlotViewButtonActionPerformed
-                String pathfile = Paths.get(OutputFolderText.getText(), "PCA_Analysis.pdf").toString();
+        String pathfile = Paths.get(OutputFolderText.getText(), "PCA_Analysis.pdf").toString();
         Desktop desktop = Desktop.getDesktop();
         File file = new File(pathfile);
         try {

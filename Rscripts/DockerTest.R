@@ -15,7 +15,7 @@ dockerTest <- function()
     cat("\nERROR: Docker seems not to be installed in your system\n")
     return(FALSE)
   }else{
-    cat(paste("\n In your system the following version of Docker is installed:\n",test,sep=""))
+    cat(paste("\n In your system the following version of Docker is installed:\n",test,"\n",sep=""))
     return(TRUE)
   }
 }

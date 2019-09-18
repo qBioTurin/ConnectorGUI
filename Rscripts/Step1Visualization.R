@@ -26,7 +26,7 @@ docker.visualization<-function(input.file,output.PlotFolder,feature,title=NULL,l
   
   #obtaining absolute paths
   output.PlotFolder <- normalizePath(output.PlotFolder)
-  input.file<-normalizePath(input.file)
+  #input.file<-normalizePath(input.file)
   
   data.folder <- output.PlotFolder
   
@@ -53,17 +53,18 @@ docker.visualization<-function(input.file,output.PlotFolder,feature,title=NULL,l
   }
   
   ##### check if the feature selected is stored into the input.RData
-  load("input.file")
+
+  load(input.file)
   featuresList<-names(CONNECTORList$LabCurv)
   
-  if(!feature)
+  if(!feature%in%featuresList)
   {
     cat("\nERROR: The feature selected is not present in the input ConnectorList! Please change the Feature txt file. \n")
     system("echo 10 > ExitStatusFile 2>&1")
     #setwd(home)
     return(10)
   }
-    
+  
   #executing the docker job
   params <- paste( "--cidfile", paste0(data.folder, "/dockerID"),
                    "-v", paste0( input.file, ":/Data/input.file"),
@@ -113,6 +114,5 @@ docker.visualization<-function(input.file,output.PlotFolder,feature,title=NULL,l
   
   system("echo 0 > ExitStatusFile 2>&1")
 }
-
 
 docker.visualization(input.file=input.file,output.PlotFolder=output.PlotFolder,feature=feature,title=title,labels.x=labels.x,labels.y=labels.y)
