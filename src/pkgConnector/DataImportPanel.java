@@ -83,12 +83,6 @@ public class DataImportPanel extends javax.swing.JPanel {
         OutPutFolderText = new javax.swing.JTextField();
         OutputBrowButton = new javax.swing.JToggleButton();
         CancelOutputButton = new javax.swing.JToggleButton();
-        jPanel16 = new javax.swing.JPanel();
-        jLabel49 = new javax.swing.JLabel();
-        iSudoBRadioButton = new javax.swing.JRadioButton();
-        iDockerBRadioButton = new javax.swing.JRadioButton();
-        jLabel50 = new javax.swing.JLabel();
-        iThreadBText = new javax.swing.JTextField();
 
         setLayout(new java.awt.GridBagLayout());
 
@@ -98,6 +92,9 @@ public class DataImportPanel extends javax.swing.JPanel {
 
         iCloseButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/close.png"))); // NOI18N
         iCloseButton1.setText("Close");
+        iCloseButton1.setMaximumSize(new java.awt.Dimension(100, 30));
+        iCloseButton1.setMinimumSize(new java.awt.Dimension(100, 30));
+        iCloseButton1.setPreferredSize(new java.awt.Dimension(100, 30));
         iCloseButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 iCloseButton1ActionPerformed(evt);
@@ -113,6 +110,9 @@ public class DataImportPanel extends javax.swing.JPanel {
 
         ExecImportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
         ExecImportButton.setText("Execute");
+        ExecImportButton.setMaximumSize(new java.awt.Dimension(140, 30));
+        ExecImportButton.setMinimumSize(new java.awt.Dimension(140, 30));
+        ExecImportButton.setPreferredSize(new java.awt.Dimension(140, 30));
         ExecImportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExecImportButtonActionPerformed(evt);
@@ -129,6 +129,9 @@ public class DataImportPanel extends javax.swing.JPanel {
 
         iResetButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         iResetButton1.setText("Reset");
+        iResetButton1.setMaximumSize(new java.awt.Dimension(100, 30));
+        iResetButton1.setMinimumSize(new java.awt.Dimension(100, 30));
+        iResetButton1.setPreferredSize(new java.awt.Dimension(100, 30));
         iResetButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 iResetButton1ActionPerformed(evt);
@@ -144,6 +147,9 @@ public class DataImportPanel extends javax.swing.JPanel {
 
         jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/86b.png"))); // NOI18N
         jButton22.setText("Save conf.");
+        jButton22.setMaximumSize(new java.awt.Dimension(140, 30));
+        jButton22.setMinimumSize(new java.awt.Dimension(140, 30));
+        jButton22.setPreferredSize(new java.awt.Dimension(140, 30));
         jButton22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton22ActionPerformed(evt);
@@ -192,6 +198,9 @@ public class DataImportPanel extends javax.swing.JPanel {
 
         BrowGrowthButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/fileb.png"))); // NOI18N
         BrowGrowthButton.setText("Browse");
+        BrowGrowthButton.setMaximumSize(new java.awt.Dimension(110, 30));
+        BrowGrowthButton.setMinimumSize(new java.awt.Dimension(110, 30));
+        BrowGrowthButton.setPreferredSize(new java.awt.Dimension(110, 30));
         BrowGrowthButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BrowGrowthButtonActionPerformed(evt);
@@ -208,6 +217,9 @@ public class DataImportPanel extends javax.swing.JPanel {
 
         CancGrowthButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         CancGrowthButton.setText("Cancel");
+        CancGrowthButton.setMaximumSize(new java.awt.Dimension(110, 30));
+        CancGrowthButton.setMinimumSize(new java.awt.Dimension(110, 30));
+        CancGrowthButton.setPreferredSize(new java.awt.Dimension(110, 30));
         CancGrowthButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancGrowthButtonActionPerformed(evt);
@@ -248,6 +260,9 @@ public class DataImportPanel extends javax.swing.JPanel {
 
         BrowFeatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/fileb.png"))); // NOI18N
         BrowFeatButton.setText("Browser");
+        BrowFeatButton.setMaximumSize(new java.awt.Dimension(110, 30));
+        BrowFeatButton.setMinimumSize(new java.awt.Dimension(110, 30));
+        BrowFeatButton.setPreferredSize(new java.awt.Dimension(110, 30));
         BrowFeatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BrowFeatButtonActionPerformed(evt);
@@ -263,6 +278,9 @@ public class DataImportPanel extends javax.swing.JPanel {
 
         CancelFeatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         CancelFeatButton.setText("Cancel");
+        CancelFeatButton.setMaximumSize(new java.awt.Dimension(110, 30));
+        CancelFeatButton.setMinimumSize(new java.awt.Dimension(110, 30));
+        CancelFeatButton.setPreferredSize(new java.awt.Dimension(110, 30));
         CancelFeatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelFeatButtonActionPerformed(evt);
@@ -302,6 +320,9 @@ public class DataImportPanel extends javax.swing.JPanel {
 
         OutputBrowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
         OutputBrowButton.setText("Browser");
+        OutputBrowButton.setMaximumSize(new java.awt.Dimension(110, 30));
+        OutputBrowButton.setMinimumSize(new java.awt.Dimension(110, 30));
+        OutputBrowButton.setPreferredSize(new java.awt.Dimension(110, 30));
         OutputBrowButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OutputBrowButtonActionPerformed(evt);
@@ -317,6 +338,9 @@ public class DataImportPanel extends javax.swing.JPanel {
 
         CancelOutputButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         CancelOutputButton.setText("Cancel");
+        CancelOutputButton.setMaximumSize(new java.awt.Dimension(110, 30));
+        CancelOutputButton.setMinimumSize(new java.awt.Dimension(110, 30));
+        CancelOutputButton.setPreferredSize(new java.awt.Dimension(110, 30));
         CancelOutputButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelOutputButtonActionPerformed(evt);
@@ -339,99 +363,6 @@ public class DataImportPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         DataImportPanel.add(jPanel15, gridBagConstraints);
 
-        jPanel16.setBackground(new java.awt.Color(247, 248, 248));
-        jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel16.setPreferredSize(new java.awt.Dimension(680, 84));
-        java.awt.GridBagLayout jPanel16Layout = new java.awt.GridBagLayout();
-        jPanel16Layout.columnWidths = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0};
-        jPanel16Layout.rowHeights = new int[] {0, 2, 0, 2, 0};
-        jPanel16.setLayout(jPanel16Layout);
-
-        jLabel49.setText("Execution:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel16.add(jLabel49, gridBagConstraints);
-
-        iSudoBRadioButton.setBackground(new java.awt.Color(247, 248, 248));
-        IExecutionBWA.add(iSudoBRadioButton);
-        iSudoBRadioButton.setText("sudo");
-        iSudoBRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                iSudoBRadioButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
-        jPanel16.add(iSudoBRadioButton, gridBagConstraints);
-
-        iDockerBRadioButton.setBackground(new java.awt.Color(247, 248, 248));
-        IExecutionBWA.add(iDockerBRadioButton);
-        iDockerBRadioButton.setSelected(true);
-        iDockerBRadioButton.setText("docker");
-        iDockerBRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                iDockerBRadioButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel16.add(iDockerBRadioButton, gridBagConstraints);
-
-        jLabel50.setText("Thread number:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel16.add(jLabel50, gridBagConstraints);
-
-        iThreadBText.setText("8");
-        iThreadBText.setToolTipText("The number of threads which will be used during the computation.");
-        iThreadBText.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                iThreadBTextFocusLost(evt);
-            }
-        });
-        iThreadBText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                iThreadBTextActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
-        jPanel16.add(iThreadBText, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        DataImportPanel.add(jPanel16, gridBagConstraints);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -444,8 +375,6 @@ public class DataImportPanel extends javax.swing.JPanel {
     private void iCloseButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iCloseButton1ActionPerformed
         GrowthFolderText.setText("");
         FeaturesFolderText.setText("");
-        iDockerRadioButton.setSelected(true);
-        iThreadBText.setText(Integer.toString(MainFrame.GS.getDefaultThread()));
         CardLayout card = (CardLayout)MainFrame.MainPanel.getLayout();
         card.show(MainFrame.MainPanel, "Empty");
         MainFrame.CurrentLayout="Empty";
@@ -462,37 +391,13 @@ public class DataImportPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "You have to specified a Features Data folder","Error: Genome  folder",JOptionPane.ERROR_MESSAGE);
             return;
         }
-        else
-        if (iThreadBText.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "You have to specified the number of threads that will be used.","Error: Thread  number",JOptionPane.ERROR_MESSAGE);
-            iThreadText.requestFocusInWindow();
-            return;
-        }
-        try
-        {
-            Integer x = Integer.valueOf(iThreadBText.getText());
-            if (x<=0){
-                JOptionPane.showMessageDialog(this, "You have to specified a value greater than 0.","Error: Thread  number",JOptionPane.ERROR_MESSAGE);
-                iThreadBText.requestFocusInWindow();
-                return;
-            }
-        }
-        catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "You have to specified the number of threads that will be used.","Error: Thread  number",JOptionPane.ERROR_MESSAGE);
-            iThreadBText.requestFocusInWindow();
-            return;
-        }
 
         //execute code
         Runtime rt = Runtime.getRuntime();
         try{
             String[] cmd = {"/bin/bash","-c","  bash ./ExecFile/ExecDataImport.sh "};
-            if (iSudoBRadioButton.isSelected()){
-                    cmd[2]+= "group=\\\"sudo\\\"";
-                }
-                else{
-                    cmd[2]+= "group=\\\"docker\\\"";
-                }             
+                           
+            cmd[2]+= "group=\\\"docker\\\"";                       
             cmd[2]+= " GrowDataFile=\\\""+GrowthFolderText.getText()+"\\\"";
             cmd[2]+= " AnnotationFile=\\\""+FeaturesFolderText.getText()+"\\\"";
             cmd[2]+= " output.folder=\\\""+OutPutFolderText.getText()+"\\\"";           
@@ -542,25 +447,11 @@ public class DataImportPanel extends javax.swing.JPanel {
     private void iResetButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iResetButton1ActionPerformed
         GrowthFolderText.setText("");
         FeaturesFolderText.setText("");
-        iDockerRadioButton.setSelected(true);
-        iThreadBText.setText(Integer.toString(MainFrame.GS.getDefaultThread()));
     }//GEN-LAST:event_iResetButton1ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         //saveAsMenuItemActionPerformed(evt);
     }//GEN-LAST:event_jButton22ActionPerformed
-
-    private void iDockerBRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iDockerBRadioButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_iDockerBRadioButtonActionPerformed
-
-    private void iThreadBTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_iThreadBTextFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_iThreadBTextFocusLost
-
-    private void iThreadBTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iThreadBTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_iThreadBTextActionPerformed
 
     private void CancelFeatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelFeatButtonActionPerformed
         FeaturesFolderText.setText("");
@@ -653,10 +544,6 @@ public class DataImportPanel extends javax.swing.JPanel {
         OutPutFolderText.setText("");
     }//GEN-LAST:event_CancelOutputButtonActionPerformed
 
-    private void iSudoBRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iSudoBRadioButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_iSudoBRadioButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BrowFeatButton;
@@ -673,17 +560,11 @@ public class DataImportPanel extends javax.swing.JPanel {
     private javax.swing.JTextField OutPutFolderText;
     private javax.swing.JToggleButton OutputBrowButton;
     private javax.swing.JButton iCloseButton1;
-    private javax.swing.JRadioButton iDockerBRadioButton;
     private javax.swing.JButton iResetButton1;
-    private javax.swing.JRadioButton iSudoBRadioButton;
-    public static javax.swing.JTextField iThreadBText;
     private javax.swing.JButton jButton22;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel50;
     private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
     // End of variables declaration//GEN-END:variables
 }

@@ -173,6 +173,9 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         ExecDiscrBottun.setText("Execute");
         ExecDiscrBottun.setToolTipText(null);
         ExecDiscrBottun.setEnabled(false);
+        ExecDiscrBottun.setMaximumSize(new java.awt.Dimension(140, 30));
+        ExecDiscrBottun.setMinimumSize(new java.awt.Dimension(140, 30));
+        ExecDiscrBottun.setPreferredSize(new java.awt.Dimension(140, 30));
         ExecDiscrBottun.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExecDiscrBottunActionPerformed(evt);
@@ -190,6 +193,9 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         jButton48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         jButton48.setText("Reset");
         jButton48.setToolTipText(null);
+        jButton48.setMaximumSize(new java.awt.Dimension(100, 30));
+        jButton48.setMinimumSize(new java.awt.Dimension(100, 30));
+        jButton48.setPreferredSize(new java.awt.Dimension(100, 30));
         jButton48.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton48ActionPerformed(evt);
@@ -206,6 +212,9 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         vCloseButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/close.png"))); // NOI18N
         vCloseButton8.setText("Close");
         vCloseButton8.setToolTipText(null);
+        vCloseButton8.setMaximumSize(new java.awt.Dimension(100, 30));
+        vCloseButton8.setMinimumSize(new java.awt.Dimension(100, 30));
+        vCloseButton8.setPreferredSize(new java.awt.Dimension(100, 30));
         vCloseButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vCloseButton8ActionPerformed(evt);
@@ -243,6 +252,9 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         jToggleButton42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
         jToggleButton42.setText("Browse");
         jToggleButton42.setToolTipText(null);
+        jToggleButton42.setMaximumSize(new java.awt.Dimension(110, 30));
+        jToggleButton42.setMinimumSize(new java.awt.Dimension(110, 30));
+        jToggleButton42.setPreferredSize(new java.awt.Dimension(110, 30));
         jToggleButton42.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton42ActionPerformed(evt);
@@ -258,6 +270,9 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         jToggleButton43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         jToggleButton43.setText("Cancel");
         jToggleButton43.setToolTipText(null);
+        jToggleButton43.setMaximumSize(new java.awt.Dimension(110, 30));
+        jToggleButton43.setMinimumSize(new java.awt.Dimension(110, 30));
+        jToggleButton43.setPreferredSize(new java.awt.Dimension(110, 30));
         jToggleButton43.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton43ActionPerformed(evt);
@@ -290,6 +305,9 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         jToggleButton44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/filebR.png"))); // NOI18N
         jToggleButton44.setText("Browse");
         jToggleButton44.setToolTipText(null);
+        jToggleButton44.setMaximumSize(new java.awt.Dimension(110, 30));
+        jToggleButton44.setMinimumSize(new java.awt.Dimension(110, 30));
+        jToggleButton44.setPreferredSize(new java.awt.Dimension(110, 30));
         jToggleButton44.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton44ActionPerformed(evt);
@@ -306,6 +324,9 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         jToggleButton45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         jToggleButton45.setText("Cancel");
         jToggleButton45.setToolTipText(null);
+        jToggleButton45.setMaximumSize(new java.awt.Dimension(110, 30));
+        jToggleButton45.setMinimumSize(new java.awt.Dimension(110, 30));
+        jToggleButton45.setPreferredSize(new java.awt.Dimension(110, 30));
         jToggleButton45.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton45ActionPerformed(evt);

@@ -108,8 +108,6 @@ public class CountingSamplePanel extends javax.swing.JPanel {
 
         mRNABatchPanel = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        CCountHeaderTable = new javax.swing.JTable();
         ConnListText = new javax.swing.JTextField();
         Cinbrowes = new javax.swing.JButton();
         Cincancel = new javax.swing.JButton();
@@ -128,6 +126,8 @@ public class CountingSamplePanel extends javax.swing.JPanel {
         setLayout(new java.awt.GridBagLayout());
 
         mRNABatchPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Sample Counting", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 153, 153))); // NOI18N
+        mRNABatchPanel.setMinimumSize(new java.awt.Dimension(737, 575));
+        mRNABatchPanel.setPreferredSize(new java.awt.Dimension(710, 575));
         mRNABatchPanel.setLayout(new java.awt.GridBagLayout());
 
         jPanel27.setBackground(new java.awt.Color(248, 248, 248));
@@ -135,52 +135,21 @@ public class CountingSamplePanel extends javax.swing.JPanel {
         jPanel27.setToolTipText("the all.counts.txt file generated from miRNAseq step");
         jPanel27.setLayout(new java.awt.GridBagLayout());
 
-        CCountHeaderTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Count Header", "Grouping", "Batch"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        CCountHeaderTable.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        CCountHeaderTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane7.setViewportView(CCountHeaderTable);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 642;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(12, 9, 13, 13);
-        jPanel27.add(jScrollPane7, gridBagConstraints);
-
         ConnListText.setEditable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 218;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(22, 20, 0, 0);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel27.add(ConnListText, gridBagConstraints);
 
         Cinbrowes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
         Cinbrowes.setText("Browse");
         Cinbrowes.setToolTipText("");
+        Cinbrowes.setMaximumSize(new java.awt.Dimension(110, 30));
+        Cinbrowes.setMinimumSize(new java.awt.Dimension(110, 30));
+        Cinbrowes.setPreferredSize(new java.awt.Dimension(110, 30));
         Cinbrowes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CinbrowesActionPerformed(evt);
@@ -188,35 +157,35 @@ public class CountingSamplePanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 20, 0, 0);
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel27.add(Cinbrowes, gridBagConstraints);
 
         Cincancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         Cincancel.setText("Cancel");
+        Cincancel.setMaximumSize(new java.awt.Dimension(110, 30));
+        Cincancel.setMinimumSize(new java.awt.Dimension(110, 30));
+        Cincancel.setPreferredSize(new java.awt.Dimension(110, 30));
         Cincancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CincancelActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(16, 18, 0, 13);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel27.add(Cincancel, gridBagConstraints);
 
         jLabel98.setText("Output Folder:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(26, 11, 0, 0);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel27.add(jLabel98, gridBagConstraints);
 
         jLabel97.setText("Connector List clustered:");
@@ -224,23 +193,25 @@ public class CountingSamplePanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(24, 11, 0, 0);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel27.add(jLabel97, gridBagConstraints);
 
         OutputFolderText.setEditable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 218;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(24, 20, 0, 0);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel27.add(OutputFolderText, gridBagConstraints);
 
         Coutbrowes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
         Coutbrowes.setText("Browse");
         Coutbrowes.setToolTipText("");
+        Coutbrowes.setMaximumSize(new java.awt.Dimension(110, 30));
+        Coutbrowes.setMinimumSize(new java.awt.Dimension(110, 30));
+        Coutbrowes.setPreferredSize(new java.awt.Dimension(110, 30));
         Coutbrowes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CoutbrowesActionPerformed(evt);
@@ -249,41 +220,41 @@ public class CountingSamplePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(16, 18, 0, 0);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel27.add(Coutbrowes, gridBagConstraints);
 
         Coutcancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         Coutcancel.setText("Cancel");
+        Coutcancel.setMaximumSize(new java.awt.Dimension(110, 30));
+        Coutcancel.setMinimumSize(new java.awt.Dimension(110, 30));
+        Coutcancel.setPreferredSize(new java.awt.Dimension(110, 30));
         Coutcancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CoutcancelActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 18, 0, 13);
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel27.add(Coutcancel, gridBagConstraints);
 
         jLabel99.setText("Feature:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(23, 11, 0, 0);
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel27.add(jLabel99, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 190;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 20, 0, 0);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel27.add(ComboFeatBox, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -297,6 +268,9 @@ public class CountingSamplePanel extends javax.swing.JPanel {
 
         FExecuteButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
         FExecuteButton1.setText("Execute");
+        FExecuteButton1.setMaximumSize(new java.awt.Dimension(140, 30));
+        FExecuteButton1.setMinimumSize(new java.awt.Dimension(140, 30));
+        FExecuteButton1.setPreferredSize(new java.awt.Dimension(140, 30));
         FExecuteButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FExecuteButton1ActionPerformed(evt);
@@ -313,6 +287,9 @@ public class CountingSamplePanel extends javax.swing.JPanel {
 
         FSaveButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/86b.png"))); // NOI18N
         FSaveButton1.setText("Save conf.");
+        FSaveButton1.setMaximumSize(new java.awt.Dimension(140, 30));
+        FSaveButton1.setMinimumSize(new java.awt.Dimension(140, 30));
+        FSaveButton1.setPreferredSize(new java.awt.Dimension(140, 30));
         FSaveButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FSaveButton1ActionPerformed(evt);
@@ -327,6 +304,9 @@ public class CountingSamplePanel extends javax.swing.JPanel {
 
         CResetButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         CResetButton1.setText("Reset");
+        CResetButton1.setMaximumSize(new java.awt.Dimension(100, 30));
+        CResetButton1.setMinimumSize(new java.awt.Dimension(100, 30));
+        CResetButton1.setPreferredSize(new java.awt.Dimension(100, 30));
         CResetButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CResetButton1ActionPerformed(evt);
@@ -342,6 +322,9 @@ public class CountingSamplePanel extends javax.swing.JPanel {
         CCloseButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/close.png"))); // NOI18N
         CCloseButton1.setText("Close");
         CCloseButton1.setToolTipText("");
+        CCloseButton1.setMaximumSize(new java.awt.Dimension(100, 30));
+        CCloseButton1.setMinimumSize(new java.awt.Dimension(100, 30));
+        CCloseButton1.setPreferredSize(new java.awt.Dimension(100, 30));
         CCloseButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CCloseButton1ActionPerformed(evt);
@@ -386,10 +369,6 @@ public class CountingSamplePanel extends javax.swing.JPanel {
 
     private void CincancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CincancelActionPerformed
         ConnListText.setText("");
-        while( CCountHeaderTable.getRowCount()!=0){
-            DefaultTableModel model = (DefaultTableModel) CCountHeaderTable.getModel();
-            model.removeRow(0);
-        }
     }//GEN-LAST:event_CincancelActionPerformed
 
     private void CoutbrowesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CoutbrowesActionPerformed
@@ -491,19 +470,11 @@ public class CountingSamplePanel extends javax.swing.JPanel {
     private void CResetButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CResetButton1ActionPerformed
         ConnListText.setText("");
         OutputFolderText.setText("");
-        while( CCountHeaderTable.getRowCount()!=0){
-            DefaultTableModel model = (DefaultTableModel) CCountHeaderTable.getModel();
-            model.removeRow(0);
-        }
     }//GEN-LAST:event_CResetButton1ActionPerformed
 
     private void CCloseButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CCloseButton1ActionPerformed
         ConnListText.setText("");
         OutputFolderText.setText("");
-        while( CCountHeaderTable.getRowCount()!=0){
-            DefaultTableModel model = (DefaultTableModel)  CCountHeaderTable.getModel();
-            model.removeRow(0);
-        }
         //RESET FIELDS
         CardLayout card = (CardLayout)MainFrame.MainPanel.getLayout();
         card.show(MainFrame.MainPanel, "Empty");
@@ -514,7 +485,6 @@ public class CountingSamplePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CCloseButton1;
-    public static javax.swing.JTable CCountHeaderTable;
     private javax.swing.JButton CResetButton1;
     private javax.swing.JButton Cinbrowes;
     private javax.swing.JButton Cincancel;
@@ -529,7 +499,6 @@ public class CountingSamplePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel27;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JPanel mRNABatchPanel;
     // End of variables declaration//GEN-END:variables
 }

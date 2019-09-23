@@ -127,11 +127,16 @@ public class ConsensusMatrix extends javax.swing.JPanel {
 
         S_LorenzFilterPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Consesus Matrix Plot", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(255, 102, 102))); // NOI18N
         S_LorenzFilterPanel.setToolTipText(null);
+        S_LorenzFilterPanel.setMinimumSize(new java.awt.Dimension(737, 575));
+        S_LorenzFilterPanel.setPreferredSize(new java.awt.Dimension(710, 575));
         S_LorenzFilterPanel.setLayout(new java.awt.GridBagLayout());
 
         vCloseButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/close.png"))); // NOI18N
         vCloseButton5.setText("Close");
         vCloseButton5.setToolTipText(null);
+        vCloseButton5.setMaximumSize(new java.awt.Dimension(100, 30));
+        vCloseButton5.setMinimumSize(new java.awt.Dimension(100, 30));
+        vCloseButton5.setPreferredSize(new java.awt.Dimension(100, 30));
         vCloseButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vCloseButton5ActionPerformed(evt);
@@ -148,6 +153,9 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         ConsMatrixExtrapolationButton39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
         ConsMatrixExtrapolationButton39.setText("Execute");
         ConsMatrixExtrapolationButton39.setToolTipText(null);
+        ConsMatrixExtrapolationButton39.setMaximumSize(new java.awt.Dimension(140, 30));
+        ConsMatrixExtrapolationButton39.setMinimumSize(new java.awt.Dimension(140, 30));
+        ConsMatrixExtrapolationButton39.setPreferredSize(new java.awt.Dimension(140, 30));
         ConsMatrixExtrapolationButton39.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConsMatrixExtrapolationButton39ActionPerformed(evt);
@@ -164,6 +172,9 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         jButton40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         jButton40.setText("Reset");
         jButton40.setToolTipText(null);
+        jButton40.setMaximumSize(new java.awt.Dimension(100, 30));
+        jButton40.setMinimumSize(new java.awt.Dimension(100, 30));
+        jButton40.setPreferredSize(new java.awt.Dimension(100, 30));
         jButton40.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton40ActionPerformed(evt);
@@ -204,6 +215,9 @@ public class ConsensusMatrix extends javax.swing.JPanel {
 
         jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/filebR.png"))); // NOI18N
         jButton29.setText("Browse");
+        jButton29.setMaximumSize(new java.awt.Dimension(110, 30));
+        jButton29.setMinimumSize(new java.awt.Dimension(110, 30));
+        jButton29.setPreferredSize(new java.awt.Dimension(110, 30));
         jButton29.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton29ActionPerformed(evt);
@@ -218,6 +232,9 @@ public class ConsensusMatrix extends javax.swing.JPanel {
 
         jButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         jButton30.setText("Cancel");
+        jButton30.setMaximumSize(new java.awt.Dimension(110, 30));
+        jButton30.setMinimumSize(new java.awt.Dimension(110, 30));
+        jButton30.setPreferredSize(new java.awt.Dimension(110, 30));
         jButton30.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton30ActionPerformed(evt);
@@ -286,6 +303,9 @@ public class ConsensusMatrix extends javax.swing.JPanel {
 
         jButton31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
         jButton31.setText("Browse");
+        jButton31.setMaximumSize(new java.awt.Dimension(110, 30));
+        jButton31.setMinimumSize(new java.awt.Dimension(110, 30));
+        jButton31.setPreferredSize(new java.awt.Dimension(110, 30));
         jButton31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton31ActionPerformed(evt);
@@ -300,6 +320,9 @@ public class ConsensusMatrix extends javax.swing.JPanel {
 
         jButton32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         jButton32.setText("Cancel");
+        jButton32.setMaximumSize(new java.awt.Dimension(110, 30));
+        jButton32.setMinimumSize(new java.awt.Dimension(110, 30));
+        jButton32.setPreferredSize(new java.awt.Dimension(110, 30));
         jButton32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton32ActionPerformed(evt);
@@ -377,13 +400,13 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         S_LorenzFilterPanel.add(jPanel31, gridBagConstraints);
 
-        PlotViewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
+        PlotViewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/plotsmall.png"))); // NOI18N
         PlotViewButton.setText("Show plot");
         PlotViewButton.setToolTipText(null);
         PlotViewButton.setEnabled(false);
-        PlotViewButton.setMaximumSize(new java.awt.Dimension(171, 30));
-        PlotViewButton.setMinimumSize(new java.awt.Dimension(171, 30));
-        PlotViewButton.setPreferredSize(new java.awt.Dimension(171, 30));
+        PlotViewButton.setMaximumSize(new java.awt.Dimension(140, 30));
+        PlotViewButton.setMinimumSize(new java.awt.Dimension(140, 30));
+        PlotViewButton.setPreferredSize(new java.awt.Dimension(140, 30));
         PlotViewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PlotViewButtonActionPerformed(evt);

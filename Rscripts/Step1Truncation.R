@@ -94,6 +94,7 @@ docker.Truncation<-function(input.file,output.PlotFolder,Trunc.Time,feature,titl
     system(paste("docker rm ", container.id, sep=""))
     # removing temporary files
     cat("\n\nRemoving the temporary file ....\n")
+    system("rm -fR outputExecution")
     system("rm -fR out.info")
     system("rm -fR dockerID")
     #system(paste("cp ",paste(path.package(package="docker4seq"),"containers/containers.txt",sep="/")," ",data.folder, sep=""))

@@ -106,6 +106,9 @@ public class PestimPanel extends javax.swing.JPanel {
 
         vCloseButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/close.png"))); // NOI18N
         vCloseButton3.setText("Close");
+        vCloseButton3.setMaximumSize(new java.awt.Dimension(100, 30));
+        vCloseButton3.setMinimumSize(new java.awt.Dimension(100, 30));
+        vCloseButton3.setPreferredSize(new java.awt.Dimension(100, 30));
         vCloseButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vCloseButton3ActionPerformed(evt);
@@ -120,6 +123,9 @@ public class PestimPanel extends javax.swing.JPanel {
 
         jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
         jButton18.setText("Execute");
+        jButton18.setMaximumSize(new java.awt.Dimension(140, 30));
+        jButton18.setMinimumSize(new java.awt.Dimension(140, 30));
+        jButton18.setPreferredSize(new java.awt.Dimension(140, 30));
         jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton18ActionPerformed(evt);
@@ -134,6 +140,9 @@ public class PestimPanel extends javax.swing.JPanel {
 
         jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         jButton19.setText("Reset");
+        jButton19.setMaximumSize(new java.awt.Dimension(100, 30));
+        jButton19.setMinimumSize(new java.awt.Dimension(100, 30));
+        jButton19.setPreferredSize(new java.awt.Dimension(100, 30));
         jButton19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton19ActionPerformed(evt);
@@ -148,6 +157,9 @@ public class PestimPanel extends javax.swing.JPanel {
 
         jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/86b.png"))); // NOI18N
         jButton20.setText("Save conf.");
+        jButton20.setMaximumSize(new java.awt.Dimension(140, 30));
+        jButton20.setMinimumSize(new java.awt.Dimension(140, 30));
+        jButton20.setPreferredSize(new java.awt.Dimension(140, 30));
         jButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton20ActionPerformed(evt);
@@ -194,6 +206,9 @@ public class PestimPanel extends javax.swing.JPanel {
 
         ConnListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/filebR.png"))); // NOI18N
         ConnListButton.setText("Browse");
+        ConnListButton.setMaximumSize(new java.awt.Dimension(110, 30));
+        ConnListButton.setMinimumSize(new java.awt.Dimension(110, 30));
+        ConnListButton.setPreferredSize(new java.awt.Dimension(110, 30));
         ConnListButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConnListButtonActionPerformed(evt);
@@ -209,6 +224,9 @@ public class PestimPanel extends javax.swing.JPanel {
 
         fCancelButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         fCancelButton2.setText("Cancel");
+        fCancelButton2.setMaximumSize(new java.awt.Dimension(110, 30));
+        fCancelButton2.setMinimumSize(new java.awt.Dimension(110, 30));
+        fCancelButton2.setPreferredSize(new java.awt.Dimension(110, 30));
         fCancelButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fCancelButton2ActionPerformed(evt);
@@ -251,6 +269,9 @@ public class PestimPanel extends javax.swing.JPanel {
 
         jToggleButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
         jToggleButton17.setText("Browse");
+        jToggleButton17.setMaximumSize(new java.awt.Dimension(110, 30));
+        jToggleButton17.setMinimumSize(new java.awt.Dimension(110, 30));
+        jToggleButton17.setPreferredSize(new java.awt.Dimension(110, 30));
         jToggleButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton17ActionPerformed(evt);
@@ -266,6 +287,9 @@ public class PestimPanel extends javax.swing.JPanel {
 
         fCancelButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         fCancelButton3.setText("Cancel");
+        fCancelButton3.setMaximumSize(new java.awt.Dimension(110, 30));
+        fCancelButton3.setMinimumSize(new java.awt.Dimension(110, 30));
+        fCancelButton3.setPreferredSize(new java.awt.Dimension(110, 30));
         fCancelButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fCancelButton3ActionPerformed(evt);
@@ -377,8 +401,12 @@ public class PestimPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         PestimationPanel.add(jPanel12, gridBagConstraints);
 
-        PlotViewButton.setText("Plot View");
+        PlotViewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/plotsmall.png"))); // NOI18N
+        PlotViewButton.setText("Show plot");
         PlotViewButton.setEnabled(false);
+        PlotViewButton.setMaximumSize(new java.awt.Dimension(140, 30));
+        PlotViewButton.setMinimumSize(new java.awt.Dimension(140, 30));
+        PlotViewButton.setPreferredSize(new java.awt.Dimension(140, 30));
         PlotViewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PlotViewButtonActionPerformed(evt);
@@ -625,7 +653,7 @@ public class PestimPanel extends javax.swing.JPanel {
     public static javax.swing.JTextField ConnListText;
     private javax.swing.ButtonGroup DESBatch;
     private javax.swing.ButtonGroup DEStype;
-    private javax.swing.JTextField OutputFolderText;
+    public static javax.swing.JTextField OutputFolderText;
     private javax.swing.JPanel PestimationPanel;
     private javax.swing.JToggleButton PlotViewButton;
     private javax.swing.JToggleButton fCancelButton2;

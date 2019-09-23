@@ -141,6 +141,7 @@ public class DataVisualPanel extends javax.swing.JPanel {
         XlabText = new javax.swing.JTextField();
         YlabText = new javax.swing.JTextField();
         ShowPlotButton1 = new javax.swing.JToggleButton();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new java.awt.GridBagLayout());
 
@@ -152,6 +153,9 @@ public class DataVisualPanel extends javax.swing.JPanel {
 
         jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
         jButton15.setText("Plots generation");
+        jButton15.setMaximumSize(new java.awt.Dimension(140, 30));
+        jButton15.setMinimumSize(new java.awt.Dimension(140, 30));
+        jButton15.setPreferredSize(new java.awt.Dimension(140, 30));
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton15ActionPerformed(evt);
@@ -160,12 +164,16 @@ public class DataVisualPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         DataVisualPanel.add(jButton15, gridBagConstraints);
 
         ResetButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         ResetButton.setText("Reset");
+        ResetButton.setMaximumSize(new java.awt.Dimension(100, 30));
+        ResetButton.setMinimumSize(new java.awt.Dimension(100, 30));
+        ResetButton.setPreferredSize(new java.awt.Dimension(100, 30));
         ResetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ResetButtonActionPerformed(evt);
@@ -174,13 +182,16 @@ public class DataVisualPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         DataVisualPanel.add(ResetButton, gridBagConstraints);
 
         jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/86b.png"))); // NOI18N
         jButton17.setText("Save conf.");
+        jButton17.setMaximumSize(new java.awt.Dimension(140, 30));
+        jButton17.setMinimumSize(new java.awt.Dimension(140, 30));
+        jButton17.setPreferredSize(new java.awt.Dimension(140, 30));
         jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton17ActionPerformed(evt);
@@ -189,7 +200,7 @@ public class DataVisualPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         DataVisualPanel.add(jButton17, gridBagConstraints);
 
@@ -227,6 +238,9 @@ public class DataVisualPanel extends javax.swing.JPanel {
 
         ConnListVisualButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/filebR.png"))); // NOI18N
         ConnListVisualButton.setText("Browser");
+        ConnListVisualButton.setMaximumSize(new java.awt.Dimension(110, 30));
+        ConnListVisualButton.setMinimumSize(new java.awt.Dimension(110, 30));
+        ConnListVisualButton.setPreferredSize(new java.awt.Dimension(110, 30));
         ConnListVisualButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConnListVisualButtonActionPerformed(evt);
@@ -241,6 +255,9 @@ public class DataVisualPanel extends javax.swing.JPanel {
 
         fCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         fCancelButton.setText("Cancel");
+        fCancelButton.setMaximumSize(new java.awt.Dimension(110, 30));
+        fCancelButton.setMinimumSize(new java.awt.Dimension(110, 30));
+        fCancelButton.setPreferredSize(new java.awt.Dimension(110, 30));
         fCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fCancelButtonActionPerformed(evt);
@@ -272,6 +289,9 @@ public class DataVisualPanel extends javax.swing.JPanel {
 
         jToggleButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
         jToggleButton13.setText("Browser");
+        jToggleButton13.setMaximumSize(new java.awt.Dimension(110, 30));
+        jToggleButton13.setMinimumSize(new java.awt.Dimension(110, 30));
+        jToggleButton13.setPreferredSize(new java.awt.Dimension(110, 30));
         jToggleButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton13ActionPerformed(evt);
@@ -286,6 +306,9 @@ public class DataVisualPanel extends javax.swing.JPanel {
 
         fCancelButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         fCancelButton1.setText("Cancel");
+        fCancelButton1.setMaximumSize(new java.awt.Dimension(110, 30));
+        fCancelButton1.setMinimumSize(new java.awt.Dimension(110, 30));
+        fCancelButton1.setPreferredSize(new java.awt.Dimension(110, 30));
         fCancelButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fCancelButton1ActionPerformed(evt);
@@ -429,11 +452,12 @@ public class DataVisualPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         DataVisualPanel.add(jPanel11, gridBagConstraints);
 
+        ShowPlotButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/plotsmall.png"))); // NOI18N
         ShowPlotButton1.setText("Show plot");
         ShowPlotButton1.setEnabled(false);
-        ShowPlotButton1.setMaximumSize(new java.awt.Dimension(171, 30));
-        ShowPlotButton1.setMinimumSize(new java.awt.Dimension(171, 30));
-        ShowPlotButton1.setPreferredSize(new java.awt.Dimension(171, 30));
+        ShowPlotButton1.setMaximumSize(new java.awt.Dimension(140, 30));
+        ShowPlotButton1.setMinimumSize(new java.awt.Dimension(140, 30));
+        ShowPlotButton1.setPreferredSize(new java.awt.Dimension(140, 30));
         ShowPlotButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShowPlotButton1ActionPerformed(evt);
@@ -447,6 +471,24 @@ public class DataVisualPanel extends javax.swing.JPanel {
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         DataVisualPanel.add(ShowPlotButton1, gridBagConstraints);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/close.png"))); // NOI18N
+        jButton1.setText("Close");
+        jButton1.setMaximumSize(new java.awt.Dimension(100, 30));
+        jButton1.setMinimumSize(new java.awt.Dimension(100, 30));
+        jButton1.setPreferredSize(new java.awt.Dimension(100, 30));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        DataVisualPanel.add(jButton1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -655,6 +697,19 @@ public class DataVisualPanel extends javax.swing.JPanel {
     private void XlabTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XlabTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_XlabTextActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                                        
+        //RESET FIELDS
+        ConnListText.setText("");
+        OutputFolderText.setText("");
+        //RESET FIELDS
+        CardLayout card = (CardLayout)MainFrame.MainPanel.getLayout();
+        card.show(MainFrame.MainPanel, "Empty");
+        MainFrame.CurrentLayout="Empty";
+        //GL.setAvoidProcListValueChanged(-1);
+        // AnalysisTree.clearSelection();
+    }//GEN-LAST:event_jButton1ActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -672,6 +727,7 @@ public class DataVisualPanel extends javax.swing.JPanel {
     private javax.swing.JTextField YlabText;
     private javax.swing.JToggleButton fCancelButton;
     private javax.swing.JToggleButton fCancelButton1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton17;
     private javax.swing.JLabel jLabel1;

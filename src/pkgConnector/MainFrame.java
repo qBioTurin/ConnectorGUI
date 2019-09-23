@@ -54,10 +54,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 import javax.swing.undo.UndoManager;
-import static pkgConnector.DataImportPanel.iThreadBText;
-import static pkgConnector.ClusterPanel.iDockerRadioButton;
 import static pkgConnector.ClusterPanel.iThreadText;
-import static pkgConnector.CountingSamplePanel.CCountHeaderTable;
 import static pkgConnector.PestimPanel.pMinText;
 import static pkgConnector.PestimPanel.pMaxText;
 /**
@@ -84,7 +81,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
 
             public void setVisibility() {
-                String varname = String.format("4SeqGUI_EnableTab%s", this.name);
+                String varname = String.format("ConnectorGUI_EnableTab%s", this.name);
                 this.state = getPreferences().get(varname, "true").equals("true");
             }
 
@@ -122,8 +119,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private class DockerImageManager {
-        private final String countDockerImagesVariable = "4SeqGUI_numDockerImages";
-        private final String prefixDockerVariable = "4SeqGUI_dockerImage_";
+        private final String countDockerImagesVariable = "ConnectorGUI_numDockerImages";
+        private final String prefixDockerVariable = "ConnectorGUI_dockerImage_";
         private final javax.swing.JTable dockerTable;
         private final Map<String, DockerImageDescription> dockerImages;
 
@@ -331,7 +328,6 @@ public class MainFrame extends javax.swing.JFrame {
         contextMenu.add(pMinText);
         contextMenu.add(pMaxText);
         //indexingBW
-        contextMenu.add(iThreadBText);
         //indexingSalmonPanel
         //countingSalmon
 
@@ -344,7 +340,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-        String HorSplPan = getPreferences().get("4SeqGUI_HorizontalSplitPanel", null);
+        String HorSplPan = getPreferences().get("ConnectorGUI_HorizontalSplitPanel", null);
         if (HorSplPan!=null){
          HorizontalSplitPanel.setDividerLocation(Integer.valueOf(HorSplPan));
         }
@@ -352,7 +348,7 @@ public class MainFrame extends javax.swing.JFrame {
          HorizontalSplitPanel.setDividerLocation(screenSize.height*3/10);
         }
 
-        String VerSplPan = getPreferences().get("4SeqGUI_VerticalSplitPanel", null);
+        String VerSplPan = getPreferences().get("ConnectorGUI_VerticalSplitPanel", null);
         if (VerSplPan!=null){
             VerticalSplitPanel.setDividerLocation(Integer.valueOf(VerSplPan));
         }
@@ -360,8 +356,8 @@ public class MainFrame extends javax.swing.JFrame {
         VerticalSplitPanel.setDividerLocation(screenSize.height*7/10);
         }
 
-        String  WindowWidth= getPreferences().get("4SeqGUI_WindowWidth", null);
-        String  WindowHeight= getPreferences().get("4SeqGUI_WindowHeight", null);
+        String  WindowWidth= getPreferences().get("ConnectorGUI_WindowWidth", null);
+        String  WindowHeight= getPreferences().get("ConnectorGUI_WindowHeight", null);
         if ((WindowWidth!=null)&&(WindowHeight!=null)){
             setSize(Integer.valueOf(WindowWidth),Integer.valueOf(WindowHeight));
         }
@@ -370,8 +366,8 @@ public class MainFrame extends javax.swing.JFrame {
         }
 
         //OUTPUT FRAME
-        int OutputframeWidth= Integer.valueOf(getPreferences().get("4SeqGUI_WindowOutputWidth", "0"));
-        int OutputframeHeight= Integer.valueOf(getPreferences().get("4SeqGUI_WindowOutputHeight", "0"));
+        int OutputframeWidth= Integer.valueOf(getPreferences().get("ConnectorGUI_WindowOutputWidth", "0"));
+        int OutputframeHeight= Integer.valueOf(getPreferences().get("ConnectorGUI_WindowOutputHeight", "0"));
 
         if ((OutputframeWidth==0)||(OutputframeHeight==0)){
               OutputframeWidth=screenSize.width*4/100;
@@ -381,8 +377,8 @@ public class MainFrame extends javax.swing.JFrame {
         OutputFrame.setSize(OutputframeWidth,OutputframeHeight);
 
 
-        int DownloadframeWidth= Integer.valueOf(getPreferences().get("4SeqGUI_WindowDownloadWidth", "0"));
-        int DownloadframeHeight= Integer.valueOf(getPreferences().get("4SeqGUI_WindowDownloadHeight", "0"));
+        int DownloadframeWidth= Integer.valueOf(getPreferences().get("ConnectorGUI_WindowDownloadWidth", "0"));
+        int DownloadframeHeight= Integer.valueOf(getPreferences().get("ConnectorGUI_WindowDownloadHeight", "0"));
         if ((DownloadframeWidth==0)||(DownloadframeHeight==0)){
               DownloadframeWidth=screenSize.width*4/100;
               DownloadframeHeight=screenSize.height*5/100;
@@ -390,23 +386,14 @@ public class MainFrame extends javax.swing.JFrame {
 
         DownloadFrame.setSize(DownloadframeWidth,DownloadframeHeight);
 
-        String WidthGroup = getPreferences().get("4SeqGUI_GroupCellWidth", null);
-        String WidthBatch = getPreferences().get("4SeqGUI_BatchCellWidth", null);
-        String WidthFolder = getPreferences().get("4SeqGUI_FolderCellWidth", null);
+        String WidthGroup = getPreferences().get("ConnectorGUI_GroupCellWidth", null);
+        String WidthBatch = getPreferences().get("ConnectorGUI_BatchCellWidth", null);
+        String WidthFolder = getPreferences().get("ConnectorGUI_FolderCellWidth", null);
 
 
-        String WidthGroup1 = getPreferences().get("4SeqGUI_Group1CellWidth", null);
-        String WidthBatch1 = getPreferences().get("4SeqGUI_Batch1CellWidth", null);
-        String WidthHeader = getPreferences().get("4SeqGUI_HeaderCellWidth", null);
-        if ((WidthGroup1!=null)&&(WidthBatch1!=null)&&(WidthHeader!=null)){
-             CCountHeaderTable.getColumnModel().getColumn(1).setPreferredWidth(Integer.valueOf(WidthGroup1));
-             CCountHeaderTable.getColumnModel().getColumn(2).setPreferredWidth(Integer.valueOf(WidthBatch1));
-             CCountHeaderTable.getColumnModel().getColumn(0).setPreferredWidth(Integer.valueOf(WidthHeader));
-        }
-        else
-            CCountHeaderTable.getColumnModel().getColumn(1).setPreferredWidth(CCountHeaderTable.getWidth()*10/100);
-
-
+        String WidthGroup1 = getPreferences().get("ConnectorGUI_Group1CellWidth", null);
+        String WidthBatch1 = getPreferences().get("ConnectorGUI_Batch1CellWidth", null);
+        String WidthHeader = getPreferences().get("ConnectorGUI_HeaderCellWidth", null);
 
 
         setLocationRelativeTo(null);
@@ -466,7 +453,7 @@ public class MainFrame extends javax.swing.JFrame {
         jButton33 = new javax.swing.JButton();
         jButton34 = new javax.swing.JButton();
         Downloadtext = new javax.swing.JTextField();
-        About4SeqGUIFrame = new javax.swing.JFrame();
+        AboutConnectorGUIFrame = new javax.swing.JFrame();
         jLabel96 = new javax.swing.JLabel();
         jLabel100 = new javax.swing.JLabel();
         jLabel101 = new javax.swing.JLabel();
@@ -513,75 +500,18 @@ public class MainFrame extends javax.swing.JFrame {
         EmptyPanel = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         ClusterPanel = new javax.swing.JScrollPane();
-        mRNA = new javax.swing.JScrollPane();
-        fPKMPanel = new javax.swing.JScrollPane();
-        vmRNA = new javax.swing.JScrollPane();
         DataVisualPanel = new javax.swing.JScrollPane();
         Pestim = new javax.swing.JScrollPane();
         DataImportPanel = new javax.swing.JScrollPane();
-        mACSPanel = new javax.swing.JScrollPane();
         DataCuttingPanel = new javax.swing.JScrollPane();
-        DiscrPlotPanel= new javax.swing.JScrollPane();
-        experimentPowerPanel = new javax.swing.JScrollPane();
         CountingSample = new javax.swing.JScrollPane();
-        indexingSalmon = new javax.swing.JScrollPane();
-        countingSalmon = new javax.swing.JScrollPane();
+        DBindex = new javax.swing.JScrollPane();
         SplinePanel = new javax.swing.JScrollPane();
         BestCLchoice = new javax.swing.JScrollPane();
+        DiscrPlotPanel = new javax.swing.JScrollPane();
         ClustCurve = new javax.swing.JScrollPane();
         Hestim = new javax.swing.JScrollPane();
-        Test = new javax.swing.JScrollPane();
-        S_indropIndex = new javax.swing.JScrollPane();
-        S_indropCounts = new javax.swing.JScrollPane();
-        S_cellRanger = new javax.swing.JScrollPane();
-        S_filterZeros = new javax.swing.JScrollPane();
-        S_genesUmi = new javax.swing.JScrollPane();
-        S_topX = new javax.swing.JScrollPane();
-        S_lorenzFilter = new javax.swing.JScrollPane();
-        S_scannoByGtf = new javax.swing.JScrollPane();
-        S_countDepth = new javax.swing.JScrollPane();
-        S_scnorm = new javax.swing.JScrollPane();
-        S_umiNorm = new javax.swing.JScrollPane();
         ConsMatrix = new javax.swing.JScrollPane();
-        S_recatPrediction = new javax.swing.JScrollPane();
-        S_ccRemove = new javax.swing.JScrollPane();
-        S_clusterNgriph = new javax.swing.JScrollPane();
-        S_simlrBootstrap = new javax.swing.JScrollPane();
-        S_bootstrapsVideo = new javax.swing.JScrollPane();
-        S_seuratPCAEval = new javax.swing.JScrollPane();
-        S_seuratBootstrap = new javax.swing.JScrollPane();
-        S_tsneBootstrap = new javax.swing.JScrollPane();
-        S_anovaLike = new javax.swing.JScrollPane();
-        S_clustersFeatures = new javax.swing.JScrollPane();
-        S_hfc = new javax.swing.JScrollPane();
-        S_seuratPrior = new javax.swing.JScrollPane();
-        S_genesPrioritization = new javax.swing.JScrollPane();
-        S_genesSelection = new javax.swing.JScrollPane();
-        circRNA_ciri2 = new javax.swing.JScrollPane();
-        circRNA_postprocessing = new javax.swing.JScrollPane();
-        circRNA_BSJunctions = new javax.swing.JScrollPane();
-        circRNA_annotation = new javax.swing.JScrollPane();
-        circRNA_structure = new javax.swing.JScrollPane();
-        circRNA_quantification = new javax.swing.JScrollPane();
-        circRNA_starPrediction = new javax.swing.JScrollPane();
-        circRNA_starChimeric = new javax.swing.JScrollPane();
-        circRNA_prepareExonIsoformFiles = new javax.swing.JScrollPane();
-        circRNA_mergeCiri2Samples = new javax.swing.JScrollPane();
-        mirnaGenomeIndexing = new javax.swing.JScrollPane();
-        mirnaQuantification = new javax.swing.JScrollPane();
-        S_dim = new javax.swing.JScrollPane();
-        S_clusterStability = new javax.swing.JScrollPane();
-        mergeMatrix = new javax.swing.JScrollPane();
-        crossLabel = new javax.swing.JScrollPane();
-        tenXIndexing = new javax.swing.JScrollPane();
-        subsetcells = new javax.swing.JScrollPane();
-        S_splitclusters = new javax.swing.JScrollPane();
-        S_unstablefiltering = new javax.swing.JScrollPane();
-        S_detwogroups = new javax.swing.JScrollPane();
-        heatmaply = new javax.swing.JScrollPane();
-        S_clusterNgriph1 = new javax.swing.JScrollPane();
-        S_densetosparse = new javax.swing.JScrollPane();
-        S_sparsetodense = new javax.swing.JScrollPane();
         LeftPanel = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         PreProcessScrollPane = new javax.swing.JScrollPane();
@@ -612,7 +542,6 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         KestimButton = new javax.swing.JButton();
         ConsMatrixButton = new javax.swing.JButton();
-        DBindex = new javax.swing.JScrollPane();
         DBindexButton = new javax.swing.JButton();
         BestClusterButton = new javax.swing.JButton();
         CountingClustScrollPanel = new javax.swing.JScrollPane();
@@ -937,33 +866,33 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
         DownloadFrame.getContentPane().add(jPanel1, gridBagConstraints);
 
-        About4SeqGUIFrame.setTitle("About 4SeqGUI");
-        About4SeqGUIFrame.setResizable(false);
-        About4SeqGUIFrame.getContentPane().setLayout(new java.awt.GridBagLayout());
+        AboutConnectorGUIFrame.setTitle("About ConnectorGUI");
+        AboutConnectorGUIFrame.setResizable(false);
+        AboutConnectorGUIFrame.getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jLabel96.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/4SeqGUI.png"))); // NOI18N
+        jLabel96.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ConnectorGUI.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.weightx = 0.01;
         gridBagConstraints.insets = new java.awt.Insets(10, 1, 10, 1);
-        About4SeqGUIFrame.getContentPane().add(jLabel96, gridBagConstraints);
+        AboutConnectorGUIFrame.getContentPane().add(jLabel96, gridBagConstraints);
 
         jLabel100.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel100.setText("Version 3.2.1");
+        jLabel100.setText("Version 1.0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(1, 1, 1, 1);
-        About4SeqGUIFrame.getContentPane().add(jLabel100, gridBagConstraints);
+        AboutConnectorGUIFrame.getContentPane().add(jLabel100, gridBagConstraints);
 
         jLabel101.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
-        jLabel101.setText("Copyright © January 2017");
+        jLabel101.setText("Copyright © October 2019");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
-        About4SeqGUIFrame.getContentPane().add(jLabel101, gridBagConstraints);
+        AboutConnectorGUIFrame.getContentPane().add(jLabel101, gridBagConstraints);
 
         jButton36.setText("OK");
         jButton36.addActionListener(new java.awt.event.ActionListener() {
@@ -977,7 +906,7 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        About4SeqGUIFrame.getContentPane().add(jButton36, gridBagConstraints);
+        AboutConnectorGUIFrame.getContentPane().add(jButton36, gridBagConstraints);
 
         jLabel99.setFont(jLabel99.getFont());
         jLabel99.setText("M. Beccuti, R. Calogero and F. Cordero");
@@ -985,8 +914,8 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 10, 20);
-        About4SeqGUIFrame.getContentPane().add(jLabel99, gridBagConstraints);
-        About4SeqGUIFrame.getContentPane().add(jLabel102, new java.awt.GridBagConstraints());
+        AboutConnectorGUIFrame.getContentPane().add(jLabel99, gridBagConstraints);
+        AboutConnectorGUIFrame.getContentPane().add(jLabel102, new java.awt.GridBagConstraints());
 
         ConfigureTabsFrame.setTitle("Configure Tabs");
         ConfigureTabsFrame.getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -1215,7 +1144,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("4SeqGUI");
+        setTitle("ConnectorGUI");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -1253,7 +1182,7 @@ public class MainFrame extends javax.swing.JFrame {
         jToolBar1.add(jButton2);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/preference.png"))); // NOI18N
-        jButton3.setToolTipText("Configure 4SeqGUI");
+        jButton3.setToolTipText("Configure ConnectorGUI");
         jButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
         jButton3.setFocusable(false);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -1307,6 +1236,7 @@ public class MainFrame extends javax.swing.JFrame {
         ConfigureTabsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/tab.png"))); // NOI18N
         ConfigureTabsButton.setToolTipText("Configure Tabs");
         ConfigureTabsButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        ConfigureTabsButton.setEnabled(false);
         ConfigureTabsButton.setFocusable(false);
         ConfigureTabsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ConfigureTabsButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -1317,8 +1247,8 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jToolBar1.add(ConfigureTabsButton);
 
-        jButton35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/iconDNA-small.png"))); // NOI18N
-        jButton35.setToolTipText("About 4SeqGUI");
+        jButton35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustersEstimSmall.png"))); // NOI18N
+        jButton35.setToolTipText("About ConnectorGUI");
         jButton35.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 15, 5, 15));
         jButton35.setFocusable(false);
         jButton35.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -1408,27 +1338,20 @@ public class MainFrame extends javax.swing.JFrame {
         DataCuttingPanel.setBorder(null);
         MainPanel.add(DataCuttingPanel, "DataCut");
 
-        
         CountingSample.setBorder(null);
         MainPanel.add(CountingSample, "Counting");
-        
-        
-        DiscrPlotPanel.setBorder(null);
-        MainPanel.add(DiscrPlotPanel, "MACS");
-        
+
+        DBindex.setBorder(null);
+        MainPanel.add(DBindex, "DBindex");
+
         SplinePanel.setBorder(null);
         MainPanel.add(SplinePanel, "spline");
-        
         MainPanel.add(BestCLchoice, "BestCl");
-        
+        MainPanel.add(DiscrPlotPanel, "MACS");
         MainPanel.add(ClustCurve, "ClustCurvesPlot");
-        
         MainPanel.add(Hestim, "pca_h");
-
         MainPanel.add(ConsMatrix, "ConsMatrix");
 
-        MainPanel.add(DBindex, "DBindex");
-         
         HorizontalSplitPanel.setRightComponent(MainPanel);
 
         LeftPanel.setLayout(new java.awt.GridBagLayout());
@@ -2036,7 +1959,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/preference.png"))); // NOI18N
-        jMenuItem1.setText("Configure 4SeqGUI");
+        jMenuItem1.setText("Configure ConnectorGUI");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -2067,6 +1990,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/tab.png"))); // NOI18N
         jMenuItem9.setText("Configure Tabs");
+        jMenuItem9.setEnabled(false);
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem9ActionPerformed(evt);
@@ -2081,7 +2005,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/iconDNA-small.png"))); // NOI18N
-        jMenuItem7.setText("About 4SeqGUI");
+        jMenuItem7.setText("About ConnectorGUI");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
@@ -2111,8 +2035,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         DownloadFrame.pack();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int DownloadframeWidth= Integer.valueOf(getPreferences().get("4SeqGUI_WindowDownloadWidth", "0"));
-        int DownloadframeHeight= Integer.valueOf(getPreferences().get("4SeqGUI_WindowDownloadHeight", "0"));
+        int DownloadframeWidth= Integer.valueOf(getPreferences().get("ConnectorGUI_WindowDownloadWidth", "0"));
+        int DownloadframeHeight= Integer.valueOf(getPreferences().get("ConnectorGUI_WindowDownloadHeight", "0"));
         if ((DownloadframeWidth==0)||(DownloadframeHeight==0)){
               DownloadframeWidth=screenSize.width*50/100;
               DownloadframeHeight=screenSize.height*20/100;
@@ -3031,8 +2955,8 @@ public class MainFrame extends javax.swing.JFrame {
         if ((evt!=null)){
         OutputFrame.pack();
          Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int OutputframeWidth= Integer.valueOf(getPreferences().get("4SeqGUI_WindowOutputWidth", "0"));
-        int OutputframeHeight= Integer.valueOf(getPreferences().get("4SeqGUI_WindowOutputHeight", "0"));
+        int OutputframeWidth= Integer.valueOf(getPreferences().get("ConnectorGUI_WindowOutputWidth", "0"));
+        int OutputframeHeight= Integer.valueOf(getPreferences().get("ConnectorGUI_WindowOutputHeight", "0"));
 
         if ((OutputframeWidth==0)||(OutputframeHeight==0)){
               OutputframeWidth=screenSize.width*40/100;
@@ -3114,8 +3038,8 @@ public class MainFrame extends javax.swing.JFrame {
     GL.setAvoidProcListValueChanged(-1);
     ProcList.clearSelection();
     GL.setAvoidProcListValueChanged(0);
-    getPreferences().put("4SeqGUI_WindowOutputWidth", Integer.toString(OutputFrame.getWidth()));
-    getPreferences().put("4SeqGUI_WindowOutputHeight", Integer.toString(OutputFrame.getHeight()));
+    getPreferences().put("ConnectorGUI_WindowOutputWidth", Integer.toString(OutputFrame.getWidth()));
+    getPreferences().put("ConnectorGUI_WindowOutputHeight", Integer.toString(OutputFrame.getHeight()));
     //System.out.println("@@@@@@@@@@@@Close: \n");
     outputTime.cancel();
     }//GEN-LAST:event_CloseOutputActionPerformed
@@ -3309,13 +3233,10 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-       getPreferences().put("4SeqGUI_HorizontalSplitPanel", Integer.toString(HorizontalSplitPanel.getDividerLocation()));
-       getPreferences().put("4SeqGUI_VerticalSplitPanel", Integer.toString(VerticalSplitPanel.getDividerLocation()));
-       getPreferences().put("4SeqGUI_WindowWidth", Integer.toString(getSize().width));
-       getPreferences().put("4SeqGUI_WindowHeight",Integer.toString(getSize().height));
-       getPreferences().put("4SeqGUI_Group1CellWidth",Integer.toString(CCountHeaderTable.getColumnModel().getColumn(1).getWidth()));
-       getPreferences().put("4SeqGUI_Batch1CellWidth",Integer.toString(CCountHeaderTable.getColumnModel().getColumn(2).getWidth()));
-       getPreferences().put("4SeqGUI_HeaderCellWidth",Integer.toString(CCountHeaderTable.getColumnModel().getColumn(0).getWidth()));
+       getPreferences().put("ConnectorGUI_HorizontalSplitPanel", Integer.toString(HorizontalSplitPanel.getDividerLocation()));
+       getPreferences().put("ConnectorGUI_VerticalSplitPanel", Integer.toString(VerticalSplitPanel.getDividerLocation()));
+       getPreferences().put("ConnectorGUI_WindowWidth", Integer.toString(getSize().width));
+       getPreferences().put("ConnectorGUI_WindowHeight",Integer.toString(getSize().height));
     }//GEN-LAST:event_formWindowClosing
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
@@ -3325,8 +3246,8 @@ public class MainFrame extends javax.swing.JFrame {
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
         DownloadFrame.setVisible(false);
         Downloadtext.setText("");
-        getPreferences().put("4SeqGUI_WindowDownloadWidth", Integer.toString(DownloadFrame.getWidth()));
-        getPreferences().put("4SeqGUI_WindowDownloadHeight", Integer.toString(DownloadFrame.getHeight()));
+        getPreferences().put("ConnectorGUI_WindowDownloadWidth", Integer.toString(DownloadFrame.getWidth()));
+        getPreferences().put("ConnectorGUI_WindowDownloadHeight", Integer.toString(DownloadFrame.getHeight()));
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
@@ -3350,23 +3271,23 @@ public class MainFrame extends javax.swing.JFrame {
 
         DownloadFrame.setVisible(false);
         Downloadtext.setText("");
-        getPreferences().put("4SeqGUI_WindowDownloadWidth", Integer.toString(DownloadFrame.getWidth()));
-        getPreferences().put("4SeqGUI_WindowDownloadHeight", Integer.toString(DownloadFrame.getHeight()));
+        getPreferences().put("ConnectorGUI_WindowDownloadWidth", Integer.toString(DownloadFrame.getWidth()));
+        getPreferences().put("ConnectorGUI_WindowDownloadHeight", Integer.toString(DownloadFrame.getHeight()));
 
         dockerManager.addImages(containerListFile);
         dockerManager.updateGUI();
     }//GEN-LAST:event_jButton32ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        openAbout4SeqGUI(evt);
+        openAboutConnectorGUI(evt);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
-        openAbout4SeqGUI(evt);
+        openAboutConnectorGUI(evt);
     }//GEN-LAST:event_jButton35ActionPerformed
 
     private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
-       About4SeqGUIFrame.setVisible(false);
+       AboutConnectorGUIFrame.setVisible(false);
     }//GEN-LAST:event_jButton36ActionPerformed
 
     private void OutputFrameWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_OutputFrameWindowClosing
@@ -3414,7 +3335,7 @@ public class MainFrame extends javax.swing.JFrame {
         //enable and disable checkboxes based on saved preferences
         for (Component c: enableTabsPanel.getComponents()) {
             JCheckBox cb = (JCheckBox) c;
-            String varname = String.format("4SeqGUI_EnableTab%s", cb.getName());
+            String varname = String.format("ConnectorGUI_EnableTab%s", cb.getName());
             String varvalue = getPreferences().get(varname, "true");
 
             cb.setSelected(varvalue.equals("true"));
@@ -3431,7 +3352,7 @@ public class MainFrame extends javax.swing.JFrame {
         //for each tab, set a variable to show/hide it
         for (Component c: enableTabsPanel.getComponents()) {
             JCheckBox cb = (JCheckBox) c;
-            String varname = String.format("4SeqGUI_EnableTab%s", cb.getName());
+            String varname = String.format("ConnectorGUI_EnableTab%s", cb.getName());
 
             getPreferences().put(varname, String.valueOf(cb.isSelected()));
 
@@ -3561,10 +3482,10 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
 
-    private void  openAbout4SeqGUI(java.awt.event.ActionEvent evt) {
-        About4SeqGUIFrame.pack();
-        About4SeqGUIFrame.setLocationRelativeTo(null);
-        About4SeqGUIFrame.setVisible(true);
+    private void  openAboutConnectorGUI(java.awt.event.ActionEvent evt) {
+        AboutConnectorGUIFrame.pack();
+        AboutConnectorGUIFrame.setLocationRelativeTo(null);
+        AboutConnectorGUIFrame.setVisible(true);
     }
 
     /**
@@ -3610,7 +3531,7 @@ public class MainFrame extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFrame About4SeqGUIFrame;
+    private javax.swing.JFrame AboutConnectorGUIFrame;
     private javax.swing.JTextField Adapter3TextField;
     private javax.swing.JTextField Adapter5TextField;
     private javax.swing.JComboBox<String> BatchComboBox;
@@ -3679,73 +3600,23 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel RNAseqPanelSub2M;
     public static javax.swing.JToggleButton ReloadOutput;
     private javax.swing.JButton RemoveOutput;
-    private javax.swing.JScrollPane S_anovaLike;
-    private javax.swing.JScrollPane S_bootstrapsVideo;
-    private javax.swing.JScrollPane S_ccRemove;
-    private javax.swing.JScrollPane S_cellRanger;
-    private javax.swing.JScrollPane S_clusterNgriph;
-    private javax.swing.JScrollPane S_clusterNgriph1;
-    private javax.swing.JScrollPane S_clusterStability;
-    private javax.swing.JScrollPane S_clustersFeatures;
-    private javax.swing.JScrollPane S_countDepth;
-    private javax.swing.JScrollPane S_densetosparse;
-    private javax.swing.JScrollPane S_detwogroups;
-    private javax.swing.JScrollPane S_dim;
-    private javax.swing.JScrollPane S_filterZeros;
-    private javax.swing.JScrollPane S_genesPrioritization;
-    private javax.swing.JScrollPane S_genesSelection;
-    private javax.swing.JScrollPane S_genesUmi;
-    private javax.swing.JScrollPane S_hfc;
-    private javax.swing.JScrollPane S_indropCounts;
-    private javax.swing.JScrollPane S_indropIndex;
-    private javax.swing.JScrollPane S_lorenzFilter;
-    private javax.swing.JScrollPane S_recatPrediction;
-    private javax.swing.JScrollPane S_scannoByGtf;
-    private javax.swing.JScrollPane S_scnorm;
-    private javax.swing.JScrollPane S_seuratBootstrap;
-    private javax.swing.JScrollPane S_seuratPCAEval;
-    private javax.swing.JScrollPane S_seuratPrior;
-    private javax.swing.JScrollPane S_simlrBootstrap;
-    private javax.swing.JScrollPane S_sparsetodense;
-    private javax.swing.JScrollPane S_splitclusters;
-    private javax.swing.JScrollPane S_topX;
-    private javax.swing.JScrollPane S_tsneBootstrap;
-    private javax.swing.JScrollPane S_umiNorm;
-    private javax.swing.JScrollPane S_unstablefiltering;
     private javax.swing.JButton SplineButton;
     private javax.swing.JScrollPane SplinePanel;
     private javax.swing.JPanel SubPanel1;
     private javax.swing.JPanel SubPanel1ClusEstim;
     private javax.swing.JPanel Subpanel3;
-    public javax.swing.JScrollPane Test;
     private javax.swing.JTextField ThreadTextField;
     private javax.swing.JSplitPane VerticalSplitPanel;
     private javax.swing.JButton addImagesButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chipseqTabChecker;
     private javax.swing.JCheckBox circRNATabChecker;
-    private javax.swing.JScrollPane circRNA_BSJunctions;
-    private javax.swing.JScrollPane circRNA_annotation;
-    private javax.swing.JScrollPane circRNA_ciri2;
-    private javax.swing.JScrollPane circRNA_mergeCiri2Samples;
-    private javax.swing.JScrollPane circRNA_postprocessing;
-    private javax.swing.JScrollPane circRNA_prepareExonIsoformFiles;
-    private javax.swing.JScrollPane circRNA_quantification;
-    private javax.swing.JScrollPane circRNA_starChimeric;
-    private javax.swing.JScrollPane circRNA_starPrediction;
-    private javax.swing.JScrollPane circRNA_structure;
     private javax.swing.JButton closeConfigureTabButton;
     private javax.swing.JPanel commandsPanel;
     private javax.swing.JButton confermConfigureTabButton;
-    private javax.swing.JScrollPane countingSalmon;
-    private javax.swing.JScrollPane crossLabel;
     private javax.swing.JFrame dockerImagesManager;
     private javax.swing.JTable dockerImagesTable;
     private javax.swing.JPanel enableTabsPanel;
-    private javax.swing.JScrollPane experimentPowerPanel;
-    private javax.swing.JScrollPane fPKMPanel;
-    private javax.swing.JScrollPane heatmaply;
-    private javax.swing.JScrollPane indexingSalmon;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -3804,24 +3675,16 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JScrollPane mACSPanel;
-    private javax.swing.JScrollPane mRNA;
     private javax.swing.JButton manageDockerImagesButton;
-    private javax.swing.JScrollPane mergeMatrix;
     private javax.swing.JCheckBox miRNA2TabChecker;
     private javax.swing.JCheckBox miRNATabChecker;
     private javax.swing.JPanel miRNApanelSub1M;
     private javax.swing.JPanel miRNApanelSub2M;
-    private javax.swing.JScrollPane mirnaGenomeIndexing;
-    private javax.swing.JScrollPane mirnaQuantification;
     private javax.swing.JButton pullImagesButton;
     private javax.swing.JButton removeImagesButton;
     private javax.swing.JCheckBox rnaSeqTabChecker;
     private javax.swing.JCheckBox singleCellTabChecker;
-    private javax.swing.JScrollPane subsetcells;
-    private javax.swing.JScrollPane tenXIndexing;
     private javax.swing.JCheckBox toolsTabChecker;
-    private javax.swing.JScrollPane vmRNA;
     // End of variables declaration//GEN-END:variables
 
 
@@ -3930,7 +3793,7 @@ static public class GlobalSetting{
     public GlobalSetting(){
     boolean findFile=false;
     try{
-                File file = new File(".4SeqGUI");
+                File file = new File(".ConnectorGUI");
                 BufferedReader reader = new BufferedReader(new FileReader(file));
                 int line=0;
                 //Read File Line By Line

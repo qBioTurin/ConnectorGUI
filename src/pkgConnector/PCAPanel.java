@@ -101,6 +101,9 @@ public class PCAPanel extends javax.swing.JPanel {
         vCloseButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/close.png"))); // NOI18N
         vCloseButton9.setText("Close");
         vCloseButton9.setToolTipText(null);
+        vCloseButton9.setMaximumSize(new java.awt.Dimension(100, 30));
+        vCloseButton9.setMinimumSize(new java.awt.Dimension(100, 30));
+        vCloseButton9.setPreferredSize(new java.awt.Dimension(100, 30));
         vCloseButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vCloseButton9ActionPerformed(evt);
@@ -116,6 +119,9 @@ public class PCAPanel extends javax.swing.JPanel {
         jButton49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
         jButton49.setText("Execute");
         jButton49.setToolTipText(null);
+        jButton49.setMaximumSize(new java.awt.Dimension(140, 30));
+        jButton49.setMinimumSize(new java.awt.Dimension(140, 30));
+        jButton49.setPreferredSize(new java.awt.Dimension(140, 30));
         jButton49.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton49ActionPerformed(evt);
@@ -131,6 +137,9 @@ public class PCAPanel extends javax.swing.JPanel {
         jButton50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         jButton50.setText("Reset");
         jButton50.setToolTipText(null);
+        jButton50.setMaximumSize(new java.awt.Dimension(100, 30));
+        jButton50.setMinimumSize(new java.awt.Dimension(100, 30));
+        jButton50.setPreferredSize(new java.awt.Dimension(100, 30));
         jButton50.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton50ActionPerformed(evt);
@@ -147,6 +156,9 @@ public class PCAPanel extends javax.swing.JPanel {
         jButton51.setText("Save conf.");
         jButton51.setToolTipText(null);
         jButton51.setEnabled(false);
+        jButton51.setMaximumSize(new java.awt.Dimension(140, 30));
+        jButton51.setMinimumSize(new java.awt.Dimension(140, 30));
+        jButton51.setPreferredSize(new java.awt.Dimension(140, 30));
         jButton51.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton51ActionPerformed(evt);
@@ -195,6 +207,9 @@ public class PCAPanel extends javax.swing.JPanel {
         jToggleButton48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/filebR.png"))); // NOI18N
         jToggleButton48.setText("Browse");
         jToggleButton48.setToolTipText(null);
+        jToggleButton48.setMaximumSize(new java.awt.Dimension(110, 30));
+        jToggleButton48.setMinimumSize(new java.awt.Dimension(110, 30));
+        jToggleButton48.setPreferredSize(new java.awt.Dimension(110, 30));
         jToggleButton48.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton48ActionPerformed(evt);
@@ -212,6 +227,9 @@ public class PCAPanel extends javax.swing.JPanel {
         fCancelButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         fCancelButton6.setText("Cancel");
         fCancelButton6.setToolTipText(null);
+        fCancelButton6.setMaximumSize(new java.awt.Dimension(110, 30));
+        fCancelButton6.setMinimumSize(new java.awt.Dimension(110, 30));
+        fCancelButton6.setPreferredSize(new java.awt.Dimension(110, 30));
         fCancelButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fCancelButton6ActionPerformed(evt);
@@ -255,6 +273,9 @@ public class PCAPanel extends javax.swing.JPanel {
 
         jToggleButton49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
         jToggleButton49.setText("Browse");
+        jToggleButton49.setMaximumSize(new java.awt.Dimension(110, 30));
+        jToggleButton49.setMinimumSize(new java.awt.Dimension(110, 30));
+        jToggleButton49.setPreferredSize(new java.awt.Dimension(110, 30));
         jToggleButton49.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton49ActionPerformed(evt);
@@ -270,6 +291,9 @@ public class PCAPanel extends javax.swing.JPanel {
 
         fCancelButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         fCancelButton7.setText("Cancel");
+        fCancelButton7.setMaximumSize(new java.awt.Dimension(110, 30));
+        fCancelButton7.setMinimumSize(new java.awt.Dimension(110, 30));
+        fCancelButton7.setPreferredSize(new java.awt.Dimension(110, 30));
         fCancelButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fCancelButton7ActionPerformed(evt);
@@ -404,11 +428,12 @@ public class PCAPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         ANOVAlikePanel.add(jPanel41, gridBagConstraints);
 
+        PlotViewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/plotsmall.png"))); // NOI18N
         PlotViewButton.setText("Show plot");
         PlotViewButton.setEnabled(false);
-        PlotViewButton.setMaximumSize(new java.awt.Dimension(171, 30));
-        PlotViewButton.setMinimumSize(new java.awt.Dimension(171, 30));
-        PlotViewButton.setPreferredSize(new java.awt.Dimension(171, 30));
+        PlotViewButton.setMaximumSize(new java.awt.Dimension(140, 30));
+        PlotViewButton.setMinimumSize(new java.awt.Dimension(140, 30));
+        PlotViewButton.setPreferredSize(new java.awt.Dimension(140, 30));
         PlotViewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PlotViewButtonActionPerformed(evt);

@@ -108,6 +108,9 @@ public class ClusterPanel extends javax.swing.JPanel {
 
         iCloseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/close.png"))); // NOI18N
         iCloseButton.setText("Close");
+        iCloseButton.setMaximumSize(new java.awt.Dimension(100, 30));
+        iCloseButton.setMinimumSize(new java.awt.Dimension(100, 30));
+        iCloseButton.setPreferredSize(new java.awt.Dimension(100, 30));
         iCloseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 iCloseButtonActionPerformed(evt);
@@ -122,6 +125,9 @@ public class ClusterPanel extends javax.swing.JPanel {
 
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
         jButton12.setText("Execute");
+        jButton12.setMaximumSize(new java.awt.Dimension(140, 30));
+        jButton12.setMinimumSize(new java.awt.Dimension(140, 30));
+        jButton12.setPreferredSize(new java.awt.Dimension(140, 30));
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
@@ -136,6 +142,9 @@ public class ClusterPanel extends javax.swing.JPanel {
 
         iResetButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         iResetButton.setText("Reset");
+        iResetButton.setMaximumSize(new java.awt.Dimension(100, 30));
+        iResetButton.setMinimumSize(new java.awt.Dimension(100, 30));
+        iResetButton.setPreferredSize(new java.awt.Dimension(100, 30));
         iResetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 iResetButtonActionPerformed(evt);
@@ -150,6 +159,9 @@ public class ClusterPanel extends javax.swing.JPanel {
 
         jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/86b.png"))); // NOI18N
         jButton14.setText("Save conf.");
+        jButton14.setMaximumSize(new java.awt.Dimension(140, 30));
+        jButton14.setMinimumSize(new java.awt.Dimension(140, 30));
+        jButton14.setPreferredSize(new java.awt.Dimension(140, 30));
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -197,6 +209,9 @@ public class ClusterPanel extends javax.swing.JPanel {
 
         jToggleButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/filebR.png"))); // NOI18N
         jToggleButton15.setText("Browse");
+        jToggleButton15.setMaximumSize(new java.awt.Dimension(110, 30));
+        jToggleButton15.setMinimumSize(new java.awt.Dimension(110, 30));
+        jToggleButton15.setPreferredSize(new java.awt.Dimension(110, 30));
         jToggleButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton15ActionPerformed(evt);
@@ -211,6 +226,9 @@ public class ClusterPanel extends javax.swing.JPanel {
 
         jToggleButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         jToggleButton16.setText("Cancel");
+        jToggleButton16.setMaximumSize(new java.awt.Dimension(110, 30));
+        jToggleButton16.setMinimumSize(new java.awt.Dimension(110, 30));
+        jToggleButton16.setPreferredSize(new java.awt.Dimension(110, 30));
         jToggleButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton16ActionPerformed(evt);
@@ -251,6 +269,9 @@ public class ClusterPanel extends javax.swing.JPanel {
 
         jToggleButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
         jToggleButton17.setText("Browse");
+        jToggleButton17.setMaximumSize(new java.awt.Dimension(110, 30));
+        jToggleButton17.setMinimumSize(new java.awt.Dimension(110, 30));
+        jToggleButton17.setPreferredSize(new java.awt.Dimension(110, 30));
         jToggleButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton17ActionPerformed(evt);
@@ -266,6 +287,9 @@ public class ClusterPanel extends javax.swing.JPanel {
 
         jToggleButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         jToggleButton18.setText("Cancel");
+        jToggleButton18.setMaximumSize(new java.awt.Dimension(110, 30));
+        jToggleButton18.setMinimumSize(new java.awt.Dimension(110, 30));
+        jToggleButton18.setPreferredSize(new java.awt.Dimension(110, 30));
         jToggleButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton18ActionPerformed(evt);
@@ -532,6 +556,9 @@ public class ClusterPanel extends javax.swing.JPanel {
 
         PlotViewButton.setText("Show Plot");
         PlotViewButton.setEnabled(false);
+        PlotViewButton.setMaximumSize(new java.awt.Dimension(140, 30));
+        PlotViewButton.setMinimumSize(new java.awt.Dimension(140, 30));
+        PlotViewButton.setPreferredSize(new java.awt.Dimension(140, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;

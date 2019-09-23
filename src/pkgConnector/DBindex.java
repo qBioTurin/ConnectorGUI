@@ -96,6 +96,9 @@ public class DBindex extends javax.swing.JPanel {
         jButton45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
         jButton45.setText("Execute");
         jButton45.setToolTipText(null);
+        jButton45.setMaximumSize(new java.awt.Dimension(140, 30));
+        jButton45.setMinimumSize(new java.awt.Dimension(140, 30));
+        jButton45.setPreferredSize(new java.awt.Dimension(140, 30));
         jButton45.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton45ActionPerformed(evt);
@@ -113,6 +116,9 @@ public class DBindex extends javax.swing.JPanel {
         jButton47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         jButton47.setText("Reset");
         jButton47.setToolTipText(null);
+        jButton47.setMaximumSize(new java.awt.Dimension(100, 30));
+        jButton47.setMinimumSize(new java.awt.Dimension(100, 30));
+        jButton47.setPreferredSize(new java.awt.Dimension(100, 30));
         jButton47.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton47ActionPerformed(evt);
@@ -128,6 +134,9 @@ public class DBindex extends javax.swing.JPanel {
         vCloseButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/close.png"))); // NOI18N
         vCloseButton7.setText("Close");
         vCloseButton7.setToolTipText(null);
+        vCloseButton7.setMaximumSize(new java.awt.Dimension(100, 30));
+        vCloseButton7.setMinimumSize(new java.awt.Dimension(100, 30));
+        vCloseButton7.setPreferredSize(new java.awt.Dimension(100, 30));
         vCloseButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vCloseButton7ActionPerformed(evt);
@@ -164,6 +173,9 @@ public class DBindex extends javax.swing.JPanel {
         jToggleButton40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/filebR.png"))); // NOI18N
         jToggleButton40.setText("Browse");
         jToggleButton40.setToolTipText(null);
+        jToggleButton40.setMaximumSize(new java.awt.Dimension(110, 30));
+        jToggleButton40.setMinimumSize(new java.awt.Dimension(110, 30));
+        jToggleButton40.setPreferredSize(new java.awt.Dimension(110, 30));
         jToggleButton40.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton40ActionPerformed(evt);
@@ -179,6 +191,9 @@ public class DBindex extends javax.swing.JPanel {
         jToggleButton41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         jToggleButton41.setText("Cancel");
         jToggleButton41.setToolTipText(null);
+        jToggleButton41.setMaximumSize(new java.awt.Dimension(110, 30));
+        jToggleButton41.setMinimumSize(new java.awt.Dimension(110, 30));
+        jToggleButton41.setPreferredSize(new java.awt.Dimension(110, 30));
         jToggleButton41.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton41ActionPerformed(evt);
@@ -194,6 +209,9 @@ public class DBindex extends javax.swing.JPanel {
         jButton31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
         jButton31.setText("Browse");
         jButton31.setToolTipText(null);
+        jButton31.setMaximumSize(new java.awt.Dimension(110, 30));
+        jButton31.setMinimumSize(new java.awt.Dimension(110, 30));
+        jButton31.setPreferredSize(new java.awt.Dimension(110, 30));
         jButton31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton31ActionPerformed(evt);
@@ -209,6 +227,9 @@ public class DBindex extends javax.swing.JPanel {
         jToggleButton43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/33b.png"))); // NOI18N
         jToggleButton43.setText("Cancel");
         jToggleButton43.setToolTipText(null);
+        jToggleButton43.setMaximumSize(new java.awt.Dimension(110, 30));
+        jToggleButton43.setMinimumSize(new java.awt.Dimension(110, 30));
+        jToggleButton43.setPreferredSize(new java.awt.Dimension(110, 30));
         jToggleButton43.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton43ActionPerformed(evt);
