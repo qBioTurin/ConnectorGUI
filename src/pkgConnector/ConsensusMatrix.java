@@ -29,8 +29,35 @@ import static pkgConnector.MainFrame.getPreferences;
  */
 public class ConsensusMatrix extends javax.swing.JPanel {
 
+    private void ClusteredDataCheck(File ConnectorListCL) throws FileNotFoundException, IOException
+    {
+        String line;
+        String[]  lin2 = null;        
+        ConsMatrixExtrapolationButton.setEnabled(false);
+        
+        Runtime rt = Runtime.getRuntime();
+            String cmdcheck = ("Rscript --vanilla  ./Rscripts/ClusteredDataCheck.R "+ ConnectorListCL);
+            Process pr = rt.exec(cmdcheck);            
+            BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));  
+            
+            while ((line = input.readLine()) != null) {  
+                System.out.println(line);
+                if(line.contentEquals("[1] 1"))
+                {
+                    ConsMatrixExtrapolationButton.setEnabled(true);
+                }
+                else{
+                   JOptionPane.showMessageDialog(this, "You have to specified an RData storing a clustered ConnectorList (FCM execution step). Observe that the name of the ConnectorList in the RData must be ConnectorList.FCM! ","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
+                }
+                
+                // Bind it to the combobox
+         
+            }  
+            input.close(); 
+    }
+    
     DefaultComboBoxModel newModel = new DefaultComboBoxModel();
-     
+    
     private void UpdateComboBox(File ConnectorListCL) throws FileNotFoundException, IOException
     {
         String line;
@@ -104,31 +131,26 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         executionGroup = new javax.swing.ButtonGroup();
         S_LorenzFilterPanel = new javax.swing.JPanel();
         vCloseButton5 = new javax.swing.JButton();
-        ConsMatrixExtrapolationButton39 = new javax.swing.JButton();
+        ConsMatrixExtrapolationButton = new javax.swing.JButton();
         jButton40 = new javax.swing.JButton();
         jPanel30 = new javax.swing.JPanel();
-        jLabel120 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton29 = new javax.swing.JButton();
         jButton30 = new javax.swing.JButton();
         ConnListText = new javax.swing.JTextField();
-        NumberClComboBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         OutputFolderText = new javax.swing.JTextField();
         jButton31 = new javax.swing.JButton();
         jButton32 = new javax.swing.JButton();
-        jPanel31 = new javax.swing.JPanel();
-        jLabel113 = new javax.swing.JLabel();
-        cSudoRadioButton = new javax.swing.JRadioButton();
-        cDockerRadioButton = new javax.swing.JRadioButton();
         PlotViewButton = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        NumberClComboBox = new javax.swing.JComboBox<>();
+        jLabel120 = new javax.swing.JLabel();
 
         setLayout(new java.awt.GridBagLayout());
 
-        S_LorenzFilterPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Consesus Matrix Plot", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(255, 102, 102))); // NOI18N
+        S_LorenzFilterPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Consesus Matrix Plot", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 204))); // NOI18N
         S_LorenzFilterPanel.setToolTipText(null);
-        S_LorenzFilterPanel.setMinimumSize(new java.awt.Dimension(737, 575));
-        S_LorenzFilterPanel.setPreferredSize(new java.awt.Dimension(710, 575));
         S_LorenzFilterPanel.setLayout(new java.awt.GridBagLayout());
 
         vCloseButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/close.png"))); // NOI18N
@@ -150,15 +172,15 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         S_LorenzFilterPanel.add(vCloseButton5, gridBagConstraints);
 
-        ConsMatrixExtrapolationButton39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
-        ConsMatrixExtrapolationButton39.setText("Execute");
-        ConsMatrixExtrapolationButton39.setToolTipText(null);
-        ConsMatrixExtrapolationButton39.setMaximumSize(new java.awt.Dimension(140, 30));
-        ConsMatrixExtrapolationButton39.setMinimumSize(new java.awt.Dimension(140, 30));
-        ConsMatrixExtrapolationButton39.setPreferredSize(new java.awt.Dimension(140, 30));
-        ConsMatrixExtrapolationButton39.addActionListener(new java.awt.event.ActionListener() {
+        ConsMatrixExtrapolationButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
+        ConsMatrixExtrapolationButton.setText("Execute");
+        ConsMatrixExtrapolationButton.setToolTipText("Execute the consesus matrix corresponding to the number of clusters selected.");
+        ConsMatrixExtrapolationButton.setMaximumSize(new java.awt.Dimension(140, 30));
+        ConsMatrixExtrapolationButton.setMinimumSize(new java.awt.Dimension(140, 30));
+        ConsMatrixExtrapolationButton.setPreferredSize(new java.awt.Dimension(140, 30));
+        ConsMatrixExtrapolationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConsMatrixExtrapolationButton39ActionPerformed(evt);
+                ConsMatrixExtrapolationButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -167,11 +189,11 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        S_LorenzFilterPanel.add(ConsMatrixExtrapolationButton39, gridBagConstraints);
+        S_LorenzFilterPanel.add(ConsMatrixExtrapolationButton, gridBagConstraints);
 
         jButton40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         jButton40.setText("Reset");
-        jButton40.setToolTipText(null);
+        jButton40.setToolTipText("Settings reset.");
         jButton40.setMaximumSize(new java.awt.Dimension(100, 30));
         jButton40.setMinimumSize(new java.awt.Dimension(100, 30));
         jButton40.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -189,32 +211,23 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         S_LorenzFilterPanel.add(jButton40, gridBagConstraints);
 
         jPanel30.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel30.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel30.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Files:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
         jPanel30.setToolTipText(null);
         jPanel30.setLayout(new java.awt.GridBagLayout());
 
-        jLabel120.setText("Number of Clusters:");
-        jLabel120.setToolTipText(null);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel30.add(jLabel120, gridBagConstraints);
-
-        jLabel2.setText("Connector List clustered:");
+        jLabel2.setText("<html>Connector List<br>with multiple clust:</html>");
+        jLabel2.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel30.add(jLabel2, gridBagConstraints);
 
         jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/filebR.png"))); // NOI18N
-        jButton29.setText("Browse");
+        jButton29.setText("Browser");
+        jButton29.setToolTipText("Selection of the RData storing the clustered ConnectorList(s).");
         jButton29.setMaximumSize(new java.awt.Dimension(110, 30));
         jButton29.setMinimumSize(new java.awt.Dimension(110, 30));
         jButton29.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -226,7 +239,9 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel30.add(jButton29, gridBagConstraints);
 
@@ -243,11 +258,14 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel30.add(jButton30, gridBagConstraints);
 
         ConnListText.setEditable(false);
+        ConnListText.setToolTipText("RData storing the clustered ConnectorList(s) generated from the \"FCM execution\" step.");
         ConnListText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConnListTextActionPerformed(evt);
@@ -259,33 +277,22 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel30.add(ConnListText, gridBagConstraints);
 
-        NumberClComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NumberClComboBoxActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 250;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
-        jPanel30.add(NumberClComboBox, gridBagConstraints);
-
         jLabel3.setText("Output folder:");
+        jLabel3.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel30.add(jLabel3, gridBagConstraints);
 
         OutputFolderText.setEditable(false);
+        OutputFolderText.setToolTipText("Output folder where the consensus matrix will be saved.");
         OutputFolderText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OutputFolderTextActionPerformed(evt);
@@ -297,12 +304,13 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel30.add(OutputFolderText, gridBagConstraints);
 
         jButton31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
-        jButton31.setText("Browse");
+        jButton31.setText("Browser");
+        jButton31.setToolTipText("Folder selection.");
         jButton31.setMaximumSize(new java.awt.Dimension(110, 30));
         jButton31.setMinimumSize(new java.awt.Dimension(110, 30));
         jButton31.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -314,7 +322,9 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel30.add(jButton31, gridBagConstraints);
 
@@ -331,79 +341,24 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel30.add(jButton32, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         S_LorenzFilterPanel.add(jPanel30, gridBagConstraints);
 
-        jPanel31.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel31.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel31.setToolTipText(null);
-        jPanel31.setLayout(new java.awt.GridBagLayout());
-
-        jLabel113.setText("Execution:");
-        jLabel113.setToolTipText(null);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel31.add(jLabel113, gridBagConstraints);
-
-        cSudoRadioButton.setBackground(new java.awt.Color(248, 248, 248));
-        executionGroup.add(cSudoRadioButton);
-        cSudoRadioButton.setText("sudo");
-        cSudoRadioButton.setToolTipText(null);
-        cSudoRadioButton.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 28, 10, 10);
-        jPanel31.add(cSudoRadioButton, gridBagConstraints);
-
-        cDockerRadioButton.setBackground(new java.awt.Color(248, 248, 248));
-        executionGroup.add(cDockerRadioButton);
-        cDockerRadioButton.setSelected(true);
-        cDockerRadioButton.setText("docker");
-        cDockerRadioButton.setToolTipText(null);
-        cDockerRadioButton.setEnabled(false);
-        cDockerRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cDockerRadioButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel31.add(cDockerRadioButton, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        S_LorenzFilterPanel.add(jPanel31, gridBagConstraints);
-
         PlotViewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/plotsmall.png"))); // NOI18N
         PlotViewButton.setText("Show plot");
-        PlotViewButton.setToolTipText(null);
-        PlotViewButton.setEnabled(false);
+        PlotViewButton.setToolTipText("Show the consesus matrix corresponding to the number of clusters selected.");
         PlotViewButton.setMaximumSize(new java.awt.Dimension(140, 30));
         PlotViewButton.setMinimumSize(new java.awt.Dimension(140, 30));
         PlotViewButton.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -420,6 +375,47 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         S_LorenzFilterPanel.add(PlotViewButton, gridBagConstraints);
+
+        jPanel1.setBackground(new java.awt.Color(248, 248, 248));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Parameters:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
+        jPanel1.setToolTipText(null);
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        NumberClComboBox.setToolTipText("Select the number of clusters for obtaining the respective consensus matrix. Observe that the number of clusters showed are the ones contained in the input ConnectorList.");
+        NumberClComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NumberClComboBoxActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 250;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 27, 10, 10);
+        jPanel1.add(NumberClComboBox, gridBagConstraints);
+
+        jLabel120.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel120.setText("Number of Clusters:");
+        jLabel120.setToolTipText(null);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel1.add(jLabel120, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        S_LorenzFilterPanel.add(jPanel1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -440,14 +436,14 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         //        AnalysisTree.clearSelection();
     }//GEN-LAST:event_vCloseButton5ActionPerformed
 
-    private void ConsMatrixExtrapolationButton39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsMatrixExtrapolationButton39ActionPerformed
+    private void ConsMatrixExtrapolationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsMatrixExtrapolationButtonActionPerformed
 
         //Field check
 
         //execute code
         Runtime rt = Runtime.getRuntime();
         try{
-            String[] cmd = {"/bin/bash","-c"," bash ./ExecFile/ExecConsMatrix.sh "};
+            String[] cmd = {"/bin/bash","-c"," bash ./ExecFile/ExecExtrap.sh "};
             cmd[2]+= " input.file=\\\""+ConnListText.getText()+"\\\"";
             cmd[2]+= " output.folder=\\\""+OutputFolderText.getText()+"\\\"";
             cmd[2]+= " k=\\\""+NumberClComboBox.getItemAt(NumberClComboBox.getSelectedIndex())+"\\\"";
@@ -489,7 +485,7 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         }
         JOptionPane.showMessageDialog(this, "Consensus Matrix extrapolation task was scheduled","Confermation",JOptionPane.INFORMATION_MESSAGE);
         //execute code
-    }//GEN-LAST:event_ConsMatrixExtrapolationButton39ActionPerformed
+    }//GEN-LAST:event_ConsMatrixExtrapolationButtonActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
         JFileChooser openDir = new JFileChooser();
@@ -515,11 +511,16 @@ public class ConsensusMatrix extends javax.swing.JPanel {
             } catch (IOException ex) {
                 Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
             }
+            try {
+                ClusteredDataCheck(f);
+            } catch (IOException ex) {
+                Logger.getLogger(DiscrPlotPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
+        MainFrame.getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
         
-        String pdfFile =  "ConsensusMatrix_K"+NumberClComboBox.getItemAt(NumberClComboBox.getSelectedIndex())+".pdf";
-        PlotViewButton.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), pdfFile)));
+        //String pdfFile =  "ConsensusMatrix_K"+NumberClComboBox.getItemAt(NumberClComboBox.getSelectedIndex())+".pdf";
+        //PlotViewButton.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), pdfFile)));
 
     }//GEN-LAST:event_jButton29ActionPerformed
 
@@ -530,10 +531,6 @@ public class ConsensusMatrix extends javax.swing.JPanel {
     private void ConnListTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnListTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ConnListTextActionPerformed
-
-    private void cDockerRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cDockerRadioButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cDockerRadioButtonActionPerformed
 
     private void OutputFolderTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OutputFolderTextActionPerformed
         // TODO add your handling code here:
@@ -554,12 +551,13 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         openDir.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         if (openDir.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
             File f = openDir.getSelectedFile();
-            OutputFolderText.setText(String.valueOf(f));
+            
+            OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
         }
         MainFrame.getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
         
-        String pdfFile =  "ConsensusMatrix_K"+NumberClComboBox.getItemAt(NumberClComboBox.getSelectedIndex())+".pdf";
-        PlotViewButton.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), pdfFile)));
+        //String pdfFile =  "ConsensusMatrix_K"+NumberClComboBox.getItemAt(NumberClComboBox.getSelectedIndex())+".pdf";
+        //PlotViewButton.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), pdfFile)));
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
@@ -567,49 +565,55 @@ public class ConsensusMatrix extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton32ActionPerformed
 
     private void PlotViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlotViewButtonActionPerformed
-        String pdfFile =  "ConsensusMatrix_K"+NumberClComboBox.getItemAt(NumberClComboBox.getSelectedIndex())+".pdf";
-        String pathfile = Paths.get(OutputFolderText.getText(), pdfFile ).toString();
-        Desktop desktop = Desktop.getDesktop();
-        File file = new File(pathfile);
-        try {
-            desktop.open(file);
-        } catch (IOException ex) {
-            Logger.getLogger(PestimPanel.class.getName()).log(Level.SEVERE, null, ex);
+        String pdfFile =  "ConsensusMatrix_G"+NumberClComboBox.getItemAt(NumberClComboBox.getSelectedIndex())+".pdf";
+        
+        if( Files.exists(Paths.get(OutputFolderText.getText(), pdfFile)) )
+        {
+            String pathfile = Paths.get(OutputFolderText.getText(), pdfFile).toString();
+            Desktop desktop = Desktop.getDesktop();
+            File file = new File(pathfile);
+            try {
+                desktop.open(file);
+            } catch (IOException ex) {
+                Logger.getLogger(PestimPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            String err = "No file named "+ pdfFile +" was found!";
+            String err1 = "Error: No file named "+ pdfFile +" was found!";
+            JOptionPane.showMessageDialog(this, err, err1 ,JOptionPane.ERROR_MESSAGE);
+
         }
     }//GEN-LAST:event_PlotViewButtonActionPerformed
 
     private void jButton40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton40ActionPerformed
         ConnListText.setText("");
         NumberClComboBox.setSelectedItem("");
+        
     }//GEN-LAST:event_jButton40ActionPerformed
 
     private void NumberClComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumberClComboBoxActionPerformed
-        String pdfFile =  "ConsensusMatrix_K"+NumberClComboBox.getItemAt(NumberClComboBox.getSelectedIndex())+".pdf";
-        PlotViewButton.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), pdfFile)));
+        
     }//GEN-LAST:event_NumberClComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ConnListText;
-    private javax.swing.JButton ConsMatrixExtrapolationButton39;
+    private javax.swing.JButton ConsMatrixExtrapolationButton;
     private javax.swing.JComboBox<String> NumberClComboBox;
     private javax.swing.JTextField OutputFolderText;
     private javax.swing.JButton PlotViewButton;
     private javax.swing.JPanel S_LorenzFilterPanel;
-    private javax.swing.JRadioButton cDockerRadioButton;
-    private javax.swing.JRadioButton cSudoRadioButton;
     private javax.swing.ButtonGroup executionGroup;
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton40;
-    private javax.swing.JLabel jLabel113;
     private javax.swing.JLabel jLabel120;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel30;
-    private javax.swing.JPanel jPanel31;
     private javax.swing.JButton vCloseButton5;
     // End of variables declaration//GEN-END:variables
 }

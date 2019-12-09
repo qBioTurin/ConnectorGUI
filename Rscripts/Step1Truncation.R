@@ -90,7 +90,7 @@ docker.Truncation<-function(input.file,output.PlotFolder,Trunc.Time,feature,titl
     
     #saving log and removing docker container
     container.id <- readLines(paste(data.folder,"/dockerID", sep=""), warn = FALSE)
-    system(paste("docker logs ", substr(container.id,1,12), " &> ",data.folder,"/", "datavisual_", substr(container.id,1,12),".log", sep=""))
+    system(paste("docker logs ", substr(container.id,1,12), " &> ",data.folder,"/", "dataTruncation_", substr(container.id,1,12),".log", sep=""))
     system(paste("docker rm ", container.id, sep=""))
     # removing temporary files
     cat("\n\nRemoving the temporary file ....\n")

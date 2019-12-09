@@ -18,9 +18,11 @@ import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -41,6 +43,7 @@ import java.util.TimerTask;
 import java.util.prefs.Preferences;
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
@@ -54,7 +57,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 import javax.swing.undo.UndoManager;
-import static pkgConnector.ClusterPanel.iThreadText;
 import static pkgConnector.PestimPanel.pMinText;
 import static pkgConnector.PestimPanel.pMaxText;
 /**
@@ -535,29 +537,25 @@ public class MainFrame extends javax.swing.JFrame {
         jLabelmiRNA2 = new javax.swing.JLabel();
         miRNApanelSub2M = new javax.swing.JPanel();
         HestimButton = new javax.swing.JButton();
-        ClustEstimationScrollPanel = new javax.swing.JScrollPane();
-        FCMPanel = new javax.swing.JPanel();
-        SubPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        GestimpanelSub2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         KestimButton = new javax.swing.JButton();
         ConsMatrixButton = new javax.swing.JButton();
         DBindexButton = new javax.swing.JButton();
         BestClusterButton = new javax.swing.JButton();
-        CountingClustScrollPanel = new javax.swing.JScrollPane();
-        CountingPanle = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        Subpanel3 = new javax.swing.JPanel();
-        CountButton = new javax.swing.JButton();
         ClustPlotsScrollPanel = new javax.swing.JScrollPane();
         ClustEstimPanel = new javax.swing.JPanel();
-        SubPanel1ClusEstim = new javax.swing.JPanel();
+        SubPanelClustPlots = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         ClustCurveButton = new javax.swing.JButton();
         SplineButton = new javax.swing.JButton();
         DiscrPlotButton = new javax.swing.JButton();
+        SubPanelCounting = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        Subpanel3 = new javax.swing.JPanel();
+        CountButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -909,7 +907,7 @@ public class MainFrame extends javax.swing.JFrame {
         AboutConnectorGUIFrame.getContentPane().add(jButton36, gridBagConstraints);
 
         jLabel99.setFont(jLabel99.getFont());
-        jLabel99.setText("M. Beccuti, R. Calogero and F. Cordero");
+        jLabel99.setText("S. Pernice, R. Sirovich, F. Cordero and M. Beccuti");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -1358,12 +1356,14 @@ public class MainFrame extends javax.swing.JFrame {
 
         jTabbedPane1.setBackground(new java.awt.Color(238, 238, 238));
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 255), 1, true)));
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setAutoscrolls(true);
 
         PreProcessScrollPane.setBackground(new java.awt.Color(51, 153, 255));
         PreProcessScrollPane.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
         PreProcessScrollPane.setHorizontalScrollBar(null);
-        PreProcessScrollPane.setName("rnaseq"); // NOI18N
+        PreProcessScrollPane.setName(""); // NOI18N
+        PreProcessScrollPane.setPreferredSize(new java.awt.Dimension(865, 276));
 
         PreProcPanel.setBackground(new java.awt.Color(255, 255, 255));
         PreProcPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -1400,6 +1400,9 @@ public class MainFrame extends javax.swing.JFrame {
         ImportButton.setText("Data Import");
         ImportButton.setBorderPainted(false);
         ImportButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ImportButton.setMaximumSize(new java.awt.Dimension(290, 64));
+        ImportButton.setMinimumSize(new java.awt.Dimension(290, 64));
+        ImportButton.setPreferredSize(new java.awt.Dimension(290, 64));
         ImportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ImportButtonActionPerformed(evt);
@@ -1452,6 +1455,9 @@ public class MainFrame extends javax.swing.JFrame {
         CutDataButton.setText("Data Cutting");
         CutDataButton.setBorderPainted(false);
         CutDataButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        CutDataButton.setMaximumSize(new java.awt.Dimension(290, 64));
+        CutDataButton.setMinimumSize(new java.awt.Dimension(290, 64));
+        CutDataButton.setPreferredSize(new java.awt.Dimension(290, 64));
         CutDataButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CutDataButtonActionPerformed(evt);
@@ -1520,7 +1526,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabelmiRNA1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelmiRNA1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ParamEstimSmall_p.png"))); // NOI18N
-        jLabelmiRNA1.setText("p-estimation");
+        jLabelmiRNA1.setText("Setting p");
         jLabelmiRNA1.setMaximumSize(new java.awt.Dimension(224, 31));
         jLabelmiRNA1.setMinimumSize(new java.awt.Dimension(224, 31));
         jLabelmiRNA1.setOpaque(true);
@@ -1545,6 +1551,10 @@ public class MainFrame extends javax.swing.JFrame {
         PestimButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/CrossLogLike.png"))); // NOI18N
         PestimButton.setText("Cross LogLikelihood");
         PestimButton.setBorderPainted(false);
+        PestimButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        PestimButton.setMaximumSize(new java.awt.Dimension(271, 64));
+        PestimButton.setMinimumSize(new java.awt.Dimension(271, 64));
+        PestimButton.setPreferredSize(new java.awt.Dimension(271, 64));
         PestimButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PestimButtonActionPerformed(evt);
@@ -1566,7 +1576,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         ParamEstimPanel.add(PestimSub1, gridBagConstraints);
 
@@ -1575,7 +1585,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabelmiRNA2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelmiRNA2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ParamEstimSmall_h.png"))); // NOI18N
-        jLabelmiRNA2.setText("h-estimation");
+        jLabelmiRNA2.setText("Setting h");
         jLabelmiRNA2.setMaximumSize(new java.awt.Dimension(224, 31));
         jLabelmiRNA2.setMinimumSize(new java.awt.Dimension(224, 31));
         jLabelmiRNA2.setOpaque(true);
@@ -1600,6 +1610,10 @@ public class MainFrame extends javax.swing.JFrame {
         HestimButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/PCA.png"))); // NOI18N
         HestimButton.setText("PCA");
         HestimButton.setBorderPainted(false);
+        HestimButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        HestimButton.setMaximumSize(new java.awt.Dimension(271, 64));
+        HestimButton.setMinimumSize(new java.awt.Dimension(271, 64));
+        HestimButton.setPreferredSize(new java.awt.Dimension(271, 64));
         HestimButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HestimButtonActionPerformed(evt);
@@ -1627,37 +1641,17 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         ParamEstimPanel.add(HestimpanelSub2, gridBagConstraints);
 
-        ParamEstimScrollPanel.setViewportView(ParamEstimPanel);
+        GestimpanelSub2.setLayout(new java.awt.GridBagLayout());
 
-        jTabbedPane1.addTab("Parameter Estimation", new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ParamEstim.png")), ParamEstimScrollPanel); // NOI18N
-
-        ClustEstimationScrollPanel.setBackground(new java.awt.Color(51, 153, 255));
-        ClustEstimationScrollPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
-        ClustEstimationScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        ClustEstimationScrollPanel.setName("chipseq"); // NOI18N
-
-        FCMPanel.setBackground(new java.awt.Color(255, 255, 255));
-        FCMPanel.setAutoscrolls(true);
-        FCMPanel.setName("Clustering"); // NOI18N
-        FCMPanel.setPreferredSize(new java.awt.Dimension(547, 225));
-        FCMPanel.setLayout(new java.awt.GridBagLayout());
-
-        SubPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        SubPanel1.setLayout(new java.awt.GridBagLayout());
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustersEstimSmall.png"))); // NOI18N
-        jLabel1.setText("Number of clusters estimation");
-        jLabel1.setToolTipText("");
-        jLabel1.setMaximumSize(new java.awt.Dimension(224, 31));
-        jLabel1.setMinimumSize(new java.awt.Dimension(224, 31));
-        jLabel1.setOpaque(true);
-        jLabel1.setPreferredSize(new java.awt.Dimension(224, 31));
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ParamEstimSmall_G.png"))); // NOI18N
+        jLabel4.setText("Setting G");
+        jLabel4.setMaximumSize(new java.awt.Dimension(224, 31));
+        jLabel4.setMinimumSize(new java.awt.Dimension(224, 31));
+        jLabel4.setPreferredSize(new java.awt.Dimension(224, 31));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -1665,15 +1659,19 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 320;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        SubPanel1.add(jLabel1, gridBagConstraints);
+        GestimpanelSub2.add(jLabel4, gridBagConstraints);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
         KestimButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/Clusters.png"))); // NOI18N
-        KestimButton.setText("FCM ");
+        KestimButton.setText("FCM execution ");
         KestimButton.setBorderPainted(false);
+        KestimButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        KestimButton.setMaximumSize(new java.awt.Dimension(271, 64));
+        KestimButton.setMinimumSize(new java.awt.Dimension(271, 64));
+        KestimButton.setPreferredSize(new java.awt.Dimension(271, 64));
         KestimButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 KestimButtonActionPerformed(evt);
@@ -1690,6 +1688,10 @@ public class MainFrame extends javax.swing.JFrame {
         ConsMatrixButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ConsMatrix.png"))); // NOI18N
         ConsMatrixButton.setText("Consensus Matrix ");
         ConsMatrixButton.setBorderPainted(false);
+        ConsMatrixButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ConsMatrixButton.setMaximumSize(new java.awt.Dimension(271, 64));
+        ConsMatrixButton.setMinimumSize(new java.awt.Dimension(271, 64));
+        ConsMatrixButton.setPreferredSize(new java.awt.Dimension(271, 64));
         ConsMatrixButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConsMatrixButtonActionPerformed(evt);
@@ -1704,8 +1706,12 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel5.add(ConsMatrixButton, gridBagConstraints);
 
         DBindexButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustersInfo.png"))); // NOI18N
-        DBindexButton.setText("DB indexes");
+        DBindexButton.setText("fDB indexes");
         DBindexButton.setBorderPainted(false);
+        DBindexButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        DBindexButton.setMaximumSize(new java.awt.Dimension(271, 64));
+        DBindexButton.setMinimumSize(new java.awt.Dimension(271, 64));
+        DBindexButton.setPreferredSize(new java.awt.Dimension(271, 64));
         DBindexButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DBindexButtonActionPerformed(evt);
@@ -1722,6 +1728,7 @@ public class MainFrame extends javax.swing.JFrame {
         BestClusterButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustersOptim.png"))); // NOI18N
         BestClusterButton.setText("Best Cluster extrapolation");
         BestClusterButton.setBorderPainted(false);
+        BestClusterButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BestClusterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BestClusterButtonActionPerformed(evt);
@@ -1739,87 +1746,34 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        SubPanel1.add(jPanel5, gridBagConstraints);
+        GestimpanelSub2.add(jPanel5, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LAST_LINE_END;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        FCMPanel.add(SubPanel1, gridBagConstraints);
+        ParamEstimPanel.add(GestimpanelSub2, gridBagConstraints);
 
-        ClustEstimationScrollPanel.setViewportView(FCMPanel);
+        ParamEstimScrollPanel.setViewportView(ParamEstimPanel);
 
-        jTabbedPane1.addTab("Clustering Estimation", new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustersEstim.png")), ClustEstimationScrollPanel); // NOI18N
+        jTabbedPane1.addTab("Model Selection", new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ParamEstim.png")), ParamEstimScrollPanel); // NOI18N
 
-        CountingPanle.setBackground(new java.awt.Color(255, 255, 255));
-        CountingPanle.setLayout(new java.awt.GridBagLayout());
+        ClustPlotsScrollPanel.setMinimumSize(new java.awt.Dimension(23, 6));
+        ClustPlotsScrollPanel.setPreferredSize(new java.awt.Dimension(865, 276));
+        ClustPlotsScrollPanel.setBackground(new java.awt.Color(51, 153, 255));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new java.awt.GridBagLayout());
+        ClustPlotsScrollPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustersCountSmall.png"))); // NOI18N
-        jLabel3.setText("Clustering Examination");
-        jLabel3.setMaximumSize(new java.awt.Dimension(224, 31));
-        jLabel3.setMinimumSize(new java.awt.Dimension(224, 31));
-        jLabel3.setOpaque(true);
-        jLabel3.setPreferredSize(new java.awt.Dimension(224, 31));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 320;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        jPanel3.add(jLabel3, gridBagConstraints);
-
-        Subpanel3.setBackground(new java.awt.Color(255, 255, 255));
-        Subpanel3.setLayout(new java.awt.GridBagLayout());
-
-        CountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustersCountButt.png"))); // NOI18N
-        CountButton.setText("Counting");
-        CountButton.setBorderPainted(false);
-        CountButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CountButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        Subpanel3.add(CountButton, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        jPanel3.add(Subpanel3, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        CountingPanle.add(jPanel3, gridBagConstraints);
-
-        CountingClustScrollPanel.setViewportView(CountingPanle);
-
-        jTabbedPane1.addTab("Cluster Curves Examination", new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustersCount.png")), CountingClustScrollPanel); // NOI18N
+        ClustPlotsScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         ClustEstimPanel.setBackground(new java.awt.Color(255, 255, 255));
         ClustEstimPanel.setLayout(new java.awt.GridBagLayout());
 
-        SubPanel1ClusEstim.setLayout(new java.awt.GridBagLayout());
+        SubPanelClustPlots.setLayout(new java.awt.GridBagLayout());
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustPlotsSmall.png"))); // NOI18N
@@ -1835,7 +1789,7 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 320;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        SubPanel1ClusEstim.add(jLabel2, gridBagConstraints);
+        SubPanelClustPlots.add(jLabel2, gridBagConstraints);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new java.awt.GridBagLayout());
@@ -1843,6 +1797,10 @@ public class MainFrame extends javax.swing.JFrame {
         ClustCurveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustPlotButt.png"))); // NOI18N
         ClustCurveButton.setText("Cluster Curves");
         ClustCurveButton.setBorderPainted(false);
+        ClustCurveButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ClustCurveButton.setMaximumSize(new java.awt.Dimension(221, 63));
+        ClustCurveButton.setMinimumSize(new java.awt.Dimension(221, 63));
+        ClustCurveButton.setPreferredSize(new java.awt.Dimension(221, 63));
         ClustCurveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ClustCurveButtonActionPerformed(evt);
@@ -1858,6 +1816,10 @@ public class MainFrame extends javax.swing.JFrame {
         SplineButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/spline.png"))); // NOI18N
         SplineButton.setText("Fitting Plots");
         SplineButton.setBorderPainted(false);
+        SplineButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        SplineButton.setMaximumSize(new java.awt.Dimension(221, 63));
+        SplineButton.setMinimumSize(new java.awt.Dimension(221, 63));
+        SplineButton.setPreferredSize(new java.awt.Dimension(221, 63));
         SplineButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SplineButtonActionPerformed(evt);
@@ -1873,6 +1835,7 @@ public class MainFrame extends javax.swing.JFrame {
         DiscrPlotButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/DiscrPlot.png"))); // NOI18N
         DiscrPlotButton.setText("Discrimination Plot");
         DiscrPlotButton.setBorderPainted(false);
+        DiscrPlotButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         DiscrPlotButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DiscrPlotButtonActionPerformed(evt);
@@ -1890,21 +1853,76 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        SubPanel1ClusEstim.add(jPanel6, gridBagConstraints);
+        SubPanelClustPlots.add(jPanel6, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        ClustEstimPanel.add(SubPanelClustPlots, gridBagConstraints);
+
+        SubPanelCounting.setLayout(new java.awt.GridBagLayout());
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustersCountSmall.png"))); // NOI18N
+        jLabel3.setText("Clustering Examination");
+        jLabel3.setMaximumSize(new java.awt.Dimension(224, 31));
+        jLabel3.setMinimumSize(new java.awt.Dimension(224, 31));
+        jLabel3.setOpaque(true);
+        jLabel3.setPreferredSize(new java.awt.Dimension(224, 31));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 320;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        SubPanelCounting.add(jLabel3, gridBagConstraints);
+
+        Subpanel3.setBackground(new java.awt.Color(255, 255, 255));
+        Subpanel3.setLayout(new java.awt.GridBagLayout());
+
+        CountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustersCountButt.png"))); // NOI18N
+        CountButton.setText("Counting");
+        CountButton.setBorderPainted(false);
+        CountButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        CountButton.setMaximumSize(new java.awt.Dimension(221, 63));
+        CountButton.setMinimumSize(new java.awt.Dimension(221, 63));
+        CountButton.setPreferredSize(new java.awt.Dimension(221, 63));
+        CountButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CountButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        Subpanel3.add(CountButton, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        SubPanelCounting.add(Subpanel3, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_END;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        ClustEstimPanel.add(SubPanel1ClusEstim, gridBagConstraints);
+        ClustEstimPanel.add(SubPanelCounting, gridBagConstraints);
 
         ClustPlotsScrollPanel.setViewportView(ClustEstimPanel);
 
-        jTabbedPane1.addTab("Clustering Plots", new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustPlots.png")), ClustPlotsScrollPanel); // NOI18N
+        jTabbedPane1.addTab("Clustering Results", new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustPlots.png")), ClustPlotsScrollPanel); // NOI18N
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -3426,7 +3444,6 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_DataVisualButtonActionPerformed
 
     private void ImportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportButtonActionPerformed
-        iThreadText.setText(Integer.toString(GS.getDefaultThread()));
         setCard("DataImport");
     }//GEN-LAST:event_ImportButtonActionPerformed
 
@@ -3487,6 +3504,36 @@ public class MainFrame extends javax.swing.JFrame {
         AboutConnectorGUIFrame.setLocationRelativeTo(null);
         AboutConnectorGUIFrame.setVisible(true);
     }
+    
+    public static void UpdateComboBox(File ConnectorListCL, JComboBox<String> ComboFeatBox ) throws FileNotFoundException, IOException
+    {
+        String line;
+        String[]  lin2 = null;
+        ComboFeatBox.removeAllItems();
+        Runtime rt = Runtime.getRuntime();
+            String cmdCL = ("Rscript --vanilla  ./Rscripts/FeaturesReading.R "+ ConnectorListCL + "  TRUE");
+            Process pr = rt.exec(cmdCL);            
+            BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            while ((line = input.readLine()) != null) {  
+                //System.out.println(line);
+
+                    line = line.replaceAll("\\s","");
+                    line = line.replaceAll("\"",",");
+                    lin2 = line.split(",");  
+                    
+                    //System.out.println(line);
+                    for (int i = 1; i < lin2.length ; i++) {
+                        
+                        ComboFeatBox.addItem(lin2[i]);
+                    }           
+
+                
+                // Bind it to the combobox
+         
+              //  ComboFeatBox.setModel(newModel);
+            }  
+            input.close(); 
+    }
 
     /**
      * @param args the command line arguments
@@ -3542,7 +3589,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane ClustCurve;
     private javax.swing.JButton ClustCurveButton;
     private javax.swing.JPanel ClustEstimPanel;
-    private javax.swing.JScrollPane ClustEstimationScrollPanel;
     private javax.swing.JScrollPane ClustPlotsScrollPanel;
     private javax.swing.JScrollPane ClusterPanel;
     private javax.swing.JButton ConfCancell;
@@ -3552,8 +3598,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane ConsMatrix;
     private javax.swing.JButton ConsMatrixButton;
     private javax.swing.JButton CountButton;
-    private javax.swing.JScrollPane CountingClustScrollPanel;
-    private javax.swing.JPanel CountingPanle;
     private javax.swing.JScrollPane CountingSample;
     private javax.swing.JComboBox<String> CovComboBox;
     private javax.swing.JButton CutDataButton;
@@ -3572,7 +3616,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField Downloadtext;
     private javax.swing.JScrollPane Empty;
     private javax.swing.JPanel EmptyPanel;
-    private javax.swing.JPanel FCMPanel;
+    private javax.swing.JPanel GestimpanelSub2;
     private javax.swing.JScrollPane Hestim;
     private javax.swing.JButton HestimButton;
     private javax.swing.JPanel HestimpanelSub2;
@@ -3602,8 +3646,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton RemoveOutput;
     private javax.swing.JButton SplineButton;
     private javax.swing.JScrollPane SplinePanel;
-    private javax.swing.JPanel SubPanel1;
-    private javax.swing.JPanel SubPanel1ClusEstim;
+    private javax.swing.JPanel SubPanelClustPlots;
+    private javax.swing.JPanel SubPanelCounting;
     private javax.swing.JPanel Subpanel3;
     private javax.swing.JTextField ThreadTextField;
     private javax.swing.JSplitPane VerticalSplitPanel;
@@ -3630,7 +3674,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton36;
     private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
@@ -3642,6 +3685,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel99;
     private javax.swing.JLabel jLabelRNAseq3;
@@ -3664,7 +3708,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;

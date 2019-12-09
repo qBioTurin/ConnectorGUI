@@ -12,10 +12,10 @@ if(!exists("CONNECTORList.FCM") )
 }else if(is.null(CONNECTORList.FCM$ConsensusInfo[[1]]) )
   {
   
-    if(!is.null(CONNECTORList.FCM$ConsensusPlot) ) # check if it is the connector list most probable
+    if(!is.null(CONNECTORList.FCM$FCM) ) # check if it is the connector list most probable
        {
           
-          cl.numb<-length(CONNECTORList.FCM$MostProbableClustering$FCM$prediction$meancurves[1,])
+          cl.numb<-length(CONNECTORList.FCM$FCM$prediction$meancurves[1,])
       
     }else{
       
@@ -23,8 +23,10 @@ if(!exists("CONNECTORList.FCM") )
     }
  
 }else{
+  
   nmCL<-names(CONNECTORList.FCM$ConsensusInfo[[1]])
-  cl.numb<-as.numeric(gsub("k= ", "", nmCL))
+  cl.numb<-as.numeric(gsub("G= ", "", nmCL))
+  
 }
 
 

@@ -6,9 +6,14 @@
 package pkgConnector;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Timer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -51,8 +56,7 @@ public class ClusterPanel extends javax.swing.JPanel {
      */
     public ClusterPanel() {
         initComponents();
-        contextMenu.add(iThreadText);
-        
+               
     }
     private static final long serialVersionUID = 57752123321L;
     /**
@@ -66,11 +70,10 @@ public class ClusterPanel extends javax.swing.JPanel {
         java.awt.GridBagConstraints gridBagConstraints;
 
         IExecutionStarRSEM = new javax.swing.ButtonGroup();
-        IndexingStarRSEMPanel = new javax.swing.JPanel();
+        fcmPanel = new javax.swing.JPanel();
         iCloseButton = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         iResetButton = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         ConnListText = new javax.swing.JTextField();
@@ -80,12 +83,13 @@ public class ClusterPanel extends javax.swing.JPanel {
         OutputFolderText = new javax.swing.JTextField();
         jToggleButton17 = new javax.swing.JToggleButton();
         jToggleButton18 = new javax.swing.JToggleButton();
-        jPanel14 = new javax.swing.JPanel();
-        jLabel31 = new javax.swing.JLabel();
-        iSudoRadioButton = new javax.swing.JRadioButton();
-        iDockerRadioButton = new javax.swing.JRadioButton();
-        jLabel32 = new javax.swing.JLabel();
-        iThreadText = new javax.swing.JTextField();
+        PlotViewButton = new javax.swing.JToggleButton();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel17 = new javax.swing.JPanel();
+        jLabel39 = new javax.swing.JLabel();
+        MAXkTextField = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        MINkTextField = new javax.swing.JTextField();
         jPanel16 = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         ValuehTextField = new javax.swing.JTextField();
@@ -93,18 +97,12 @@ public class ClusterPanel extends javax.swing.JPanel {
         ValuepTextField = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
         RunsTextField = new javax.swing.JTextField();
-        jPanel17 = new javax.swing.JPanel();
-        jLabel39 = new javax.swing.JLabel();
-        MAXkTextField = new javax.swing.JTextField();
-        jLabel40 = new javax.swing.JLabel();
-        MINkTextField = new javax.swing.JTextField();
-        PlotViewButton = new javax.swing.JToggleButton();
 
         setLayout(new java.awt.GridBagLayout());
 
-        IndexingStarRSEMPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Functional Clustering Model", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 102, 102))); // NOI18N
-        IndexingStarRSEMPanel.setToolTipText(null);
-        IndexingStarRSEMPanel.setLayout(new java.awt.GridBagLayout());
+        fcmPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Functional Clustering Model for setting G", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 204))); // NOI18N
+        fcmPanel.setToolTipText(null);
+        fcmPanel.setLayout(new java.awt.GridBagLayout());
 
         iCloseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/close.png"))); // NOI18N
         iCloseButton.setText("Close");
@@ -117,14 +115,15 @@ public class ClusterPanel extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        IndexingStarRSEMPanel.add(iCloseButton, gridBagConstraints);
+        fcmPanel.add(iCloseButton, gridBagConstraints);
 
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
         jButton12.setText("Execute");
+        jButton12.setToolTipText("Execute the FCM method.");
         jButton12.setMaximumSize(new java.awt.Dimension(140, 30));
         jButton12.setMinimumSize(new java.awt.Dimension(140, 30));
         jButton12.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -134,14 +133,15 @@ public class ClusterPanel extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        IndexingStarRSEMPanel.add(jButton12, gridBagConstraints);
+        fcmPanel.add(jButton12, gridBagConstraints);
 
         iResetButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         iResetButton.setText("Reset");
+        iResetButton.setToolTipText("Settings reset.");
         iResetButton.setMaximumSize(new java.awt.Dimension(100, 30));
         iResetButton.setMinimumSize(new java.awt.Dimension(100, 30));
         iResetButton.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -151,31 +151,14 @@ public class ClusterPanel extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        IndexingStarRSEMPanel.add(iResetButton, gridBagConstraints);
-
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/86b.png"))); // NOI18N
-        jButton14.setText("Save conf.");
-        jButton14.setMaximumSize(new java.awt.Dimension(140, 30));
-        jButton14.setMinimumSize(new java.awt.Dimension(140, 30));
-        jButton14.setPreferredSize(new java.awt.Dimension(140, 30));
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        IndexingStarRSEMPanel.add(jButton14, gridBagConstraints);
+        fcmPanel.add(iResetButton, gridBagConstraints);
 
         jPanel13.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Files:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
         jPanel13.setToolTipText(null);
         jPanel13.setLayout(new java.awt.GridBagLayout());
 
@@ -186,12 +169,11 @@ public class ClusterPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel13.add(jLabel28, gridBagConstraints);
 
         ConnListText.setEditable(false);
-        ConnListText.setToolTipText("The folder that will contain the indexed genome.");
+        ConnListText.setToolTipText("RData storing the ConnectorList generated from the \"Data Import\" or the \"Data Cutting\" step.");
         ConnListText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConnListTextActionPerformed(evt);
@@ -203,12 +185,13 @@ public class ClusterPanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel13.add(ConnListText, gridBagConstraints);
 
         jToggleButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/filebR.png"))); // NOI18N
-        jToggleButton15.setText("Browse");
+        jToggleButton15.setText("Browser");
+        jToggleButton15.setToolTipText("Selection of the RData storing the (Truncated) ConnectorList.");
         jToggleButton15.setMaximumSize(new java.awt.Dimension(110, 30));
         jToggleButton15.setMinimumSize(new java.awt.Dimension(110, 30));
         jToggleButton15.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -220,7 +203,9 @@ public class ClusterPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel13.add(jToggleButton15, gridBagConstraints);
 
@@ -237,7 +222,9 @@ public class ClusterPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel13.add(jToggleButton16, gridBagConstraints);
 
@@ -252,7 +239,7 @@ public class ClusterPanel extends javax.swing.JPanel {
         jPanel13.add(jLabel29, gridBagConstraints);
 
         OutputFolderText.setEditable(false);
-        OutputFolderText.setToolTipText("The folder that will contain the indexed genome.");
+        OutputFolderText.setToolTipText("Output folder where the RData storing the clustered ConnectorList will be saved.");
         OutputFolderText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OutputFolderTextActionPerformed(evt);
@@ -264,11 +251,13 @@ public class ClusterPanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel13.add(OutputFolderText, gridBagConstraints);
 
         jToggleButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
-        jToggleButton17.setText("Browse");
+        jToggleButton17.setText("Browser");
+        jToggleButton17.setToolTipText("Folder selection.");
         jToggleButton17.setMaximumSize(new java.awt.Dimension(110, 30));
         jToggleButton17.setMinimumSize(new java.awt.Dimension(110, 30));
         jToggleButton17.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -280,8 +269,9 @@ public class ClusterPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel13.add(jToggleButton17, gridBagConstraints);
 
@@ -298,109 +288,112 @@ public class ClusterPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel13.add(jToggleButton18, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        IndexingStarRSEMPanel.add(jPanel13, gridBagConstraints);
+        fcmPanel.add(jPanel13, gridBagConstraints);
 
-        jPanel14.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel14.setToolTipText(null);
-        jPanel14.setLayout(new java.awt.GridBagLayout());
-
-        jLabel31.setText("Execution:");
-        jLabel31.setToolTipText(null);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel14.add(jLabel31, gridBagConstraints);
-
-        iSudoRadioButton.setBackground(new java.awt.Color(248, 248, 248));
-        IExecutionStarRSEM.add(iSudoRadioButton);
-        iSudoRadioButton.setText("sudo");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel14.add(iSudoRadioButton, gridBagConstraints);
-
-        iDockerRadioButton.setBackground(new java.awt.Color(248, 248, 248));
-        IExecutionStarRSEM.add(iDockerRadioButton);
-        iDockerRadioButton.setSelected(true);
-        iDockerRadioButton.setText("docker");
-        iDockerRadioButton.addActionListener(new java.awt.event.ActionListener() {
+        PlotViewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/plotsmall.png"))); // NOI18N
+        PlotViewButton.setText("Show Plot");
+        PlotViewButton.setToolTipText("Show the Elbow plot and the fDB indexes boxplot.");
+        PlotViewButton.setMaximumSize(new java.awt.Dimension(140, 30));
+        PlotViewButton.setMinimumSize(new java.awt.Dimension(140, 30));
+        PlotViewButton.setPreferredSize(new java.awt.Dimension(140, 30));
+        PlotViewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                iDockerRadioButtonActionPerformed(evt);
+                PlotViewButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel14.add(iDockerRadioButton, gridBagConstraints);
+        fcmPanel.add(PlotViewButton, gridBagConstraints);
 
-        jLabel32.setText("Thread number:");
-        jLabel32.setToolTipText(null);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel14.add(jLabel32, gridBagConstraints);
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        iThreadText.setText("1");
-        iThreadText.setToolTipText("The number of threads which will be used during the computation.");
-        iThreadText.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                iThreadTextFocusLost(evt);
-            }
-        });
-        iThreadText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                iThreadTextActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel14.add(iThreadText, gridBagConstraints);
+        jPanel17.setBackground(new java.awt.Color(248, 248, 248));
+        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Number of Clusters:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
+        jPanel17.setToolTipText(null);
+        jPanel17.setLayout(new java.awt.GridBagLayout());
 
+        jLabel39.setText("Min value of G:");
+        jLabel39.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        IndexingStarRSEMPanel.add(jPanel14, gridBagConstraints);
+        jPanel17.add(jLabel39, gridBagConstraints);
+
+        MAXkTextField.setToolTipText("Maximum number of clusters");
+        MAXkTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MAXkTextFieldActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 50;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.weightx = 0.5;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel17.add(MAXkTextField, gridBagConstraints);
+
+        jLabel40.setText("Max value of G:");
+        jLabel40.setToolTipText(null);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel17.add(jLabel40, gridBagConstraints);
+
+        MINkTextField.setToolTipText("Minimum number of clusters");
+        MINkTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MINkTextFieldActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 50;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.weightx = 0.5;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel17.add(MINkTextField, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 60;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 0.5;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel1.add(jPanel17, gridBagConstraints);
 
         jPanel16.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder("Parameters:"));
+        jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Parameters:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
         jPanel16.setToolTipText(null);
         jPanel16.setLayout(new java.awt.GridBagLayout());
 
@@ -411,10 +404,10 @@ public class ClusterPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 20);
         jPanel16.add(jLabel37, gridBagConstraints);
 
+        ValuehTextField.setToolTipText("Value of p choosen from \"Setting h\".");
         ValuehTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ValuehTextFieldActionPerformed(evt);
@@ -424,8 +417,9 @@ public class ClusterPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 65;
+        gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.weightx = 0.5;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel16.add(ValuehTextField, gridBagConstraints);
 
@@ -436,9 +430,10 @@ public class ClusterPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 20);
         jPanel16.add(jLabel38, gridBagConstraints);
 
+        ValuepTextField.setToolTipText("Value of p choosen from \"Setting p\".");
         ValuepTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ValuepTextFieldActionPerformed(evt);
@@ -448,9 +443,9 @@ public class ClusterPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 65;
+        gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.3;
+        gridBagConstraints.weightx = 0.5;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel16.add(ValuepTextField, gridBagConstraints);
 
@@ -461,10 +456,11 @@ public class ClusterPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 20);
         jPanel16.add(jLabel41, gridBagConstraints);
 
         RunsTextField.setText("50");
+        RunsTextField.setToolTipText("Number of runs.");
         RunsTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RunsTextFieldActionPerformed(evt);
@@ -474,99 +470,28 @@ public class ClusterPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 65;
+        gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.weightx = 0.5;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel16.add(RunsTextField, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 60;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        IndexingStarRSEMPanel.add(jPanel16, gridBagConstraints);
-
-        jPanel17.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder("Number of Clusters:"));
-        jPanel17.setToolTipText(null);
-        jPanel17.setLayout(new java.awt.GridBagLayout());
-
-        jLabel39.setText("Min value of k:");
-        jLabel39.setToolTipText(null);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel17.add(jLabel39, gridBagConstraints);
-
-        MAXkTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MAXkTextFieldActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 65;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.ipadx = 60;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 0.5;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel17.add(MAXkTextField, gridBagConstraints);
+        jPanel1.add(jPanel16, gridBagConstraints);
 
-        jLabel40.setText("Max value of k:");
-        jLabel40.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel17.add(jLabel40, gridBagConstraints);
-
-        MINkTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MINkTextFieldActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 65;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.3;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel17.add(MINkTextField, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 60;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        IndexingStarRSEMPanel.add(jPanel17, gridBagConstraints);
-
-        PlotViewButton.setText("Show Plot");
-        PlotViewButton.setEnabled(false);
-        PlotViewButton.setMaximumSize(new java.awt.Dimension(140, 30));
-        PlotViewButton.setMinimumSize(new java.awt.Dimension(140, 30));
-        PlotViewButton.setPreferredSize(new java.awt.Dimension(140, 30));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
-        gridBagConstraints.weightx = 0.3;
-        gridBagConstraints.weighty = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        IndexingStarRSEMPanel.add(PlotViewButton, gridBagConstraints);
+        fcmPanel.add(jPanel1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -574,13 +499,12 @@ public class ClusterPanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        add(IndexingStarRSEMPanel, gridBagConstraints);
+        add(fcmPanel, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void iCloseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iCloseButtonActionPerformed
-        iDockerRadioButton.setSelected(true);
+        
         ConnListText.setText("");
-        iThreadText.setText(Integer.toString(MainFrame.GS.getDefaultThread()));
         //RESET FIELDS
         CardLayout card = (CardLayout)MainFrame.MainPanel.getLayout();
         card.show(MainFrame.MainPanel, "Empty");
@@ -591,12 +515,6 @@ public class ClusterPanel extends javax.swing.JPanel {
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         if (ConnListText.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "You have to specified an Genome folder","Error: Genome folder",JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        else
-        if (iThreadText.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "You have to specified the number of threads that will be used.","Error: Thread  number",JOptionPane.ERROR_MESSAGE);
-            iThreadText.requestFocusInWindow();
             return;
         }
       if (ConnListText.getText().isEmpty()){
@@ -752,46 +670,14 @@ public class ClusterPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void iResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iResetButtonActionPerformed
-        iDockerRadioButton.setSelected(true);
         ConnListText.setText("");
         OutputFolderText.setText("");
-        iThreadText.setText(Integer.toString(MainFrame.GS.getDefaultThread()));
         RunsTextField.setText("");
         MINkTextField.setText("");
         MAXkTextField.setText("");
         ValuepTextField.setText("");
         ValuehTextField.setText("");
     }//GEN-LAST:event_iResetButtonActionPerformed
-
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        //saveAsMenuItemActionPerformed(evt);
-    }//GEN-LAST:event_jButton14ActionPerformed
-
-    private void iDockerRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iDockerRadioButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_iDockerRadioButtonActionPerformed
-
-    private void iThreadTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_iThreadTextFocusLost
-        if (iThreadText.getText().isEmpty())
-        return;
-        iThreadText.setForeground(Color.black);
-        try
-        {
-            Integer x = Integer.valueOf(iThreadText.getText());
-            if (x<=0){
-                iThreadText.setForeground(Color.red);
-            }
-        }
-        catch (NumberFormatException e) {
-            iThreadText.setForeground(Color.red);
-            iThreadText.setText("");
-            //return;
-        }    // TODO add your handling code here:
-    }//GEN-LAST:event_iThreadTextFocusLost
-
-    private void iThreadTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iThreadTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_iThreadTextActionPerformed
 
     private void ValuehTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValuehTextFieldActionPerformed
         // TODO add your handling code here:
@@ -873,11 +759,31 @@ public class ClusterPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_ConnListTextActionPerformed
 
+    private void PlotViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlotViewButtonActionPerformed
+        
+        String pdfFile =  "BoxPlotClusterGoodness_p"+ValuepTextField.getText()+"_h"+ValuehTextField.getText()+"_runs"+RunsTextField.getText() +"_G_"+MINkTextField.getText()+"_"+MAXkTextField.getText()+".pdf";
+
+        if( Files.exists(Paths.get(OutputFolderText.getText(), pdfFile)) )
+        {
+            String pathfile = Paths.get(OutputFolderText.getText(), pdfFile).toString();
+            Desktop desktop = Desktop.getDesktop();
+            File file = new File(pathfile);
+            try {
+                desktop.open(file);
+            } catch (IOException ex) {
+                Logger.getLogger(PestimPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            String err = "No file named "+ pdfFile +" was found!";
+            String err1 = "Error: No file named "+ pdfFile +" was found!";
+            JOptionPane.showMessageDialog(this, err, err1 ,JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_PlotViewButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ConnListText;
     private javax.swing.ButtonGroup IExecutionStarRSEM;
-    private javax.swing.JPanel IndexingStarRSEMPanel;
     private javax.swing.JTextField MAXkTextField;
     private javax.swing.JTextField MINkTextField;
     private javax.swing.JTextField OutputFolderText;
@@ -885,24 +791,19 @@ public class ClusterPanel extends javax.swing.JPanel {
     private javax.swing.JTextField RunsTextField;
     private javax.swing.JTextField ValuehTextField;
     private javax.swing.JTextField ValuepTextField;
+    private javax.swing.JPanel fcmPanel;
     private javax.swing.JButton iCloseButton;
-    public static javax.swing.JRadioButton iDockerRadioButton;
     private javax.swing.JButton iResetButton;
-    public static javax.swing.JRadioButton iSudoRadioButton;
-    public static javax.swing.JTextField iThreadText;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton14;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JToggleButton jToggleButton15;

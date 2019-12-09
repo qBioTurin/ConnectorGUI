@@ -47,8 +47,36 @@ public class DBindex extends javax.swing.JPanel {
             return description + String.format(" (*%s)", extension);
         }
     }
+    
+    private void ClusteredDataCheck(File ConnectorListCL) throws FileNotFoundException, IOException
+    {
+        String line;
+        String[]  lin2 = null;        
+        ExecButton.setEnabled(false);
+        
+        Runtime rt = Runtime.getRuntime();
+            String cmdcheck = ("Rscript --vanilla  ./Rscripts/ClusteredDataCheck.R "+ ConnectorListCL);
+            Process pr = rt.exec(cmdcheck);            
+            BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));  
+            
+            while ((line = input.readLine()) != null) {  
+                System.out.println(line);
+                if(line.contentEquals("[1] 1"))
+                {
+                    ExecButton.setEnabled(true);
+                }
+                else{
+                   JOptionPane.showMessageDialog(this, "You have to specified an RData storing a clustered ConnectorList (FCM execution step). Observe that the name of the ConnectorList in the RData must be ConnectorList.FCM! ","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
+                }
+                
+                // Bind it to the combobox
+         
+            }  
+            input.close(); 
+    }
       
-     FileFilter RDataFilter = new FileTypeFilter(".RData", "R enviroments");
+     
+    FileFilter RDataFilter = new FileTypeFilter(".RData", "R enviroments");
 
     /**
      * Creates new form BestClusterChoice
@@ -70,7 +98,7 @@ public class DBindex extends javax.swing.JPanel {
 
         MultiQCGroup = new javax.swing.ButtonGroup();
         DBindex = new javax.swing.JPanel();
-        jButton45 = new javax.swing.JButton();
+        ExecButton = new javax.swing.JButton();
         jButton47 = new javax.swing.JButton();
         vCloseButton7 = new javax.swing.JButton();
         jPanel36 = new javax.swing.JPanel();
@@ -82,40 +110,36 @@ public class DBindex extends javax.swing.JPanel {
         OutputFolderText = new javax.swing.JTextField();
         jLabel128 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel37 = new javax.swing.JPanel();
-        jLabel129 = new javax.swing.JLabel();
-        QSudoRadioButton = new javax.swing.JRadioButton();
-        QDockerRadioButton = new javax.swing.JRadioButton();
 
         setLayout(new java.awt.GridBagLayout());
 
-        DBindex.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "DB indexes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(153, 0, 204))); // NOI18N
+        DBindex.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "fDB indexes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 204))); // NOI18N
         DBindex.setToolTipText(null);
         DBindex.setLayout(new java.awt.GridBagLayout());
 
-        jButton45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
-        jButton45.setText("Execute");
-        jButton45.setToolTipText(null);
-        jButton45.setMaximumSize(new java.awt.Dimension(140, 30));
-        jButton45.setMinimumSize(new java.awt.Dimension(140, 30));
-        jButton45.setPreferredSize(new java.awt.Dimension(140, 30));
-        jButton45.addActionListener(new java.awt.event.ActionListener() {
+        ExecButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
+        ExecButton.setText("Execute");
+        ExecButton.setToolTipText("Save the fDB indexes as csv.");
+        ExecButton.setMaximumSize(new java.awt.Dimension(140, 30));
+        ExecButton.setMinimumSize(new java.awt.Dimension(140, 30));
+        ExecButton.setPreferredSize(new java.awt.Dimension(140, 30));
+        ExecButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton45ActionPerformed(evt);
+                ExecButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.weightx = 0.3;
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        DBindex.add(jButton45, gridBagConstraints);
+        DBindex.add(ExecButton, gridBagConstraints);
 
         jButton47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         jButton47.setText("Reset");
-        jButton47.setToolTipText(null);
+        jButton47.setToolTipText("Settings reset.");
         jButton47.setMaximumSize(new java.awt.Dimension(100, 30));
         jButton47.setMinimumSize(new java.awt.Dimension(100, 30));
         jButton47.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -126,7 +150,7 @@ public class DBindex extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         DBindex.add(jButton47, gridBagConstraints);
@@ -144,18 +168,18 @@ public class DBindex extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         DBindex.add(vCloseButton7, gridBagConstraints);
 
         jPanel36.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel36.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel36.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Files:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
         jPanel36.setToolTipText(null);
         jPanel36.setLayout(new java.awt.GridBagLayout());
 
         ConnListText.setEditable(false);
-        ConnListText.setToolTipText("The folder containing the input reads");
+        ConnListText.setToolTipText("RData storing the clustered ConnectorList(s) generated from the \"FCM execution\" step.");
         ConnListText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConnListTextActionPerformed(evt);
@@ -167,12 +191,13 @@ public class DBindex extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel36.add(ConnListText, gridBagConstraints);
 
         jToggleButton40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/filebR.png"))); // NOI18N
-        jToggleButton40.setText("Browse");
-        jToggleButton40.setToolTipText(null);
+        jToggleButton40.setText("Browser");
+        jToggleButton40.setToolTipText("Selection of the RData storing the clustered ConnectorList.");
         jToggleButton40.setMaximumSize(new java.awt.Dimension(110, 30));
         jToggleButton40.setMinimumSize(new java.awt.Dimension(110, 30));
         jToggleButton40.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -184,7 +209,9 @@ public class DBindex extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel36.add(jToggleButton40, gridBagConstraints);
 
@@ -202,13 +229,15 @@ public class DBindex extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel36.add(jToggleButton41, gridBagConstraints);
 
         jButton31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
-        jButton31.setText("Browse");
-        jButton31.setToolTipText(null);
+        jButton31.setText("Browser");
+        jButton31.setToolTipText("Folder selection.");
         jButton31.setMaximumSize(new java.awt.Dimension(110, 30));
         jButton31.setMinimumSize(new java.awt.Dimension(110, 30));
         jButton31.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -220,7 +249,9 @@ public class DBindex extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel36.add(jButton31, gridBagConstraints);
 
@@ -238,12 +269,14 @@ public class DBindex extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel36.add(jToggleButton43, gridBagConstraints);
 
         OutputFolderText.setEditable(false);
-        OutputFolderText.setToolTipText("The folder containing the input reads");
+        OutputFolderText.setToolTipText("Output folder where the fDB indexes will be saved as csv files.");
         OutputFolderText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OutputFolderTextActionPerformed(evt);
@@ -255,7 +288,8 @@ public class DBindex extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel36.add(OutputFolderText, gridBagConstraints);
 
         jLabel128.setText("Output Folder:");
@@ -264,7 +298,7 @@ public class DBindex extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel36.add(jLabel128, gridBagConstraints);
 
@@ -279,69 +313,12 @@ public class DBindex extends javax.swing.JPanel {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         DBindex.add(jPanel36, gridBagConstraints);
-
-        jPanel37.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel37.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel37.setToolTipText(null);
-        jPanel37.setLayout(new java.awt.GridBagLayout());
-
-        jLabel129.setText("Execution:");
-        jLabel129.setToolTipText(null);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel37.add(jLabel129, gridBagConstraints);
-
-        QSudoRadioButton.setBackground(new java.awt.Color(248, 248, 248));
-        MultiQCGroup.add(QSudoRadioButton);
-        QSudoRadioButton.setText("sudo");
-        QSudoRadioButton.setToolTipText(null);
-        QSudoRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                QSudoRadioButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 60, 10, 10);
-        jPanel37.add(QSudoRadioButton, gridBagConstraints);
-
-        QDockerRadioButton.setBackground(new java.awt.Color(248, 248, 248));
-        MultiQCGroup.add(QDockerRadioButton);
-        QDockerRadioButton.setSelected(true);
-        QDockerRadioButton.setText("docker");
-        QDockerRadioButton.setToolTipText(null);
-        QDockerRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                QDockerRadioButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel37.add(QDockerRadioButton, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        DBindex.add(jPanel37, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -352,7 +329,7 @@ public class DBindex extends javax.swing.JPanel {
         add(DBindex, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton45ActionPerformed
+    private void ExecButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExecButtonActionPerformed
 
         if (ConnListText.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "You have to specified an input folder","Error: Data  folder",JOptionPane.ERROR_MESSAGE);
@@ -365,7 +342,7 @@ public class DBindex extends javax.swing.JPanel {
         //execute code
         Runtime rt = Runtime.getRuntime();
         try{
-            String[] cmd = {"/bin/bash","-c"," bash ./ExecFile/ExecConsMatrix.sh "};
+            String[] cmd = {"/bin/bash","-c"," bash ./ExecFile/ExecExtrapc.sh "};
             cmd[2]+= " input.file=\\\""+ConnListText.getText()+"\\\"";
             cmd[2]+= " output.folder=\\\""+OutputFolderText.getText()+"\\\"";
             cmd[2]+= " k=NULL ";
@@ -375,7 +352,7 @@ public class DBindex extends javax.swing.JPanel {
             
             if (MainFrame.listProcRunning.size()<MainFrame.GS.getMaxSizelistProcRunning()){
                 Process pr = rt.exec(cmd);
-                MainFrame.ElProcRunning tmp= new MainFrame.ElProcRunning("Clustering DB indexes extrapolation ", OutputFolderText.getText(),pr,MainFrame.listModel.getSize());
+                MainFrame.ElProcRunning tmp= new MainFrame.ElProcRunning("fDB indexes extrapolation ", OutputFolderText.getText(),pr,MainFrame.listModel.getSize());
                 MainFrame.listProcRunning.add(tmp);
                 java.net.URL imgURL = getClass().getResource("/pkgConnector/images/running.png");
                 ImageIcon image2 = new ImageIcon(imgURL);
@@ -388,7 +365,7 @@ public class DBindex extends javax.swing.JPanel {
                 }
             }
             else{
-                MainFrame.ElProcWaiting tmp= new MainFrame.ElProcWaiting("Clustering DB indexes extrapolation", OutputFolderText.getText(),cmd,MainFrame.listModel.getSize());
+                MainFrame.ElProcWaiting tmp= new MainFrame.ElProcWaiting("fDB indexes extrapolation", OutputFolderText.getText(),cmd,MainFrame.listModel.getSize());
                 MainFrame.listProcWaiting.add(tmp);
                 java.net.URL imgURL = getClass().getResource("/pkgConnector/images/waiting.png");
                 ImageIcon image2 = new ImageIcon(imgURL);
@@ -409,16 +386,14 @@ public class DBindex extends javax.swing.JPanel {
         //execute code
         }
         //execute code
-    }//GEN-LAST:event_jButton45ActionPerformed
+    }//GEN-LAST:event_ExecButtonActionPerformed
 
     private void jButton47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton47ActionPerformed
-        QDockerRadioButton.setSelected(true);
         ConnListText.setText("");
         OutputFolderText.setText("");
     }//GEN-LAST:event_jButton47ActionPerformed
 
     private void vCloseButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vCloseButton7ActionPerformed
-        QDockerRadioButton.setSelected(true);
         ConnListText.setText("");
         //RESET FIELDS
         CardLayout card = (CardLayout)MainFrame.MainPanel.getLayout();
@@ -445,11 +420,17 @@ public class DBindex extends javax.swing.JPanel {
             String curDir = getPreferences().get("open-dir", null);
             openDir.setCurrentDirectory(curDir!=null ? new File(curDir) : null);
         }
+        
         openDir.setFileSelectionMode(JFileChooser.FILES_ONLY);
         if (openDir.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
             File f = openDir.getSelectedFile();
             ConnListText.setText(String.valueOf(f));
             OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
+            try {
+                ClusteredDataCheck(f);
+            } catch (IOException ex) {
+                Logger.getLogger(DiscrPlotPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
         
@@ -459,14 +440,6 @@ public class DBindex extends javax.swing.JPanel {
     private void jToggleButton41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton41ActionPerformed
         ConnListText.setText("");
     }//GEN-LAST:event_jToggleButton41ActionPerformed
-
-    private void QSudoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QSudoRadioButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_QSudoRadioButtonActionPerformed
-
-    private void QDockerRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QDockerRadioButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_QDockerRadioButtonActionPerformed
 
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
         JFileChooser openDir = new JFileChooser();
@@ -484,6 +457,7 @@ public class DBindex extends javax.swing.JPanel {
         if (openDir.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
             File f = openDir.getSelectedFile();
             OutputFolderText.setText(String.valueOf(f));
+            
         }
         MainFrame.getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
         
@@ -501,18 +475,14 @@ public class DBindex extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ConnListText;
     private javax.swing.JPanel DBindex;
+    private javax.swing.JButton ExecButton;
     private javax.swing.ButtonGroup MultiQCGroup;
     private javax.swing.JTextField OutputFolderText;
-    private javax.swing.JRadioButton QDockerRadioButton;
-    private javax.swing.JRadioButton QSudoRadioButton;
     private javax.swing.JToggleButton jButton31;
-    private javax.swing.JButton jButton45;
     private javax.swing.JButton jButton47;
     private javax.swing.JLabel jLabel128;
-    private javax.swing.JLabel jLabel129;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel36;
-    private javax.swing.JPanel jPanel37;
     private javax.swing.JToggleButton jToggleButton40;
     private javax.swing.JToggleButton jToggleButton41;
     private javax.swing.JToggleButton jToggleButton43;

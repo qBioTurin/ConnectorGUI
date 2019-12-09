@@ -43,7 +43,7 @@ docker.estimation.p<-function(input.file,output.folder,pmin=2,pmax=10)
   
   ## check if file exists
   if(!file.exists(input.file) || !file.exists(output.folder) )  {
-    system("echo 10 > ExitStatusFile2>&1")
+    system("echo 10 > ExitStatusFile 2>&1")
     return(10) 
   }
 
@@ -71,7 +71,7 @@ docker.estimation.p<-function(input.file,output.folder,pmin=2,pmax=10)
     cat("\nThe data uploading is finished\n")
   }
   
-  system("echo 0 > ExitStatusFile2>&1")
+  system("echo 0 > ExitStatusFile 2>&1")
   #running time 2
   ptm <- proc.time() - ptm
   dir <- dir(data.folder)
@@ -95,7 +95,7 @@ docker.estimation.p<-function(input.file,output.folder,pmin=2,pmax=10)
   
   #saving log and removing docker container
   container.id <- readLines(paste(data.folder,"/dockerID", sep=""), warn = FALSE)
-  #system(paste("docker logs ", substr(container.id,1,12), " &> ",data.folder,"/", "CrossLogLikelihood_", substr(container.id,1,12),".log", sep=""))
+  system(paste("docker logs ", substr(container.id,1,12), " &> ",data.folder,"/", "CrossLogLikelihood_", substr(container.id,1,12),".log", sep=""))
   system(paste("docker rm ", container.id, sep=""))
   # removing temporary files
   cat("\n\nRemoving the temporary file ....\n")

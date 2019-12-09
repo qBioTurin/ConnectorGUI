@@ -78,7 +78,6 @@ public class PestimPanel extends javax.swing.JPanel {
         vCloseButton3 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         ConnListText = new javax.swing.JTextField();
@@ -100,8 +99,8 @@ public class PestimPanel extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridBagLayout());
 
-        PestimationPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Estimation of the parameter p", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 153, 204))); // NOI18N
-        PestimationPanel.setToolTipText("");
+        PestimationPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Setting the parameter p", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 204))); // NOI18N
+        PestimationPanel.setToolTipText(null);
         PestimationPanel.setLayout(new java.awt.GridBagLayout());
 
         vCloseButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/close.png"))); // NOI18N
@@ -123,6 +122,7 @@ public class PestimPanel extends javax.swing.JPanel {
 
         jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
         jButton18.setText("Execute");
+        jButton18.setToolTipText("Execute the CrossLogLikelihood.");
         jButton18.setMaximumSize(new java.awt.Dimension(140, 30));
         jButton18.setMinimumSize(new java.awt.Dimension(140, 30));
         jButton18.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -140,6 +140,7 @@ public class PestimPanel extends javax.swing.JPanel {
 
         jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         jButton19.setText("Reset");
+        jButton19.setToolTipText("Settings reset.");
         jButton19.setMaximumSize(new java.awt.Dimension(100, 30));
         jButton19.setMinimumSize(new java.awt.Dimension(100, 30));
         jButton19.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -155,33 +156,16 @@ public class PestimPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         PestimationPanel.add(jButton19, gridBagConstraints);
 
-        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/86b.png"))); // NOI18N
-        jButton20.setText("Save conf.");
-        jButton20.setMaximumSize(new java.awt.Dimension(140, 30));
-        jButton20.setMinimumSize(new java.awt.Dimension(140, 30));
-        jButton20.setPreferredSize(new java.awt.Dimension(140, 30));
-        jButton20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton20ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        PestimationPanel.add(jButton20, gridBagConstraints);
-
         jPanel10.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Files:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
+        jPanel10.setToolTipText(null);
         jPanel10.setLayout(new java.awt.GridBagLayout());
 
         jLabel35.setText("Output folders:");
-        jLabel35.setToolTipText("");
+        jLabel35.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
@@ -195,17 +179,18 @@ public class PestimPanel extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel10.add(ConnListText, gridBagConstraints);
 
         ConnListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/filebR.png"))); // NOI18N
-        ConnListButton.setText("Browse");
+        ConnListButton.setText("Browser");
+        ConnListButton.setToolTipText("Selection of the RData storing the (Truncated) ConnectorList.");
         ConnListButton.setMaximumSize(new java.awt.Dimension(110, 30));
         ConnListButton.setMinimumSize(new java.awt.Dimension(110, 30));
         ConnListButton.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -215,10 +200,11 @@ public class PestimPanel extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel10.add(ConnListButton, gridBagConstraints);
 
@@ -233,21 +219,21 @@ public class PestimPanel extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel10.add(fCancelButton2, gridBagConstraints);
 
         jLabel36.setText("Connector List:");
-        jLabel36.setToolTipText("The FPKM or TPM table file nam");
+        jLabel36.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel10.add(jLabel36, gridBagConstraints);
 
@@ -259,16 +245,18 @@ public class PestimPanel extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel10.add(OutputFolderText, gridBagConstraints);
 
         jToggleButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
-        jToggleButton17.setText("Browse");
+        jToggleButton17.setText("Browser");
+        jToggleButton17.setToolTipText("Folder selection.");
         jToggleButton17.setMaximumSize(new java.awt.Dimension(110, 30));
         jToggleButton17.setMinimumSize(new java.awt.Dimension(110, 30));
         jToggleButton17.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -278,10 +266,11 @@ public class PestimPanel extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel10.add(jToggleButton17, gridBagConstraints);
 
@@ -296,10 +285,11 @@ public class PestimPanel extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel10.add(fCancelButton3, gridBagConstraints);
 
@@ -313,10 +303,11 @@ public class PestimPanel extends javax.swing.JPanel {
         PestimationPanel.add(jPanel10, gridBagConstraints);
 
         jPanel12.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Spline dimension:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
+        jPanel12.setToolTipText(null);
         jPanel12.setLayout(new java.awt.GridBagLayout());
 
-        pMinText.setToolTipText("Log_2 fold change threshold for differetially expressed genes");
+        pMinText.setToolTipText("Minimum spline dimension.");
         pMinText.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 pMinTextFocusLost(evt);
@@ -331,32 +322,33 @@ public class PestimPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 250;
+        gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 40, 10, 300);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel12.add(pMinText, gridBagConstraints);
 
-        jLabel40.setText("Min number of knots:");
+        jLabel40.setText("Min:");
+        jLabel40.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 103);
         jPanel12.add(jLabel40, gridBagConstraints);
 
-        jLabel41.setText("Max number of knots:");
-        jLabel41.setToolTipText("");
+        jLabel41.setText("Max:");
+        jLabel41.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 103);
         jPanel12.add(jLabel41, gridBagConstraints);
 
-        pMaxText.setToolTipText("adjusted p-value  threshold");
+        pMaxText.setToolTipText("Maximum spline dimension.");
         pMaxText.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 pMaxTextFocusLost(evt);
@@ -371,10 +363,10 @@ public class PestimPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 250;
+        gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 40, 10, 300);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel12.add(pMaxText, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -395,7 +387,7 @@ public class PestimPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridwidth = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
@@ -403,7 +395,7 @@ public class PestimPanel extends javax.swing.JPanel {
 
         PlotViewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/plotsmall.png"))); // NOI18N
         PlotViewButton.setText("Show plot");
-        PlotViewButton.setEnabled(false);
+        PlotViewButton.setToolTipText("Show the CrossLogLikelihood plot.");
         PlotViewButton.setMaximumSize(new java.awt.Dimension(140, 30));
         PlotViewButton.setMinimumSize(new java.awt.Dimension(140, 30));
         PlotViewButton.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -506,7 +498,7 @@ public class PestimPanel extends javax.swing.JPanel {
                 if (MainFrame.listProcRunning.size()<MainFrame.GS.getMaxSizelistProcRunning()){
                 Process pr = rt.exec(cmd);
                 System.out.println(cmd[2]);
-                MainFrame.ElProcRunning tmp= new MainFrame.ElProcRunning("p estimation ", OutputFolderText.getText() ,pr,MainFrame.listModel.getSize());
+                MainFrame.ElProcRunning tmp= new MainFrame.ElProcRunning("Setting p ", OutputFolderText.getText() ,pr,MainFrame.listModel.getSize());
                 MainFrame.listProcRunning.add(tmp);
                 java.net.URL imgURL = getClass().getResource("/pkgConnector/images/running.png");
                 ImageIcon image2 = new ImageIcon(imgURL);
@@ -519,7 +511,7 @@ public class PestimPanel extends javax.swing.JPanel {
                 }
             }
                 else{
-                MainFrame.ElProcWaiting tmp= new MainFrame.ElProcWaiting("p estimation ", OutputFolderText.getText(),cmd,MainFrame.listModel.getSize());
+                MainFrame.ElProcWaiting tmp= new MainFrame.ElProcWaiting("Setting p ", OutputFolderText.getText(),cmd,MainFrame.listModel.getSize());
                 MainFrame.listProcWaiting.add(tmp);
                 java.net.URL imgURL = getClass().getResource("/pkgConnector/images/waiting.png");
                 ImageIcon image2 = new ImageIcon(imgURL);
@@ -536,7 +528,7 @@ public class PestimPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, e.toString(),"Error execution",JOptionPane.ERROR_MESSAGE);
             System.out.println(e.toString());
         }
-        JOptionPane.showMessageDialog(this, "The estimation of p task was scheduled","Confermation",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "The selection of p task was scheduled","Confermation",JOptionPane.INFORMATION_MESSAGE);
 
            
     }//GEN-LAST:event_jButton18ActionPerformed
@@ -547,10 +539,6 @@ public class PestimPanel extends javax.swing.JPanel {
         pMaxText.setText("");
         OutputFolderText.setText("");
     }//GEN-LAST:event_jButton19ActionPerformed
-
-    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        //saveAsMenuItemActionPerformed(evt);
-    }//GEN-LAST:event_jButton20ActionPerformed
 
     private void ConnListTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnListTextActionPerformed
         // TODO add your handling code here:
@@ -578,7 +566,7 @@ public class PestimPanel extends javax.swing.JPanel {
             OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
         }
         MainFrame.getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
-        PlotViewButton.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), "CrossLogLikePlot_Estimation_p.pdf")));
+        //PlotViewButton.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), "CrossLogLikePlot_Estimation_p.pdf")));
 
     }//GEN-LAST:event_ConnListButtonActionPerformed
 
@@ -607,13 +595,20 @@ public class PestimPanel extends javax.swing.JPanel {
 
            
     private void PlotViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlotViewButtonActionPerformed
-        String pathfile = Paths.get(OutputFolderText.getText(), "CrossLogLikePlot_Estimation_p.pdf").toString();
-        Desktop desktop = Desktop.getDesktop();
-        File file = new File(pathfile);
-        try {
-            desktop.open(file);
-        } catch (IOException ex) {
-            Logger.getLogger(PestimPanel.class.getName()).log(Level.SEVERE, null, ex);
+          
+        if( Files.exists(Paths.get(OutputFolderText.getText(), "CrossLogLikePlot_Estimation_p.pdf")) )
+        {
+            String pathfile = Paths.get(OutputFolderText.getText(), "CrossLogLikePlot_Estimation_p.pdf").toString();
+            Desktop desktop = Desktop.getDesktop();
+            File file = new File(pathfile);
+            try {
+                desktop.open(file);
+            } catch (IOException ex) {
+                Logger.getLogger(PestimPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "No file named CrossLogLikePlot_Estimation_p.pdf was found!","Error: No file named CrossLogLikePlot_Estimation_p.pdf was found! ",JOptionPane.ERROR_MESSAGE);
+
         }
         
     }//GEN-LAST:event_PlotViewButtonActionPerformed
@@ -640,7 +635,7 @@ public class PestimPanel extends javax.swing.JPanel {
             OutputFolderText.setText(String.valueOf(f));
         }
         MainFrame.getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
-        PlotViewButton.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), "CrossLogLikePlot_Estimation_p.pdf")));
+        //PlotViewButton.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), "CrossLogLikePlot_Estimation_p.pdf")));
     }//GEN-LAST:event_jToggleButton17ActionPerformed
 
     private void OutputFolderTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OutputFolderTextActionPerformed
@@ -660,7 +655,6 @@ public class PestimPanel extends javax.swing.JPanel {
     private javax.swing.JToggleButton fCancelButton3;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton20;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel40;

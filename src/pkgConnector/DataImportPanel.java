@@ -11,15 +11,13 @@ import java.util.Timer;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import static pkgConnector.ClusterPanel.iDockerRadioButton;
-import static pkgConnector.ClusterPanel.iThreadText;
 import pkgConnector.MainFrame.MyTask;
 import javax.swing.filechooser.FileFilter;
  
   
 /**
  *
- * @author user
+ * @author Simone Pernice
  */
 public class DataImportPanel extends javax.swing.JPanel {
     
@@ -69,7 +67,6 @@ public class DataImportPanel extends javax.swing.JPanel {
         iCloseButton1 = new javax.swing.JButton();
         ExecImportButton = new javax.swing.JButton();
         iResetButton1 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
         jPanel15 = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         GrowthFolderText = new javax.swing.JTextField();
@@ -86,8 +83,8 @@ public class DataImportPanel extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridBagLayout());
 
-        DataImportPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Data Import", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 153, 153))); // NOI18N
-        DataImportPanel.setToolTipText("");
+        DataImportPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Data Import", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 204))); // NOI18N
+        DataImportPanel.setToolTipText(null);
         DataImportPanel.setLayout(new java.awt.GridBagLayout());
 
         iCloseButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/close.png"))); // NOI18N
@@ -110,6 +107,7 @@ public class DataImportPanel extends javax.swing.JPanel {
 
         ExecImportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
         ExecImportButton.setText("Execute");
+        ExecImportButton.setToolTipText("ConnectorList generation.");
         ExecImportButton.setMaximumSize(new java.awt.Dimension(140, 30));
         ExecImportButton.setMinimumSize(new java.awt.Dimension(140, 30));
         ExecImportButton.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -129,6 +127,7 @@ public class DataImportPanel extends javax.swing.JPanel {
 
         iResetButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         iResetButton1.setText("Reset");
+        iResetButton1.setToolTipText("Settings reset.");
         iResetButton1.setMaximumSize(new java.awt.Dimension(100, 30));
         iResetButton1.setMinimumSize(new java.awt.Dimension(100, 30));
         iResetButton1.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -145,42 +144,23 @@ public class DataImportPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         DataImportPanel.add(iResetButton1, gridBagConstraints);
 
-        jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/86b.png"))); // NOI18N
-        jButton22.setText("Save conf.");
-        jButton22.setMaximumSize(new java.awt.Dimension(140, 30));
-        jButton22.setMinimumSize(new java.awt.Dimension(140, 30));
-        jButton22.setPreferredSize(new java.awt.Dimension(140, 30));
-        jButton22.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton22ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
-        gridBagConstraints.weighty = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        DataImportPanel.add(jButton22, gridBagConstraints);
-
         jPanel15.setBackground(new java.awt.Color(247, 248, 248));
-        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel15.setPreferredSize(new java.awt.Dimension(680, 156));
+        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Files:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
+        jPanel15.setToolTipText(null);
         jPanel15.setLayout(new java.awt.GridBagLayout());
 
         jLabel37.setText("Growth Data:");
-        jLabel37.setToolTipText("");
+        jLabel37.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE;
-        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel15.add(jLabel37, gridBagConstraints);
 
         GrowthFolderText.setEditable(false);
-        GrowthFolderText.setToolTipText("The folder that will contain the indexed genome.");
+        GrowthFolderText.setToolTipText("The excel file reporting the growth evolution data, composed from two columns for each sample containing the time points and the measure volume respectively.");
         GrowthFolderText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GrowthFolderTextActionPerformed(evt);
@@ -192,12 +172,13 @@ public class DataImportPanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel15.add(GrowthFolderText, gridBagConstraints);
 
         BrowGrowthButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/fileb.png"))); // NOI18N
-        BrowGrowthButton.setText("Browse");
+        BrowGrowthButton.setText("Browser");
+        BrowGrowthButton.setToolTipText("Excel file selection.");
         BrowGrowthButton.setMaximumSize(new java.awt.Dimension(110, 30));
         BrowGrowthButton.setMinimumSize(new java.awt.Dimension(110, 30));
         BrowGrowthButton.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -210,8 +191,8 @@ public class DataImportPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel15.add(BrowGrowthButton, gridBagConstraints);
 
@@ -229,21 +210,23 @@ public class DataImportPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel15.add(CancGrowthButton, gridBagConstraints);
 
         jLabel1.setText("Features Data:");
+        jLabel1.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel15.add(jLabel1, gridBagConstraints);
 
         FeaturesFolderText.setEditable(false);
+        FeaturesFolderText.setToolTipText("The csv file containing the annotation information associated with the samples. The file should be a comma-delimited file composed by a number of rows equal to the number of samples.");
         FeaturesFolderText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FeaturesFolderTextActionPerformed(evt);
@@ -255,11 +238,13 @@ public class DataImportPanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel15.add(FeaturesFolderText, gridBagConstraints);
 
         BrowFeatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/fileb.png"))); // NOI18N
         BrowFeatButton.setText("Browser");
+        BrowFeatButton.setToolTipText("Csv file selection.");
         BrowFeatButton.setMaximumSize(new java.awt.Dimension(110, 30));
         BrowFeatButton.setMinimumSize(new java.awt.Dimension(110, 30));
         BrowFeatButton.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -272,7 +257,8 @@ public class DataImportPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel15.add(BrowFeatButton, gridBagConstraints);
 
@@ -290,20 +276,23 @@ public class DataImportPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel15.add(CancelFeatButton, gridBagConstraints);
 
         jLabel2.setText("Output Folder:");
+        jLabel2.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel15.add(jLabel2, gridBagConstraints);
 
         OutPutFolderText.setEditable(false);
+        OutPutFolderText.setToolTipText("Output folder where the RData storing the ConnectorList will be saved.");
         OutPutFolderText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OutPutFolderTextActionPerformed(evt);
@@ -315,11 +304,13 @@ public class DataImportPanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel15.add(OutPutFolderText, gridBagConstraints);
 
         OutputBrowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
         OutputBrowButton.setText("Browser");
+        OutputBrowButton.setToolTipText("Folder selection.");
         OutputBrowButton.setMaximumSize(new java.awt.Dimension(110, 30));
         OutputBrowButton.setMinimumSize(new java.awt.Dimension(110, 30));
         OutputBrowButton.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -332,7 +323,8 @@ public class DataImportPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel15.add(OutputBrowButton, gridBagConstraints);
 
@@ -350,7 +342,8 @@ public class DataImportPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel15.add(CancelOutputButton, gridBagConstraints);
 
@@ -362,6 +355,7 @@ public class DataImportPanel extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         DataImportPanel.add(jPanel15, gridBagConstraints);
+        jPanel15.getAccessibleContext().setAccessibleName("");
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -448,10 +442,6 @@ public class DataImportPanel extends javax.swing.JPanel {
         GrowthFolderText.setText("");
         FeaturesFolderText.setText("");
     }//GEN-LAST:event_iResetButton1ActionPerformed
-
-    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-        //saveAsMenuItemActionPerformed(evt);
-    }//GEN-LAST:event_jButton22ActionPerformed
 
     private void CancelFeatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelFeatButtonActionPerformed
         FeaturesFolderText.setText("");
@@ -561,7 +551,6 @@ public class DataImportPanel extends javax.swing.JPanel {
     private javax.swing.JToggleButton OutputBrowButton;
     private javax.swing.JButton iCloseButton1;
     private javax.swing.JButton iResetButton1;
-    private javax.swing.JButton jButton22;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel37;

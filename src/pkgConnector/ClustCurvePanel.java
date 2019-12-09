@@ -15,7 +15,6 @@ import java.io.InputStreamReader;
 import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -29,6 +28,8 @@ import static pkgConnector.MainFrame.getPreferences;
  */
 public class ClustCurvePanel extends javax.swing.JPanel {
 
+  
+    
      public class FileTypeFilter extends FileFilter {
         private String extension;
         private String description;
@@ -54,40 +55,9 @@ public class ClustCurvePanel extends javax.swing.JPanel {
      FileFilter txtFilter =  new FileTypeFilter(".txt", "Text Documents");
 
      
-     DefaultComboBoxModel newModel = new DefaultComboBoxModel();
+//     DefaultComboBoxModel newModel = new DefaultComboBoxModel();
      
-    private void UpdateComboBox(File ConnectorListCL) throws FileNotFoundException, IOException
-    {
-        String line;
-        String[]  lin2 = null;
-        ComboFeatBox.removeAllItems();
-        Runtime rt = Runtime.getRuntime();
-            String cmdCL = ("Rscript --vanilla  ./Rscripts/FeaturesReading.R "+ ConnectorListCL + "  TRUE");
-            Process pr = rt.exec(cmdCL);            
-            BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));
-            while ((line = input.readLine()) != null) {  
-                System.out.println(line);
-                if(!line.contentEquals("[1] 0"))
-                {
-                    line = line.replaceAll("\\s","");
-                    line = line.replaceAll("\"",",");
-                    lin2 = line.split(",");  
-                    
-                    System.out.println(line);
-                    for (int i = 1; i < lin2.length ; i++) {
-                        newModel.addElement( lin2[i] );
-                    }           
-                }
-                else{
-                    newModel.addElement( "Please select a Connector List clustered." );
-                }
-                
-                // Bind it to the combobox
-         
-                ComboFeatBox.setModel(newModel);
-            }  
-            input.close(); 
-    }
+    
      
     /**
      * Creates new form HeatmapPanel
@@ -111,7 +81,7 @@ public class ClustCurvePanel extends javax.swing.JPanel {
         heatmapGroup = new javax.swing.ButtonGroup();
         heatmapGroupLog = new javax.swing.ButtonGroup();
         heatmapBaseGroup = new javax.swing.ButtonGroup();
-        Heatmappanel = new javax.swing.JPanel();
+        ClCurvesPanel = new javax.swing.JPanel();
         jButton46 = new javax.swing.JButton();
         jButton48 = new javax.swing.JButton();
         vCloseButton8 = new javax.swing.JButton();
@@ -122,25 +92,23 @@ public class ClustCurvePanel extends javax.swing.JPanel {
         ConnListText = new javax.swing.JTextField();
         jToggleButton44 = new javax.swing.JToggleButton();
         jToggleButton45 = new javax.swing.JToggleButton();
-        jLabel132 = new javax.swing.JLabel();
-        jLabel133 = new javax.swing.JLabel();
         jLabel134 = new javax.swing.JLabel();
         jLabel135 = new javax.swing.JLabel();
-        jLabel136 = new javax.swing.JLabel();
-        ComboFeatBox = new javax.swing.JComboBox<>();
-        jLabel137 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         YlabText = new javax.swing.JTextField();
-        TitleText = new javax.swing.JTextField();
         XlabText = new javax.swing.JTextField();
-        jPanel39 = new javax.swing.JPanel();
-        jLabel130 = new javax.swing.JLabel();
-        HSudoRadioButton = new javax.swing.JRadioButton();
-        HDockerRadioButton = new javax.swing.JRadioButton();
+        TitleText = new javax.swing.JTextField();
+        ComboFeatBox = new javax.swing.JComboBox<>();
+        jLabel136 = new javax.swing.JLabel();
+        jLabel137 = new javax.swing.JLabel();
+        jLabel132 = new javax.swing.JLabel();
+        jLabel133 = new javax.swing.JLabel();
 
         setLayout(new java.awt.GridBagLayout());
 
-        Heatmappanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Cluster Curves", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(51, 153, 255))); // NOI18N
-        Heatmappanel.setLayout(new java.awt.GridBagLayout());
+        ClCurvesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Cluster Curves", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 204))); // NOI18N
+        ClCurvesPanel.setToolTipText(null);
+        ClCurvesPanel.setLayout(new java.awt.GridBagLayout());
 
         jButton46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
         jButton46.setText("Execute");
@@ -155,12 +123,12 @@ public class ClustCurvePanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        Heatmappanel.add(jButton46, gridBagConstraints);
+        ClCurvesPanel.add(jButton46, gridBagConstraints);
 
         jButton48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         jButton48.setText("Reset");
@@ -174,12 +142,12 @@ public class ClustCurvePanel extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        Heatmappanel.add(jButton48, gridBagConstraints);
+        ClCurvesPanel.add(jButton48, gridBagConstraints);
 
         vCloseButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/close.png"))); // NOI18N
         vCloseButton8.setText("Close");
@@ -193,15 +161,15 @@ public class ClustCurvePanel extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        Heatmappanel.add(vCloseButton8, gridBagConstraints);
+        ClCurvesPanel.add(vCloseButton8, gridBagConstraints);
 
         jPanel38.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel38.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel38.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Files:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
         jPanel38.setToolTipText(null);
         jPanel38.setLayout(new java.awt.GridBagLayout());
 
@@ -218,7 +186,8 @@ public class ClustCurvePanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel38.add(OutputFolderText, gridBagConstraints);
 
         jToggleButton42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
@@ -235,7 +204,8 @@ public class ClustCurvePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel38.add(jToggleButton42, gridBagConstraints);
 
@@ -253,7 +223,8 @@ public class ClustCurvePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel38.add(jToggleButton43, gridBagConstraints);
 
@@ -270,8 +241,8 @@ public class ClustCurvePanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel38.add(ConnListText, gridBagConstraints);
 
         jToggleButton44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/filebR.png"))); // NOI18N
@@ -288,8 +259,8 @@ public class ClustCurvePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel38.add(jToggleButton44, gridBagConstraints);
 
@@ -307,30 +278,10 @@ public class ClustCurvePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel38.add(jToggleButton45, gridBagConstraints);
-
-        jLabel132.setText("X-axis label:");
-        jLabel132.setToolTipText(null);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel38.add(jLabel132, gridBagConstraints);
-
-        jLabel133.setText("Feature:");
-        jLabel133.setToolTipText(null);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel38.add(jLabel133, gridBagConstraints);
 
         jLabel134.setText("Connector List clustered:");
         jLabel134.setToolTipText(null);
@@ -339,7 +290,6 @@ public class ClustCurvePanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel38.add(jLabel134, gridBagConstraints);
 
@@ -353,34 +303,18 @@ public class ClustCurvePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel38.add(jLabel135, gridBagConstraints);
 
-        jLabel136.setText("Title:");
-        jLabel136.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel38.add(jLabel136, gridBagConstraints);
+        ClCurvesPanel.add(jPanel38, gridBagConstraints);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 250;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
-        jPanel38.add(ComboFeatBox, gridBagConstraints);
-
-        jLabel137.setText("Y-axis label:");
-        jLabel137.setToolTipText(null);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel38.add(jLabel137, gridBagConstraints);
+        jPanel1.setBackground(new java.awt.Color(248, 248, 248));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Plot Info:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         YlabText.setEditable(false);
         YlabText.setToolTipText(null);
@@ -391,28 +325,13 @@ public class ClustCurvePanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 250;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
-        jPanel38.add(YlabText, gridBagConstraints);
-
-        TitleText.setEditable(false);
-        TitleText.setToolTipText(null);
-        TitleText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TitleTextActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
-        jPanel38.add(TitleText, gridBagConstraints);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
+        jPanel1.add(YlabText, gridBagConstraints);
 
         XlabText.setEditable(false);
         XlabText.setToolTipText(null);
@@ -423,82 +342,100 @@ public class ClustCurvePanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
-        jPanel38.add(XlabText, gridBagConstraints);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
+        jPanel1.add(XlabText, gridBagConstraints);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        Heatmappanel.add(jPanel38, gridBagConstraints);
-
-        jPanel39.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel39.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel39.setLayout(new java.awt.GridBagLayout());
-
-        jLabel130.setText("Execution:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel39.add(jLabel130, gridBagConstraints);
-
-        HSudoRadioButton.setBackground(new java.awt.Color(248, 248, 248));
-        heatmapGroup.add(HSudoRadioButton);
-        HSudoRadioButton.setText("sudo");
-        HSudoRadioButton.addActionListener(new java.awt.event.ActionListener() {
+        TitleText.setEditable(false);
+        TitleText.setToolTipText(null);
+        TitleText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HSudoRadioButtonActionPerformed(evt);
+                TitleTextActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 250;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
+        jPanel1.add(TitleText, gridBagConstraints);
+
+        ComboFeatBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboFeatBoxActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 77, 10, 10);
-        jPanel39.add(HSudoRadioButton, gridBagConstraints);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
+        jPanel1.add(ComboFeatBox, gridBagConstraints);
 
-        HDockerRadioButton.setBackground(new java.awt.Color(248, 248, 248));
-        heatmapGroup.add(HDockerRadioButton);
-        HDockerRadioButton.setSelected(true);
-        HDockerRadioButton.setText("docker");
-        HDockerRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HDockerRadioButtonActionPerformed(evt);
-            }
-        });
+        jLabel136.setText("Title:");
+        jLabel136.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel39.add(HDockerRadioButton, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 100);
+        jPanel1.add(jLabel136, gridBagConstraints);
 
+        jLabel137.setText("Y-axis label:");
+        jLabel137.setToolTipText(null);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 100);
+        jPanel1.add(jLabel137, gridBagConstraints);
+
+        jLabel132.setText("X-axis label:");
+        jLabel132.setToolTipText(null);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 100);
+        jPanel1.add(jLabel132, gridBagConstraints);
+
+        jLabel133.setText("Feature:");
+        jLabel133.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 100);
+        jPanel1.add(jLabel133, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        Heatmappanel.add(jPanel39, gridBagConstraints);
+        ClCurvesPanel.add(jPanel1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        add(Heatmappanel, gridBagConstraints);
+        add(ClCurvesPanel, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton46ActionPerformed
@@ -567,14 +504,12 @@ public class ClustCurvePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton46ActionPerformed
 
     private void jButton48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton48ActionPerformed
-        HDockerRadioButton.setSelected(true);
         ConnListText.setText("");
         OutputFolderText.setText("");
         ComboFeatBox.removeAllItems();
     }//GEN-LAST:event_jButton48ActionPerformed
 
     private void vCloseButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vCloseButton8ActionPerformed
-        HDockerRadioButton.setSelected(true);
         ConnListText.setText("");
         OutputFolderText.setText("");
         ComboFeatBox.removeAllItems();
@@ -608,7 +543,7 @@ public class ClustCurvePanel extends javax.swing.JPanel {
             //UPDATE TO REMOVE OUTPUT FOLDER
             OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
             try {
-                UpdateComboBox(f);
+                MainFrame.UpdateComboBox(f, ComboFeatBox);
             } catch (IOException ex) {
                 Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -620,14 +555,6 @@ public class ClustCurvePanel extends javax.swing.JPanel {
     private void jToggleButton45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton45ActionPerformed
         ConnListText.setText("");
     }//GEN-LAST:event_jToggleButton45ActionPerformed
-
-    private void HSudoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HSudoRadioButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HSudoRadioButtonActionPerformed
-
-    private void HDockerRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HDockerRadioButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HDockerRadioButtonActionPerformed
 
     private void jToggleButton43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton43ActionPerformed
         OutputFolderText.setText("");
@@ -670,13 +597,15 @@ public class ClustCurvePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_XlabTextActionPerformed
 
+    private void ComboFeatBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboFeatBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboFeatBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ClCurvesPanel;
     private javax.swing.JComboBox<String> ComboFeatBox;
     private javax.swing.JTextField ConnListText;
-    private javax.swing.JRadioButton HDockerRadioButton;
-    private javax.swing.JRadioButton HSudoRadioButton;
-    private javax.swing.JPanel Heatmappanel;
     private javax.swing.JTextField OutputFolderText;
     private javax.swing.JTextField TitleText;
     private javax.swing.JTextField XlabText;
@@ -686,15 +615,14 @@ public class ClustCurvePanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup heatmapGroupLog;
     private javax.swing.JButton jButton46;
     private javax.swing.JButton jButton48;
-    private javax.swing.JLabel jLabel130;
     private javax.swing.JLabel jLabel132;
     private javax.swing.JLabel jLabel133;
     private javax.swing.JLabel jLabel134;
     private javax.swing.JLabel jLabel135;
     private javax.swing.JLabel jLabel136;
     private javax.swing.JLabel jLabel137;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel38;
-    private javax.swing.JPanel jPanel39;
     private javax.swing.JToggleButton jToggleButton42;
     private javax.swing.JToggleButton jToggleButton43;
     private javax.swing.JToggleButton jToggleButton44;

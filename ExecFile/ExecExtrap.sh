@@ -13,11 +13,11 @@ echo "======================================================="
 echo "			  INPUT PARAMETERS"
 echo "======================================================="
 echo
-echo "RData file:                                               $inputfile"
-echo "Output Plot Folder:                                       $outputPlotFolder"
-echo "Number of clusters:                                       $k"
-echo "(1) Consensus Matrix; (2) Most probable clustering:       $mood"
-echo "Output folder:                                            $output"
+echo "RData file:                                                               $inputfile"
+echo "Output Plot Folder:                                                       $outputPlotFolder"
+echo "Number of clusters:                                                       $k"
+echo "(1) Consensus Matrix; (2) Most probable clustering; (3) fDB indexes:      $mood"
+echo "Output folder:                                                            $output"
 echo 
 echo "======================================================="
 

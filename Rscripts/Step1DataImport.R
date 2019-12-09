@@ -66,8 +66,7 @@ docker.dataimport<-function(group=c("docker", "sudo"),GrowDataFile,AnnotationFil
   #waiting for the end of the container work
   if(resultRun==0){
     cat("\nThe data uploading is finished\n")
-  }
-  
+
   #running time 2
   ptm <- proc.time() - ptm
   dir <- dir(data.folder)
@@ -97,9 +96,13 @@ docker.dataimport<-function(group=c("docker", "sudo"),GrowDataFile,AnnotationFil
   cat("\n\nRemoving the temporary file ....\n")
   system("rm -fR out.info")
   system("rm -fR dockerID")
+  system("rm -fR outputExecution")
   #system(paste("cp ",paste(path.package(package="docker4seq"),"containers/containers.txt",sep="/")," ",data.folder, sep=""))
   setwd(home)
+  
+}
 
+system("echo 0 > ExitStatusFile 2>&1")
   
 }
 

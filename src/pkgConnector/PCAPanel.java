@@ -72,7 +72,6 @@ public class PCAPanel extends javax.swing.JPanel {
         vCloseButton9 = new javax.swing.JButton();
         jButton49 = new javax.swing.JButton();
         jButton50 = new javax.swing.JButton();
-        jButton51 = new javax.swing.JButton();
         jPanel35 = new javax.swing.JPanel();
         jLabel122 = new javax.swing.JLabel();
         ConnListText = new javax.swing.JTextField();
@@ -85,16 +84,11 @@ public class PCAPanel extends javax.swing.JPanel {
         jPanel40 = new javax.swing.JPanel();
         PvalueText = new javax.swing.JTextField();
         jLabel125 = new javax.swing.JLabel();
-        jLabel141 = new javax.swing.JLabel();
-        jPanel41 = new javax.swing.JPanel();
-        jLabel142 = new javax.swing.JLabel();
-        ANSudoRadioButton = new javax.swing.JRadioButton();
-        ANDockerRadioButton1 = new javax.swing.JRadioButton();
         PlotViewButton = new javax.swing.JToggleButton();
 
         setLayout(new java.awt.GridBagLayout());
 
-        ANOVAlikePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Estimation of h", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(40, 53, 204))); // NOI18N
+        ANOVAlikePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Setting the parameter h", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 204))); // NOI18N
         ANOVAlikePanel.setToolTipText(null);
         ANOVAlikePanel.setLayout(new java.awt.GridBagLayout());
 
@@ -111,14 +105,14 @@ public class PCAPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         ANOVAlikePanel.add(vCloseButton9, gridBagConstraints);
 
         jButton49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
         jButton49.setText("Execute");
-        jButton49.setToolTipText(null);
+        jButton49.setToolTipText("Execute the PCA.");
         jButton49.setMaximumSize(new java.awt.Dimension(140, 30));
         jButton49.setMinimumSize(new java.awt.Dimension(140, 30));
         jButton49.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -129,14 +123,14 @@ public class PCAPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         ANOVAlikePanel.add(jButton49, gridBagConstraints);
 
         jButton50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         jButton50.setText("Reset");
-        jButton50.setToolTipText(null);
+        jButton50.setToolTipText("Settings reset.");
         jButton50.setMaximumSize(new java.awt.Dimension(100, 30));
         jButton50.setMinimumSize(new java.awt.Dimension(100, 30));
         jButton50.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -147,32 +141,13 @@ public class PCAPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         ANOVAlikePanel.add(jButton50, gridBagConstraints);
 
-        jButton51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/86b.png"))); // NOI18N
-        jButton51.setText("Save conf.");
-        jButton51.setToolTipText(null);
-        jButton51.setEnabled(false);
-        jButton51.setMaximumSize(new java.awt.Dimension(140, 30));
-        jButton51.setMinimumSize(new java.awt.Dimension(140, 30));
-        jButton51.setPreferredSize(new java.awt.Dimension(140, 30));
-        jButton51.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton51ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        ANOVAlikePanel.add(jButton51, gridBagConstraints);
-
         jPanel35.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel35.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel35.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Files:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
         jPanel35.setToolTipText(null);
         jPanel35.setLayout(new java.awt.GridBagLayout());
 
@@ -183,12 +158,11 @@ public class PCAPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel35.add(jLabel122, gridBagConstraints);
 
         ConnListText.setEditable(false);
-        ConnListText.setToolTipText("Input data file.");
+        ConnListText.setToolTipText("RData storing the ConnectorList generated from the \"Data Import\" or the \"Data Cutting\" step.");
         ConnListText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConnListTextActionPerformed(evt);
@@ -200,13 +174,13 @@ public class PCAPanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel35.add(ConnListText, gridBagConstraints);
 
         jToggleButton48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/filebR.png"))); // NOI18N
-        jToggleButton48.setText("Browse");
-        jToggleButton48.setToolTipText(null);
+        jToggleButton48.setText("Browser");
+        jToggleButton48.setToolTipText("Selection of the RData storing the (Truncated) ConnectorList.");
         jToggleButton48.setMaximumSize(new java.awt.Dimension(110, 30));
         jToggleButton48.setMinimumSize(new java.awt.Dimension(110, 30));
         jToggleButton48.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -219,8 +193,8 @@ public class PCAPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE;
-        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel35.add(jToggleButton48, gridBagConstraints);
 
@@ -239,8 +213,8 @@ public class PCAPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel35.add(fCancelButton6, gridBagConstraints);
 
@@ -255,7 +229,7 @@ public class PCAPanel extends javax.swing.JPanel {
         jPanel35.add(jLabel123, gridBagConstraints);
 
         OutputFolderText.setEditable(false);
-        OutputFolderText.setToolTipText("Output data folder.");
+        OutputFolderText.setToolTipText("Output folder where PCA barplot will be saved.");
         OutputFolderText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OutputFolderTextActionPerformed(evt);
@@ -267,12 +241,13 @@ public class PCAPanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel35.add(OutputFolderText, gridBagConstraints);
 
         jToggleButton49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
-        jToggleButton49.setText("Browse");
+        jToggleButton49.setText("Browser");
+        jToggleButton49.setToolTipText("Folder selection.");
         jToggleButton49.setMaximumSize(new java.awt.Dimension(110, 30));
         jToggleButton49.setMinimumSize(new java.awt.Dimension(110, 30));
         jToggleButton49.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -285,7 +260,8 @@ public class PCAPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel35.add(jToggleButton49, gridBagConstraints);
 
@@ -303,13 +279,14 @@ public class PCAPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel35.add(fCancelButton7, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -317,11 +294,11 @@ public class PCAPanel extends javax.swing.JPanel {
         ANOVAlikePanel.add(jPanel35, gridBagConstraints);
 
         jPanel40.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel40.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel40.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Parameters:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
         jPanel40.setToolTipText(null);
         jPanel40.setLayout(new java.awt.GridBagLayout());
 
-        PvalueText.setToolTipText("Log_2 fold change threshold for differetially expressed genes");
+        PvalueText.setToolTipText("Value of p choosen from \"Setting p\".");
         PvalueText.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 PvalueTextFocusLost(evt);
@@ -339,7 +316,7 @@ public class PCAPanel extends javax.swing.JPanel {
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 98, 10, 400);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel40.add(PvalueText, gridBagConstraints);
 
         jLabel125.setText("Value of p:");
@@ -349,88 +326,21 @@ public class PCAPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 60);
         jPanel40.add(jLabel125, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.5;
-        jPanel40.add(jLabel141, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         ANOVAlikePanel.add(jPanel40, gridBagConstraints);
 
-        jPanel41.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel41.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel41.setToolTipText(null);
-        jPanel41.setLayout(new java.awt.GridBagLayout());
-
-        jLabel142.setText("Execution:");
-        jLabel142.setToolTipText(null);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel41.add(jLabel142, gridBagConstraints);
-
-        ANSudoRadioButton.setBackground(new java.awt.Color(248, 248, 248));
-        ANOVAGroup.add(ANSudoRadioButton);
-        ANSudoRadioButton.setText("sudo");
-        ANSudoRadioButton.setToolTipText(null);
-        ANSudoRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ANSudoRadioButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 95, 10, 10);
-        jPanel41.add(ANSudoRadioButton, gridBagConstraints);
-
-        ANDockerRadioButton1.setBackground(new java.awt.Color(248, 248, 248));
-        ANOVAGroup.add(ANDockerRadioButton1);
-        ANDockerRadioButton1.setSelected(true);
-        ANDockerRadioButton1.setText("docker");
-        ANDockerRadioButton1.setToolTipText(null);
-        ANDockerRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ANDockerRadioButton1ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel41.add(ANDockerRadioButton1, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        ANOVAlikePanel.add(jPanel41, gridBagConstraints);
-
         PlotViewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/plotsmall.png"))); // NOI18N
         PlotViewButton.setText("Show plot");
-        PlotViewButton.setEnabled(false);
+        PlotViewButton.setToolTipText("Show the PCA barplot.");
         PlotViewButton.setMaximumSize(new java.awt.Dimension(140, 30));
         PlotViewButton.setMinimumSize(new java.awt.Dimension(140, 30));
         PlotViewButton.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -441,7 +351,7 @@ public class PCAPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.weightx = 0.3;
         gridBagConstraints.weighty = 0.1;
@@ -518,6 +428,7 @@ public class PCAPanel extends javax.swing.JPanel {
                     MainFrame.t=new Timer();
                     MainFrame.t.scheduleAtFixedRate(new MainFrame.MyTask(), 5000, 5000);
                 }
+                
             }
             else{
                 MainFrame.ElProcWaiting tmp= new MainFrame.ElProcWaiting("PCA for h", OutputFolderText.getText(),cmd,MainFrame.listModel.getSize());
@@ -537,7 +448,7 @@ public class PCAPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, e.toString(),"Error execution",JOptionPane.ERROR_MESSAGE);
             System.out.println(e.toString());
         }
-        JOptionPane.showMessageDialog(this, "h estimation task was scheduled","Confermation",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "The selection of h task was scheduled","Confermation",JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_jButton49ActionPerformed
 
@@ -548,10 +459,6 @@ public class PCAPanel extends javax.swing.JPanel {
         PvalueText.setText("");
  
     }//GEN-LAST:event_jButton50ActionPerformed
-
-    private void jButton51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton51ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton51ActionPerformed
 
     private void ConnListTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnListTextActionPerformed
         // TODO add your handling code here:
@@ -578,7 +485,7 @@ public class PCAPanel extends javax.swing.JPanel {
             OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
         }
         getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
-        PlotViewButton.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), "PCA_Analysis.pdf")));
+        //PlotViewButton.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), "PCA_Analysis.pdf")));
     }//GEN-LAST:event_jToggleButton48ActionPerformed
 
     private void fCancelButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fCancelButton6ActionPerformed
@@ -608,7 +515,7 @@ public class PCAPanel extends javax.swing.JPanel {
             OutputFolderText.setText(String.valueOf(f));
         }
         MainFrame.getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
-        PlotViewButton.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), "PCA_Analysis.pdf")));
+        //PlotViewButton.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), "PCA_Analysis.pdf")));
     }//GEN-LAST:event_jToggleButton49ActionPerformed
 
     private void fCancelButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fCancelButton7ActionPerformed
@@ -623,31 +530,28 @@ public class PCAPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_PvalueTextActionPerformed
 
-    private void ANSudoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANSudoRadioButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ANSudoRadioButtonActionPerformed
-
-    private void ANDockerRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANDockerRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ANDockerRadioButton1ActionPerformed
-
     private void PlotViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlotViewButtonActionPerformed
-        String pathfile = Paths.get(OutputFolderText.getText(), "PCA_Analysis.pdf").toString();
-        Desktop desktop = Desktop.getDesktop();
-        File file = new File(pathfile);
-        try {
-            desktop.open(file);
-        } catch (IOException ex) {
-            Logger.getLogger(PestimPanel.class.getName()).log(Level.SEVERE, null, ex);
+        
+        if( Files.exists(Paths.get(OutputFolderText.getText(), "PCA_Analysis.pdf")) )
+        {
+            String pathfile = Paths.get(OutputFolderText.getText(), "PCA_Analysis.pdf").toString();
+            Desktop desktop = Desktop.getDesktop();
+            File file = new File(pathfile);
+            try {
+                desktop.open(file);
+            } catch (IOException ex) {
+                Logger.getLogger(PestimPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "No file named PCA_Analysis.pdf was found!","Error: No file named PCA_Analysis.pdf was found! ",JOptionPane.ERROR_MESSAGE);
+
         }
     }//GEN-LAST:event_PlotViewButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton ANDockerRadioButton1;
     private javax.swing.ButtonGroup ANOVAGroup;
     private javax.swing.JPanel ANOVAlikePanel;
-    private javax.swing.JRadioButton ANSudoRadioButton;
     private javax.swing.JTextField ConnListText;
     private javax.swing.JTextField OutputFolderText;
     private javax.swing.JToggleButton PlotViewButton;
@@ -656,15 +560,11 @@ public class PCAPanel extends javax.swing.JPanel {
     private javax.swing.JToggleButton fCancelButton7;
     private javax.swing.JButton jButton49;
     private javax.swing.JButton jButton50;
-    private javax.swing.JButton jButton51;
     private javax.swing.JLabel jLabel122;
     private javax.swing.JLabel jLabel123;
     private javax.swing.JLabel jLabel125;
-    private javax.swing.JLabel jLabel141;
-    private javax.swing.JLabel jLabel142;
     private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel40;
-    private javax.swing.JPanel jPanel41;
     private javax.swing.JToggleButton jToggleButton48;
     private javax.swing.JToggleButton jToggleButton49;
     private javax.swing.JButton vCloseButton9;

@@ -28,15 +28,18 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.DefaultComboBoxModel;
+import static jdk.nashorn.tools.ShellFunctions.input;
 
 
 /**
  *
- * @author user
+ * @author Simone Pernice
  */
 public class DataCuttingPanel extends javax.swing.JPanel {
 
+
     /**
+     * 
      * Creates new form DataVisualPanel
      */
     
@@ -64,42 +67,38 @@ public class DataCuttingPanel extends javax.swing.JPanel {
      FileFilter RDataFilter = new FileTypeFilter(".RData", "R enviroments");
      FileFilter txtFilter =  new FileTypeFilter(".txt", "Text Documents");
 
-     
-     DefaultComboBoxModel newModel = new DefaultComboBoxModel();
-     
-    private void UpdateComboBox(File ConnectorListCL) throws FileNotFoundException, IOException
+    
+    private void UpdateSlider(File ConnectorListCL) throws FileNotFoundException, IOException
     {
         String line;
         String[]  lin2 = null;
-        ComboFeatBox.removeAllItems();
+        int minV;
+        int maxV;
+        int val;
+        
         Runtime rt = Runtime.getRuntime();
-            String cmdCL = ("Rscript --vanilla  ./Rscripts/FeaturesReading.R "+ ConnectorListCL + "  FALSE");
+            String cmdCL = ("Rscript --vanilla  ./Rscripts/TimeReading.R "+ ConnectorListCL + "  FALSE");
             Process pr = rt.exec(cmdCL);            
             BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));
-            while ((line = input.readLine()) != null) {  
-                System.out.println(line);
-                if(!line.contentEquals("[1] 0"))
-                {
-                    line = line.replaceAll("\\s","");
-                    line = line.replaceAll("\"",",");
-                    lin2 = line.split(",");  
-                    
-                    System.out.println(line);
-                    for (int i = 1; i < lin2.length ; i++) {
-                        newModel.addElement( lin2[i] );
-                    }           
-                }
-                else{
-                    newModel.addElement( "Please select a Connector List clustered." );
-                }
-                
-                // Bind it to the combobox
-         
-                ComboFeatBox.setModel(newModel);
-            }  
-            input.close(); 
-    }
-     
+            line = input.readLine();             
+            System.out.println(line);
+            lin2 = line.split(","); 
+            minV = Integer.parseInt(lin2[1]);
+            maxV = Integer.parseInt(lin2[2]);
+            val = Integer.parseInt(lin2[3]);
+            
+            TrunSlider.setMaximum(maxV);
+            TrunSlider.setMinimum(minV);
+            TrunSlider.setValue(val);
+            TrunSlider.setMinorTickSpacing(1);  
+            TrunSlider.setMajorTickSpacing(10);  
+            TrunSlider.setPaintTicks(true);  
+            TrunSlider.setPaintLabels(true);  
+            
+            input.close();
+    }  
+             
+        
     public DataCuttingPanel() {
         initComponents();
            
@@ -122,7 +121,6 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         vCloseButton2 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         ResetButton = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         ConnListText = new javax.swing.JTextField();
@@ -144,7 +142,7 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        TimeTruncField = new javax.swing.JTextField();
+        TrunSlider = new javax.swing.JSlider();
         ShowPlotButton1 = new javax.swing.JToggleButton();
 
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
@@ -152,10 +150,8 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         layout.rowHeights = new int[] {0, 5, 0};
         setLayout(layout);
 
-        DataCuttingPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Data Cutting", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(204, 102, 0))); // NOI18N
-        DataCuttingPanel.setToolTipText("");
-        DataCuttingPanel.setMinimumSize(new java.awt.Dimension(737, 575));
-        DataCuttingPanel.setPreferredSize(new java.awt.Dimension(710, 575));
+        DataCuttingPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Data Cutting", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 204))); // NOI18N
+        DataCuttingPanel.setToolTipText(null);
         DataCuttingPanel.setLayout(new java.awt.GridBagLayout());
 
         vCloseButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/close.png"))); // NOI18N
@@ -177,6 +173,7 @@ public class DataCuttingPanel extends javax.swing.JPanel {
 
         jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
         jButton15.setText("Execute");
+        jButton15.setToolTipText("Truncation of the data.");
         jButton15.setMaximumSize(new java.awt.Dimension(140, 30));
         jButton15.setMinimumSize(new java.awt.Dimension(140, 30));
         jButton15.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -195,6 +192,7 @@ public class DataCuttingPanel extends javax.swing.JPanel {
 
         ResetButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         ResetButton.setText("Reset");
+        ResetButton.setToolTipText("Settings reset.");
         ResetButton.setMaximumSize(new java.awt.Dimension(100, 30));
         ResetButton.setMinimumSize(new java.awt.Dimension(100, 30));
         ResetButton.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -210,40 +208,23 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         DataCuttingPanel.add(ResetButton, gridBagConstraints);
 
-        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/86b.png"))); // NOI18N
-        jButton17.setText("Save conf.");
-        jButton17.setMaximumSize(new java.awt.Dimension(140, 30));
-        jButton17.setMinimumSize(new java.awt.Dimension(140, 30));
-        jButton17.setPreferredSize(new java.awt.Dimension(140, 30));
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        DataCuttingPanel.add(jButton17, gridBagConstraints);
-
         jPanel5.setBackground(new java.awt.Color(248, 248, 248));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Files:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
+        jPanel5.setToolTipText(null);
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
         jLabel29.setText("Output folders:");
-        jLabel29.setToolTipText("");
+        jLabel29.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel5.add(jLabel29, gridBagConstraints);
 
         ConnListText.setEditable(false);
-        ConnListText.setToolTipText("Input data folder.");
+        ConnListText.setToolTipText("RData storing the ConnectorList generated from the \"Data Import\" step.");
         ConnListText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConnListTextActionPerformed(evt);
@@ -253,14 +234,14 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 250;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel5.add(ConnListText, gridBagConstraints);
 
         ConnListVisualButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/filebR.png"))); // NOI18N
         ConnListVisualButton.setText("Browser");
+        ConnListVisualButton.setToolTipText("Selection of the RData storing the ConnectorList to truncate.");
         ConnListVisualButton.setMaximumSize(new java.awt.Dimension(110, 30));
         ConnListVisualButton.setMinimumSize(new java.awt.Dimension(110, 30));
         ConnListVisualButton.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -272,7 +253,9 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel5.add(ConnListVisualButton, gridBagConstraints);
 
@@ -289,13 +272,14 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel5.add(fCancelButton, gridBagConstraints);
 
         OutputFolderText.setEditable(false);
-        OutputFolderText.setToolTipText("Output data folder.");
+        OutputFolderText.setToolTipText("Output folder where the RData storing the ConnectorList with the truncated data will be saved.");
         OutputFolderText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OutputFolderTextActionPerformed(evt);
@@ -306,13 +290,14 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel5.add(OutputFolderText, gridBagConstraints);
 
         jToggleButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
         jToggleButton13.setText("Browser");
+        jToggleButton13.setToolTipText("Folder selection.");
         jToggleButton13.setMaximumSize(new java.awt.Dimension(110, 30));
         jToggleButton13.setMinimumSize(new java.awt.Dimension(110, 30));
         jToggleButton13.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -324,6 +309,8 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel5.add(jToggleButton13, gridBagConstraints);
@@ -341,18 +328,19 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel5.add(fCancelButton1, gridBagConstraints);
 
         jLabel35.setText("Connector RData:");
-        jLabel35.setToolTipText("TheCounts or FPKM or TPM table file name");
+        jLabel35.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel5.add(jLabel35, gridBagConstraints);
 
@@ -367,20 +355,20 @@ public class DataCuttingPanel extends javax.swing.JPanel {
 
         jPanel11.setBackground(new java.awt.Color(248, 248, 248));
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Plot info:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
+        jPanel11.setToolTipText(null);
         jPanel11.setLayout(new java.awt.GridBagLayout());
 
         jLabel38.setText("Features:");
-        jLabel38.setToolTipText("Select one of the features. The curve colors will be defined depending the feature choosen.");
+        jLabel38.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 70);
         jPanel11.add(jLabel38, gridBagConstraints);
-        jLabel38.getAccessibleContext().setAccessibleDescription("");
 
+        ComboFeatBox.setToolTipText("Feature selection. The curve colors will be defined depending the feature choosen.");
         ComboFeatBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboFeatBoxActionPerformed(evt);
@@ -391,46 +379,53 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel11.add(ComboFeatBox, gridBagConstraints);
 
         jLabel1.setText("Title:");
+        jLabel1.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 70);
         jPanel11.add(jLabel1, gridBagConstraints);
 
         jLabel2.setText("X-axis label:");
+        jLabel2.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 70);
         jPanel11.add(jLabel2, gridBagConstraints);
+
+        TitleText.setToolTipText("Plot title.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel11.add(TitleText, gridBagConstraints);
 
         jLabel3.setText("Y-axis label:");
+        jLabel3.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 70);
         jPanel11.add(jLabel3, gridBagConstraints);
 
+        XlabText.setToolTipText("X-axis name.");
         XlabText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 XlabTextActionPerformed(evt);
@@ -441,10 +436,12 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel11.add(XlabText, gridBagConstraints);
 
+        YlabText.setToolTipText("Y-axis name.");
         YlabText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 YlabTextActionPerformed(evt);
@@ -455,8 +452,9 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel11.add(YlabText, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -487,32 +485,29 @@ public class DataCuttingPanel extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(248, 248, 248));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Truncation:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
+        jPanel2.setToolTipText(null);
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jLabel4.setText("Truncation time:");
+        jLabel4.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 35);
         jPanel2.add(jLabel4, gridBagConstraints);
 
-        TimeTruncField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TimeTruncFieldActionPerformed(evt);
-            }
-        });
+        TrunSlider.setMaximum(0);
+        TrunSlider.setToolTipText("Time point for truncating the data.");
+        TrunSlider.setValue(0);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 100;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 4.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
-        jPanel2.add(TimeTruncField, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel2.add(TrunSlider, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -525,7 +520,7 @@ public class DataCuttingPanel extends javax.swing.JPanel {
 
         ShowPlotButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/plotsmall.png"))); // NOI18N
         ShowPlotButton1.setText("Show plot");
-        ShowPlotButton1.setEnabled(false);
+        ShowPlotButton1.setToolTipText("Show the growth curve plot with a vertical line at the truncating time.");
         ShowPlotButton1.setMaximumSize(new java.awt.Dimension(140, 30));
         ShowPlotButton1.setMinimumSize(new java.awt.Dimension(140, 30));
         ShowPlotButton1.setOpaque(false);
@@ -563,6 +558,28 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         if (OutputFolderText.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "You have to specified an output  folder","Error: output folder",JOptionPane.ERROR_MESSAGE);
             return;
+        }
+        
+        String Titletxt;
+        String Xtxt;
+        String Ytxt;
+        
+        if (YlabText.getText().isEmpty()){
+            Ytxt = "NA";
+        }else{
+            Ytxt = YlabText.getText();
+        }
+        
+        if (XlabText.getText().isEmpty()){
+            Xtxt = "NA";
+        }else{
+            Xtxt = XlabText.getText();
+        }
+        
+        if (TitleText.getText().isEmpty()){
+            Titletxt = "NA";
+        }else{
+            Titletxt = TitleText.getText();
         }
 
        /** try
@@ -603,9 +620,9 @@ public class DataCuttingPanel extends javax.swing.JPanel {
                         
             cmd[2]+= " input.file=\\\""+ConnListText.getText()+"\\\"";
             cmd[2]+= " output.PlotFolder=\\\""+OutputFolderText.getText()+"\\\"";
-            cmd[2]+= " Trunc.Time=\\\""+TimeTruncField.getText()+"\\\"";
+            cmd[2]+= " Trunc.Time=\\\""+TrunSlider.getValue()+"\\\"";
             cmd[2]+= " feature=\\\""+ ComboFeatBox.getItemAt(ComboFeatBox.getSelectedIndex()) + "\\\"";
-            cmd[2]+=  " title=\\\""+TitleText.getText()+"\\\" labels.x=\\\""+XlabText.getText()+"\\\" labels.y=\\\""+YlabText.getText()+ "\\\"";
+            cmd[2]+=  " title=\\\""+Titletxt+"\\\" labels.x=\\\""+Xtxt+"\\\" labels.y=\\\""+Ytxt+ "\\\"";
             cmd[2]+=" "+ OutputFolderText.getText()+" >& "+OutputFolderText.getText()+"/outputExecution ";
             //ProcessStatus.setText(pr.toString());
             if (MainFrame.listProcRunning.size()<MainFrame.GS.getMaxSizelistProcRunning()){
@@ -646,21 +663,18 @@ public class DataCuttingPanel extends javax.swing.JPanel {
 
     private void ResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetButtonActionPerformed
         //RESET FIELDS
+        TitleText.setText("");
+        XlabText.setText("");
+        YlabText.setText("");
         ConnListText.setText("");
         OutputFolderText.setText("");
         ComboFeatBox.removeAllItems();
+        TrunSlider.setMaximum(0);
+        TrunSlider.setValue(0);
         //RESET FIELDS
     }//GEN-LAST:event_ResetButtonActionPerformed
 
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-      //  saveAsMenuItemActionPerformed(evt);
-    }//GEN-LAST:event_jButton17ActionPerformed
-
-    private void ConnListTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnListTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ConnListTextActionPerformed
-
-    private void ConnListVisualButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnListVisualButtonActionPerformed
+    private void ConnListVisualButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         JFileChooser openDir = new JFileChooser();
         openDir.addChoosableFileFilter(RDataFilter);
         openDir.setAcceptAllFileFilterUsed(false);
@@ -680,16 +694,19 @@ public class DataCuttingPanel extends javax.swing.JPanel {
             ConnListText.setText(String.valueOf(f));
             //UPDATE TO REMOVE OUTPUT FOLDER
             OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
-            try {
-                UpdateComboBox(f);
+           try {
+               MainFrame.UpdateComboBox(f, ComboFeatBox);
+               UpdateSlider(f);
+               
             } catch (IOException ex) {
                 Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         }
         MainFrame.getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
-        ShowPlotButton1.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), "DataTruncation.pdf")));
+        //ShowPlotButton1.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), "DataTruncation.pdf")));
 
-    }//GEN-LAST:event_ConnListVisualButtonActionPerformed
+    }                         
 
     private void fCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fCancelButtonActionPerformed
         ConnListText.setText("");
@@ -719,7 +736,7 @@ public class DataCuttingPanel extends javax.swing.JPanel {
             OutputFolderText.setText(String.valueOf(f));
         }
         MainFrame.getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
-        ShowPlotButton1.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), "DataTruncation.pdf")));
+        //ShowPlotButton1.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), "DataTruncation.pdf")));
 
     }//GEN-LAST:event_jToggleButton13ActionPerformed
 
@@ -740,18 +757,21 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_YlabTextActionPerformed
 
-    private void TimeTruncFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimeTruncFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TimeTruncFieldActionPerformed
-
     private void ShowPlotButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPlotButton1ActionPerformed
-        String pathfile = Paths.get(OutputFolderText.getText(), "DataTruncation.pdf").toString();
-        Desktop desktop = Desktop.getDesktop();
-        File file = new File(pathfile);
-        try {
-            desktop.open(file);
-        } catch (IOException ex) {
-            Logger.getLogger(PestimPanel.class.getName()).log(Level.SEVERE, null, ex);
+        
+        if( Files.exists(Paths.get(OutputFolderText.getText(), "DataTruncation.pdf")) )
+        {
+            String pathfile = Paths.get(OutputFolderText.getText(), "DataTruncation.pdf").toString();
+            Desktop desktop = Desktop.getDesktop();
+            File file = new File(pathfile);
+            try {
+                desktop.open(file);
+            } catch (IOException ex) {
+                Logger.getLogger(PestimPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "No file named DataTruncation.pdf was found!","Error: No file named DataTruncation.pdf was found! ",JOptionPane.ERROR_MESSAGE);
+
         }
     }//GEN-LAST:event_ShowPlotButton1ActionPerformed
 
@@ -767,11 +787,15 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         //GL.setAvoidProcListValueChanged(-1);
         // AnalysisTree.clearSelection();
     }//GEN-LAST:event_vCloseButton2ActionPerformed
+
+    private void ConnListTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnListTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ConnListTextActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboFeatBox;
-    public javax.swing.JTextField ConnListText;
+    private javax.swing.JTextField ConnListText;
     private javax.swing.JToggleButton ConnListVisualButton;
     private javax.swing.ButtonGroup Covariates;
     private javax.swing.JPanel DataCuttingPanel;
@@ -779,14 +803,13 @@ public class DataCuttingPanel extends javax.swing.JPanel {
     private javax.swing.JTextField OutputFolderText;
     private javax.swing.JButton ResetButton;
     private javax.swing.JToggleButton ShowPlotButton1;
-    private javax.swing.JTextField TimeTruncField;
     private javax.swing.JTextField TitleText;
+    private javax.swing.JSlider TrunSlider;
     private javax.swing.JTextField XlabText;
     private javax.swing.JTextField YlabText;
     private javax.swing.JToggleButton fCancelButton;
     private javax.swing.JToggleButton fCancelButton1;
     private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton17;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel29;

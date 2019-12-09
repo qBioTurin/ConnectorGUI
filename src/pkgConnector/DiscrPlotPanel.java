@@ -25,7 +25,7 @@ import static pkgConnector.MainFrame.getPreferences;
 
 /**
  *
- * @author beccuti
+ * @author Pernice
  */
 public class DiscrPlotPanel extends javax.swing.JPanel {
 
@@ -54,41 +54,7 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
      FileFilter txtFilter =  new FileTypeFilter(".txt", "Text Documents");
 
      
-     DefaultComboBoxModel newModel = new DefaultComboBoxModel();
-     
-    private void UpdateComboBox(File TextPath) throws FileNotFoundException, IOException
-    {
-     String line;
-        String[]  lin2 = null;
-        ComboFeatBox.removeAllItems();
-        Runtime rt = Runtime.getRuntime();
-            String cmdCL = ("Rscript --vanilla  ./Rscripts/FeaturesReading.R "+ TextPath + "  TRUE");
-            Process pr = rt.exec(cmdCL);            
-            BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));
-            while ((line = input.readLine()) != null) {  
-                System.out.println(line);
-                if(!line.contentEquals("[1] 0"))
-                {
-                    line = line.replaceAll("\\s","");
-                    line = line.replaceAll("\"",",");
-                    lin2 = line.split(",");  
-                    
-                    System.out.println(line);
-                    for (int i = 1; i < lin2.length ; i++) {
-                        newModel.addElement( lin2[i] );
-                    }           
-                }
-                else{
-                    newModel.addElement( "Please select a Connector List clustered." );
-                }
-                
-                // Bind it to the combobox
          
-                ComboFeatBox.setModel(newModel);
-            }  
-            input.close(); 
-    }
-    
         private void hCheck(File ConnectorListCL) throws FileNotFoundException, IOException
     {
         String line;
@@ -107,7 +73,7 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
                     ExecDiscrBottun.setEnabled(true);
                 }
                 else{
-                   JOptionPane.showMessageDialog(this, "You have to specified a Connector List where h is 1 or 2.","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
+                   JOptionPane.showMessageDialog(this, "You have to specified an RData storing a clustered ConnectorList whit h = 1 or 2. Observe that the name of the ConnectorList in the RData must be ConnectorList.FCM! ","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
                 }
                 
                 // Bind it to the combobox
@@ -149,24 +115,21 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         ConnListText = new javax.swing.JTextField();
         jToggleButton44 = new javax.swing.JToggleButton();
         jToggleButton45 = new javax.swing.JToggleButton();
-        jLabel132 = new javax.swing.JLabel();
-        jLabel133 = new javax.swing.JLabel();
         jLabel134 = new javax.swing.JLabel();
         jLabel135 = new javax.swing.JLabel();
-        jLabel136 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel132 = new javax.swing.JLabel();
         ComboFeatBox = new javax.swing.JComboBox<>();
-        jLabel137 = new javax.swing.JLabel();
         YlabText = new javax.swing.JTextField();
         TitleText = new javax.swing.JTextField();
         XlabText = new javax.swing.JTextField();
-        jPanel39 = new javax.swing.JPanel();
-        jLabel130 = new javax.swing.JLabel();
-        HSudoRadioButton = new javax.swing.JRadioButton();
-        HDockerRadioButton = new javax.swing.JRadioButton();
+        jLabel137 = new javax.swing.JLabel();
+        jLabel136 = new javax.swing.JLabel();
+        jLabel133 = new javax.swing.JLabel();
 
         setLayout(new java.awt.GridBagLayout());
 
-        DiscrPlotPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Discriminant Plot", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(51, 153, 255))); // NOI18N
+        DiscrPlotPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1), "Discriminant Plot", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 204))); // NOI18N
         DiscrPlotPanel.setLayout(new java.awt.GridBagLayout());
 
         ExecDiscrBottun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
@@ -185,14 +148,14 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
-        gridBagConstraints.weightx = 0.3;
+        gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         DiscrPlotPanel.add(ExecDiscrBottun, gridBagConstraints);
 
         jButton48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/reset.png"))); // NOI18N
         jButton48.setText("Reset");
-        jButton48.setToolTipText(null);
+        jButton48.setToolTipText("Settings reset.");
         jButton48.setMaximumSize(new java.awt.Dimension(100, 30));
         jButton48.setMinimumSize(new java.awt.Dimension(100, 30));
         jButton48.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -229,12 +192,12 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         DiscrPlotPanel.add(vCloseButton8, gridBagConstraints);
 
         jPanel38.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel38.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel38.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Files:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
         jPanel38.setToolTipText(null);
         jPanel38.setLayout(new java.awt.GridBagLayout());
 
         OutputFolderText.setEditable(false);
-        OutputFolderText.setToolTipText(null);
+        OutputFolderText.setToolTipText("Output folder where the discriminant plots will be saved.");
         OutputFolderText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OutputFolderTextActionPerformed(evt);
@@ -246,12 +209,13 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel38.add(OutputFolderText, gridBagConstraints);
 
         jToggleButton42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52b.png"))); // NOI18N
-        jToggleButton42.setText("Browse");
-        jToggleButton42.setToolTipText(null);
+        jToggleButton42.setText("Browser");
+        jToggleButton42.setToolTipText("Folder selection.");
         jToggleButton42.setMaximumSize(new java.awt.Dimension(110, 30));
         jToggleButton42.setMinimumSize(new java.awt.Dimension(110, 30));
         jToggleButton42.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -263,7 +227,9 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel38.add(jToggleButton42, gridBagConstraints);
 
@@ -281,12 +247,14 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel38.add(jToggleButton43, gridBagConstraints);
 
         ConnListText.setEditable(false);
-        ConnListText.setToolTipText(null);
+        ConnListText.setToolTipText("RData storing the most probable clustered ConnectorList generated from the \"Best Cluster Extrapolation\" step.");
         ConnListText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConnListTextActionPerformed(evt);
@@ -298,12 +266,12 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
         jPanel38.add(ConnListText, gridBagConstraints);
 
         jToggleButton44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/filebR.png"))); // NOI18N
-        jToggleButton44.setText("Browse");
+        jToggleButton44.setText("Browser");
         jToggleButton44.setToolTipText(null);
         jToggleButton44.setMaximumSize(new java.awt.Dimension(110, 30));
         jToggleButton44.setMinimumSize(new java.awt.Dimension(110, 30));
@@ -316,8 +284,9 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel38.add(jToggleButton44, gridBagConstraints);
 
@@ -335,30 +304,11 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel38.add(jToggleButton45, gridBagConstraints);
-
-        jLabel132.setText("X-axis label:");
-        jLabel132.setToolTipText(null);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel38.add(jLabel132, gridBagConstraints);
-
-        jLabel133.setText("Feature:");
-        jLabel133.setToolTipText(null);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel38.add(jLabel133, gridBagConstraints);
 
         jLabel134.setText("Connector List clustered:");
         jLabel134.setToolTipText(null);
@@ -367,7 +317,6 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel38.add(jLabel134, gridBagConstraints);
 
@@ -381,15 +330,29 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel38.add(jLabel135, gridBagConstraints);
 
-        jLabel136.setText("Title:");
-        jLabel136.setToolTipText(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        DiscrPlotPanel.add(jPanel38, gridBagConstraints);
+
+        jPanel1.setBackground(new java.awt.Color(248, 248, 248));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Plot Info:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
+        jPanel1.setToolTipText(null);
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        jLabel132.setText("X-axis label:");
+        jLabel132.setToolTipText(null);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel38.add(jLabel136, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 100);
+        jPanel1.add(jLabel132, gridBagConstraints);
 
         ComboFeatBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -398,22 +361,13 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
-        jPanel38.add(ComboFeatBox, gridBagConstraints);
-
-        jLabel137.setText("Y-axis label:");
-        jLabel137.setToolTipText(null);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel38.add(jLabel137, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
+        jPanel1.add(ComboFeatBox, gridBagConstraints);
 
         YlabText.setEditable(false);
         YlabText.setToolTipText(null);
@@ -424,12 +378,13 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
-        jPanel38.add(YlabText, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
+        jPanel1.add(YlabText, gridBagConstraints);
 
         TitleText.setEditable(false);
         TitleText.setToolTipText(null);
@@ -440,12 +395,13 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
-        jPanel38.add(TitleText, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
+        jPanel1.add(TitleText, gridBagConstraints);
 
         XlabText.setEditable(false);
         XlabText.setToolTipText(null);
@@ -456,76 +412,51 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 250;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_TRAILING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 30, 10, 10);
+        jPanel1.add(XlabText, gridBagConstraints);
+
+        jLabel137.setText("Y-axis label:");
+        jLabel137.setToolTipText(null);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 70, 10, 10);
-        jPanel38.add(XlabText, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 100);
+        jPanel1.add(jLabel137, gridBagConstraints);
+
+        jLabel136.setText("Title:");
+        jLabel136.setToolTipText(null);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 100);
+        jPanel1.add(jLabel136, gridBagConstraints);
+
+        jLabel133.setText("Feature:");
+        jLabel133.setToolTipText(null);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 100);
+        jPanel1.add(jLabel133, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        DiscrPlotPanel.add(jPanel38, gridBagConstraints);
-
-        jPanel39.setBackground(new java.awt.Color(248, 248, 248));
-        jPanel39.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel39.setLayout(new java.awt.GridBagLayout());
-
-        jLabel130.setText("Execution:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel39.add(jLabel130, gridBagConstraints);
-
-        HSudoRadioButton.setBackground(new java.awt.Color(248, 248, 248));
-        heatmapGroup.add(HSudoRadioButton);
-        HSudoRadioButton.setText("sudo");
-        HSudoRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HSudoRadioButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.insets = new java.awt.Insets(10, 77, 10, 10);
-        jPanel39.add(HSudoRadioButton, gridBagConstraints);
-
-        HDockerRadioButton.setBackground(new java.awt.Color(248, 248, 248));
-        heatmapGroup.add(HDockerRadioButton);
-        HDockerRadioButton.setSelected(true);
-        HDockerRadioButton.setText("docker");
-        HDockerRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HDockerRadioButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel39.add(HDockerRadioButton, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        DiscrPlotPanel.add(jPanel39, gridBagConstraints);
+        DiscrPlotPanel.add(jPanel1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -562,7 +493,7 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
            
            if (MainFrame.listProcRunning.size()<MainFrame.GS.getMaxSizelistProcRunning()){
                 Process pr = rt.exec(cmd);
-                MainFrame.ElProcRunning tmp= new MainFrame.ElProcRunning("FCM fitting ", OutputFolderText.getText(),pr,MainFrame.listModel.getSize());
+                MainFrame.ElProcRunning tmp= new MainFrame.ElProcRunning("Discriminant plot ", OutputFolderText.getText(),pr,MainFrame.listModel.getSize());
                 MainFrame.listProcRunning.add(tmp);
                 java.net.URL imgURL = getClass().getResource("/pkgConnector/images/running.png");
                 ImageIcon image2 = new ImageIcon(imgURL);
@@ -575,7 +506,7 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
                 }
             }
             else{
-                MainFrame.ElProcWaiting tmp= new MainFrame.ElProcWaiting("FCM fitting ", OutputFolderText.getText(),cmd,MainFrame.listModel.getSize());
+                MainFrame.ElProcWaiting tmp= new MainFrame.ElProcWaiting("Discriminant plot  ", OutputFolderText.getText(),cmd,MainFrame.listModel.getSize());
                 MainFrame.listProcWaiting.add(tmp);
                 java.net.URL imgURL = getClass().getResource("/pkgConnector/images/waiting.png");
                 ImageIcon image2 = new ImageIcon(imgURL);
@@ -592,7 +523,7 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, e.toString(),"Error execution",JOptionPane.ERROR_MESSAGE);
             System.out.println(e.toString());
         }
-        JOptionPane.showMessageDialog(this, "Spline fitting plotting task was scheduled","Confermation",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Discriminant plot generation was scheduled","Confermation",JOptionPane.INFORMATION_MESSAGE);
         //execute code     
            
         }
@@ -600,14 +531,12 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ExecDiscrBottunActionPerformed
 
     private void jButton48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton48ActionPerformed
-        HDockerRadioButton.setSelected(true);
         ConnListText.setText("");
         OutputFolderText.setText("");
         ComboFeatBox.removeAllItems();
     }//GEN-LAST:event_jButton48ActionPerformed
 
     private void vCloseButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vCloseButton8ActionPerformed
-        HDockerRadioButton.setSelected(true);
         ConnListText.setText("");
         OutputFolderText.setText("");
         ComboFeatBox.removeAllItems();
@@ -639,7 +568,7 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
             File f = openDir.getSelectedFile();
             ConnListText.setText(String.valueOf(f));
             try {
-                UpdateComboBox(f);
+                MainFrame.UpdateComboBox(f, ComboFeatBox);
             } catch (IOException ex) {
                 Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -658,14 +587,6 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
     private void jToggleButton45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton45ActionPerformed
         ConnListText.setText("");
     }//GEN-LAST:event_jToggleButton45ActionPerformed
-
-    private void HSudoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HSudoRadioButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HSudoRadioButtonActionPerformed
-
-    private void HDockerRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HDockerRadioButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HDockerRadioButtonActionPerformed
 
     private void jToggleButton43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton43ActionPerformed
         OutputFolderText.setText("");
@@ -718,8 +639,6 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
     private javax.swing.JTextField ConnListText;
     private javax.swing.JPanel DiscrPlotPanel;
     private javax.swing.JButton ExecDiscrBottun;
-    private javax.swing.JRadioButton HDockerRadioButton;
-    private javax.swing.JRadioButton HSudoRadioButton;
     private javax.swing.JTextField OutputFolderText;
     private javax.swing.JTextField TitleText;
     private javax.swing.JTextField XlabText;
@@ -728,15 +647,14 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup heatmapGroup;
     private javax.swing.ButtonGroup heatmapGroupLog;
     private javax.swing.JButton jButton48;
-    private javax.swing.JLabel jLabel130;
     private javax.swing.JLabel jLabel132;
     private javax.swing.JLabel jLabel133;
     private javax.swing.JLabel jLabel134;
     private javax.swing.JLabel jLabel135;
     private javax.swing.JLabel jLabel136;
     private javax.swing.JLabel jLabel137;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel38;
-    private javax.swing.JPanel jPanel39;
     private javax.swing.JToggleButton jToggleButton42;
     private javax.swing.JToggleButton jToggleButton43;
     private javax.swing.JToggleButton jToggleButton44;
