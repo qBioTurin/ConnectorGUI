@@ -695,7 +695,7 @@ public class DataCuttingPanel extends javax.swing.JPanel {
             //UPDATE TO REMOVE OUTPUT FOLDER
             OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
            try {
-               MainFrame.UpdateComboBox(f, ComboFeatBox);
+               MainFrame.UpdateComboBox(f, ComboFeatBox,1);
                UpdateSlider(f);
                
             } catch (IOException ex) {

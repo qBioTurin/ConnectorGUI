@@ -55,38 +55,7 @@ public class BestClusterChoice extends javax.swing.JPanel {
             input.close(); 
     }
          
-    DefaultComboBoxModel newModel = new DefaultComboBoxModel();
-     
-    private void UpdateComboBox(File ConnectorListCL) throws FileNotFoundException, IOException
-    {
-        String line;
-        String[]  lin2 = null;        
-        NumberClComboBox.removeAllItems();
-            Runtime rt = Runtime.getRuntime();
-            String cmdCL = ("Rscript --vanilla  ./Rscripts/NumberClustReading.R "+ ConnectorListCL);
-            Process pr = rt.exec(cmdCL);            
-            BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));  
-            
-            while ((line = input.readLine()) != null) {  
-                System.out.println(line);
-                if(!line.contentEquals("[1] 0.01"))
-                {
-                    lin2 = line.split(" ");  
-                    for (int i = 1; i < lin2.length ; i++) {
-                        newModel.addElement( lin2[i] );
-                    }           
-                }
-                else{
-                    newModel.addElement( "Please select a Connector List clustered." );
-                }
-                
-                // Bind it to the combobox
-         
-                NumberClComboBox.setModel(newModel);
-            }  
-            input.close(); 
-    }
-    
+   
     public class FileTypeFilter extends FileFilter {
         private String extension;
         private String description;
@@ -499,16 +468,11 @@ public class BestClusterChoice extends javax.swing.JPanel {
         }
         openDir.setFileSelectionMode(JFileChooser.FILES_ONLY);
         if (openDir.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
-            File f = openDir.getSelectedFile();
-            ConnListText.setText(String.valueOf(f));
-            OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
+            File f = openDir.getSelectedFile();            
             try {
-                UpdateComboBox(f);
-            } catch (IOException ex) {
-                Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try {
-                ClusteredDataCheck(f);
+                MainFrame.ClusteredDataCheck(this, f, ConnListText, 1 );
+                MainFrame.UpdateComboBox(f, NumberClComboBox, 2);
+                OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
             } catch (IOException ex) {
                 Logger.getLogger(DiscrPlotPanel.class.getName()).log(Level.SEVERE, null, ex);
             }

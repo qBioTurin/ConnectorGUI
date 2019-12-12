@@ -538,15 +538,16 @@ public class ClustCurvePanel extends javax.swing.JPanel {
         }
         openDir.setFileSelectionMode(JFileChooser.FILES_ONLY);
         if (openDir.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
-            File f = openDir.getSelectedFile();
-            ConnListText.setText(String.valueOf(f));
-            //UPDATE TO REMOVE OUTPUT FOLDER
-            OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
+            File f = openDir.getSelectedFile();      
+
             try {
-                MainFrame.UpdateComboBox(f, ComboFeatBox);
+                MainFrame.ClusteredDataCheck(this, f, ConnListText, 2 );
+                MainFrame.UpdateComboBox(f, ComboFeatBox, 1);
             } catch (IOException ex) {
                 Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
             }
+            //UPDATE TO REMOVE OUTPUT FOLDER
+            OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
         }
         MainFrame.getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
         

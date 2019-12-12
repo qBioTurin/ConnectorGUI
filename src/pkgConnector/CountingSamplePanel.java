@@ -149,6 +149,7 @@ public class CountingSamplePanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel27.add(Cinbrowes, gridBagConstraints);
@@ -167,6 +168,7 @@ public class CountingSamplePanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel27.add(Cincancel, gridBagConstraints);
@@ -176,6 +178,7 @@ public class CountingSamplePanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel27.add(jLabel98, gridBagConstraints);
@@ -184,7 +187,8 @@ public class CountingSamplePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel27.add(jLabel97, gridBagConstraints);
@@ -215,6 +219,7 @@ public class CountingSamplePanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel27.add(Coutbrowes, gridBagConstraints);
@@ -233,6 +238,7 @@ public class CountingSamplePanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_TRAILING;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel27.add(Coutcancel, gridBagConstraints);
@@ -382,18 +388,15 @@ public class CountingSamplePanel extends javax.swing.JPanel {
         openDir.setFileSelectionMode(JFileChooser.FILES_ONLY);
         if (openDir.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
             File f = openDir.getSelectedFile();
-            ConnListText.setText(String.valueOf(f));
-            OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
+            
             try {
-                MainFrame.UpdateComboBox(f, ComboFeatBox);
+                MainFrame.ClusteredDataCheck(this, f, ConnListText, 2 ); 
+                MainFrame.UpdateComboBox(f, ComboFeatBox, 1);
+                OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
             } catch (IOException ex) {
                 Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
             }
-            try {
-                ClusteredDataCheck(f);
-            } catch (IOException ex) {
-                Logger.getLogger(DiscrPlotPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
+
         }
         getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
         

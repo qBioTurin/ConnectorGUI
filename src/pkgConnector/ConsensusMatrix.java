@@ -29,66 +29,8 @@ import static pkgConnector.MainFrame.getPreferences;
  */
 public class ConsensusMatrix extends javax.swing.JPanel {
 
-    private void ClusteredDataCheck(File ConnectorListCL) throws FileNotFoundException, IOException
-    {
-        String line;
-        String[]  lin2 = null;        
-        ConsMatrixExtrapolationButton.setEnabled(false);
-        
-        Runtime rt = Runtime.getRuntime();
-            String cmdcheck = ("Rscript --vanilla  ./Rscripts/ClusteredDataCheck.R "+ ConnectorListCL);
-            Process pr = rt.exec(cmdcheck);            
-            BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));  
-            
-            while ((line = input.readLine()) != null) {  
-                System.out.println(line);
-                if(line.contentEquals("[1] 1"))
-                {
-                    ConsMatrixExtrapolationButton.setEnabled(true);
-                }
-                else{
-                   JOptionPane.showMessageDialog(this, "You have to specified an RData storing a clustered ConnectorList (FCM execution step). Observe that the name of the ConnectorList in the RData must be ConnectorList.FCM! ","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
-                }
-                
-                // Bind it to the combobox
-         
-            }  
-            input.close(); 
-    }
-    
-    DefaultComboBoxModel newModel = new DefaultComboBoxModel();
-    
-    private void UpdateComboBox(File ConnectorListCL) throws FileNotFoundException, IOException
-    {
-        String line;
-        String[]  lin2 = null;        
-        NumberClComboBox.removeAllItems();
-            Runtime rt = Runtime.getRuntime();
-            String cmdCL = ("Rscript --vanilla  ./Rscripts/NumberClustReading.R "+ ConnectorListCL);
-            Process pr = rt.exec(cmdCL);            
-            BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));  
-            
-            while ((line = input.readLine()) != null) {  
-                System.out.println(line);
-                if(!line.contentEquals("[1] 0.01"))
-                {
-                    lin2 = line.split(" ");  
-                    for (int i = 1; i < lin2.length ; i++) {
-                        newModel.addElement( lin2[i] );
-                    }           
-                }
-                else{
-                    newModel.addElement( "Please select a Connector List clustered." );
-                }
-                
-                // Bind it to the combobox
-         
-                NumberClComboBox.setModel(newModel);
-            }  
-            input.close(); 
-    }
-    
-    public class FileTypeFilter extends FileFilter {
+   
+       public class FileTypeFilter extends FileFilter {
         private String extension;
         private String description;
 
@@ -504,23 +446,20 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         openDir.setFileSelectionMode(JFileChooser.FILES_ONLY);
         if (openDir.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
             File f = openDir.getSelectedFile();
-            ConnListText.setText(String.valueOf(f));
-            OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
+
             try {
-                UpdateComboBox(f);
+                String outPath = openDir.getCurrentDirectory().getAbsolutePath();
+                MainFrame.CallingR(this, f, ConnListText, null , NumberClComboBox, 1, outPath );
+                 
+                OutputFolderText.setText(outPath);                
             } catch (IOException ex) {
                 Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try {
-                ClusteredDataCheck(f);
-            } catch (IOException ex) {
-                Logger.getLogger(DiscrPlotPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } catch (InterruptedException ex) {
+                    Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
+                }
         }
         MainFrame.getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
         
-        //String pdfFile =  "ConsensusMatrix_K"+NumberClComboBox.getItemAt(NumberClComboBox.getSelectedIndex())+".pdf";
-        //PlotViewButton.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), pdfFile)));
 
     }//GEN-LAST:event_jButton29ActionPerformed
 
@@ -587,7 +526,8 @@ public class ConsensusMatrix extends javax.swing.JPanel {
 
     private void jButton40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton40ActionPerformed
         ConnListText.setText("");
-        NumberClComboBox.setSelectedItem("");
+        NumberClComboBox.removeAllItems();
+        OutputFolderText.setText("");
         
     }//GEN-LAST:event_jButton40ActionPerformed
 

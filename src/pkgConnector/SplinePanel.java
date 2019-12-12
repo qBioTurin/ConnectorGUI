@@ -80,38 +80,7 @@ public class SplinePanel extends javax.swing.JPanel {
             input.close(); 
     }
               
-     DefaultComboBoxModel newModel = new DefaultComboBoxModel();
-     
-    private void UpdateComboBox(File ConnectorListCL) throws FileNotFoundException, IOException
-    {
-        String line;
-        String[]  lin2 = null;
-        
-        Runtime rt = Runtime.getRuntime();
-            String cmdCL = ("Rscript --vanilla  ./Rscripts/FeaturesReading.R "+ ConnectorListCL + "  TRUE");
-            Process pr = rt.exec(cmdCL);            
-            BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));
-            while ((line = input.readLine()) != null) {  
-                System.out.println(line);
-                if(!line.contentEquals("[1] 0"))
-                {
-                    line = line.replaceAll("\\s","");
-                    line = line.replaceAll("\"",",");
-                    lin2 = line.split(",");  
-                    
-                    System.out.println(line);
-                    for (int i = 1; i < lin2.length ; i++) {
-                        newModel.addElement( lin2[i] );
-                    }           
-                }
-                else{
-                    newModel.addElement( "Please select a Connector List clustered." );
-                }
-         
-            }  
-            input.close(); 
-    }
-     
+    
     /**
      * Creates new form HeatmapPanel
      */
@@ -467,19 +436,14 @@ public class SplinePanel extends javax.swing.JPanel {
         openDir.setFileSelectionMode(JFileChooser.FILES_ONLY);
         if (openDir.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
             File f = openDir.getSelectedFile();
-            ConnListText.setText(String.valueOf(f));
-            //UPDATE TO REMOVE OUTPUT FOLDER
-            OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
+            
             try {
-                UpdateComboBox(f);
+                MainFrame.ClusteredDataCheck(this, f, ConnListText, 2 );                
             } catch (IOException ex) {
                 Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
             }
-            try {
-                ClusteredDataCheck(f);
-            } catch (IOException ex) {
-                Logger.getLogger(DiscrPlotPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
+
         }
         MainFrame.getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
         

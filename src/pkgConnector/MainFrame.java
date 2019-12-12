@@ -40,6 +40,8 @@ import javax.swing.JOptionPane;
 import javax.swing.ListCellRenderer;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
@@ -3505,32 +3507,162 @@ public class MainFrame extends javax.swing.JFrame {
         AboutConnectorGUIFrame.setVisible(true);
     }
     
-    public static void UpdateComboBox(File ConnectorListCL, JComboBox<String> ComboFeatBox ) throws FileNotFoundException, IOException
+    // Simone's functions
+    
+        public static void CallingR(Component caller, File ConnectorListCL, JTextField ConnListText, JComboBox<String> ComboBoxFeat , JComboBox<String> ComboBoxCL, int mood, String path) throws FileNotFoundException, IOException, InterruptedException
+    {
+        String line;
+        String[]  lin2 = null;       
+         if(ComboBoxCL != null)
+         {
+             ComboBoxCL.removeAllItems();
+         }
+         if(ComboBoxFeat != null)
+         {
+             ComboBoxFeat.removeAllItems();
+         }
+        Runtime rt = Runtime.getRuntime();
+        String cmdCL=null;        
+            cmdCL = ("Rscript --vanilla  ./Rscripts/CallingR.R "+ ConnectorListCL + " " + mood +" " + path);
+            Process pr = rt.exec(cmdCL);
+            pr.waitFor();
+            
+            File file = new File( path + "/out_tmp.txt" ); 
+            BufferedReader input =  new BufferedReader(new FileReader(file) );
+            while ((line = input.readLine()) != null) {  
+                
+                line = line.replaceAll("\\s","");
+                line = line.replaceAll("\"",",");
+                lin2 = line.split(",");
+                System.out.println(lin2[1]);
+            // mood 1 for the multiple clustering!
+                if(mood == 1){
+                // Check if the list is right!
+                if( lin2[1].equals("CheckList") ){
+                    if(lin2[2].equals("4") )  
+                       JOptionPane.showMessageDialog(caller, "Intern error, no mood selected...simone's fault","Error: mood ",JOptionPane.ERROR_MESSAGE);     
+
+                    if(lin2[2].equals("0") )
+                        JOptionPane.showMessageDialog(caller, "You have to specified an RData storing a clustered ConnectorList with multiple clustering (FCM execution step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
+                }
+                if(ComboBoxCL != null)
+                    {
+                    // Reading the number of clusters
+                        if(lin2[1].equals("Clust") ){                              
+                             for (int i = 2; i < lin2.length ; i++) {                                  
+                                    ComboBoxCL.addItem(lin2[i]);
+                            } 
+                        }
+                    }
+                }
+            // mood 2 for the optimal clustering clustering!
+                if(mood == 2){
+                    // Check if the list is right!
+                    if(lin2[1].equals("CheckList") ){
+                        if(lin2[2].equals("4")  ) 
+                           JOptionPane.showMessageDialog(caller, "Intern error, no mood selected...simone's fault","Error: mood ",JOptionPane.ERROR_MESSAGE);     
+
+                        if(lin2[2].equals("0") )
+                            JOptionPane.showMessageDialog(caller, "You have to specified an RData storing the optimal clustered ConnectorList (Best Cluster extrapolation step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
+                    }
+                    // Check if the h value is right!
+                    if(lin2[1].equals("Check.h") ){
+                        if(lin2[2].equals("0") )
+                            JOptionPane.showMessageDialog(caller, "You have to specified an RData storing the optimal clustered ConnectorList (Best Cluster extrapolation step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
+                    }
+                }
+            // mood 3 for the features!
+                if(mood == 3){
+                    // Check if the list is right!
+                    if(lin2[1].equals("CheckList") ){
+                        if(lin2[2].equals("4") ) 
+                           JOptionPane.showMessageDialog(caller, "Intern error, no mood selected...simone's fault","Error: mood ",JOptionPane.ERROR_MESSAGE);     
+
+                        if(lin2[2].equals("0") )
+                            JOptionPane.showMessageDialog(caller, "You have to specified an RData storing the ConnectorList (Data Import step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
+                    }
+                    // Features reading
+                    if(ComboBoxFeat != null)
+                    {                        
+                        if(lin2[1].equals("Feat") ){                            
+                            for (int i = 2; i < lin2.length ; i++) {                        
+                                    ComboBoxFeat.addItem(lin2[i]);
+                            } 
+                        }
+                    }
+                }
+                    
+            }
+            ConnListText.setText(String.valueOf(ConnectorListCL));
+            //String[] args = new String[] {"rm", file.toString()};
+            //Process proc = new ProcessBuilder(args).start();
+            
+    }
+        
+    public static void UpdateComboBox(File ConnectorListCL, JComboBox<String> ComboBox, int mood ) throws FileNotFoundException, IOException
     {
         String line;
         String[]  lin2 = null;
-        ComboFeatBox.removeAllItems();
+        ComboBox.removeAllItems();
         Runtime rt = Runtime.getRuntime();
-            String cmdCL = ("Rscript --vanilla  ./Rscripts/FeaturesReading.R "+ ConnectorListCL + "  TRUE");
+        String cmdCL=null;
+        
+        if (mood == 1){            
+            cmdCL = ("Rscript --vanilla  ./Rscripts/FeaturesReading.R "+ ConnectorListCL );
             Process pr = rt.exec(cmdCL);            
             BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));
             while ((line = input.readLine()) != null) {  
-                //System.out.println(line);
-
+                
                     line = line.replaceAll("\\s","");
                     line = line.replaceAll("\"",",");
-                    lin2 = line.split(",");  
-                    
+                    lin2 = line.split(",");                      
                     //System.out.println(line);
-                    for (int i = 1; i < lin2.length ; i++) {
-                        
-                        ComboFeatBox.addItem(lin2[i]);
-                    }           
+                    for (int i = 1; i < lin2.length ; i++) {                        
+                        ComboBox.addItem(lin2[i]);
+                    }  
+            }  
+            input.close(); 
+        }else if (mood == 2){
+            cmdCL = ("Rscript --vanilla  ./Rscripts/NumberClustReading.R "+ ConnectorListCL );
+                        Process pr = rt.exec(cmdCL);            
+            BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            while ((line = input.readLine()) != null) {  
+                //System.out.println(line);
+                    lin2 = line.split(" ");               
+                    for (int i = 1; i < lin2.length ; i++) {                        
+                        ComboBox.addItem(lin2[i]);
+                    }  
+            }  
+            input.close(); 
+        }
 
+    }
+    
+    public static void  ClusteredDataCheck(Component caller, File ConnectorListCL, JTextField ConnListText, int mood) throws FileNotFoundException, IOException
+    {
+        String line;
+        String[]  lin2 = null;      
+        
+        Runtime rt = Runtime.getRuntime();
+
+        String cmdcheck = ("Rscript --vanilla  ./Rscripts/ClusteredDataCheck.R "+ ConnectorListCL +" "+ mood);
                 
-                // Bind it to the combobox
-         
-              //  ComboFeatBox.setModel(newModel);
+        Process pr = rt.exec(cmdcheck);            
+        BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));  
+            
+            while ((line = input.readLine()) != null) {  
+                //System.out.println(line);
+                if(line.contentEquals("[1] 1"))
+                {
+                    ConnListText.setText(String.valueOf(ConnectorListCL));                    
+                }
+                else{
+                   if(mood == 1){
+                        JOptionPane.showMessageDialog(caller, "You have to specified an RData storing a clustered ConnectorList with multiple clustering (FCM execution step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
+                   }else if(mood == 2){
+                        JOptionPane.showMessageDialog(caller, "You have to specified an RData storing the optimal clustered ConnectorList (Best Cluster extrapolation step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
+                   }
+                }         
             }  
             input.close(); 
     }

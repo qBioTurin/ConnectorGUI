@@ -603,7 +603,7 @@ public class DataVisualPanel extends javax.swing.JPanel {
             //UPDATE TO REMOVE OUTPUT FOLDER
             OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
             try {
-                MainFrame.UpdateComboBox(f, ComboFeatBox);
+                MainFrame.UpdateComboBox(f, ComboFeatBox,1);
             } catch (IOException ex) {
                 Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
             }       

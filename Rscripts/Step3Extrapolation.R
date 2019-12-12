@@ -66,9 +66,12 @@ docker.Extrapolation<-function(input.file,output.folder,k,mood)
   #waiting for the end of the container work
   if(resultRun==0){
     cat("\nThe data uploading is finished\n")
+    system("echo 0 > ExitStatusFile 2>&1")
+  }else{
+    system("echo 10 > ExitStatusFile 2>&1")
   }
   
-  system("echo 0 > ExitStatusFile 2>&1")
+  
   
   #running time 2
   ptm <- proc.time() - ptm

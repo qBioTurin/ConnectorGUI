@@ -48,32 +48,7 @@ public class DBindex extends javax.swing.JPanel {
         }
     }
     
-    private void ClusteredDataCheck(File ConnectorListCL) throws FileNotFoundException, IOException
-    {
-        String line;
-        String[]  lin2 = null;        
-        ExecButton.setEnabled(false);
-        
-        Runtime rt = Runtime.getRuntime();
-            String cmdcheck = ("Rscript --vanilla  ./Rscripts/ClusteredDataCheck.R "+ ConnectorListCL);
-            Process pr = rt.exec(cmdcheck);            
-            BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));  
-            
-            while ((line = input.readLine()) != null) {  
-                System.out.println(line);
-                if(line.contentEquals("[1] 1"))
-                {
-                    ExecButton.setEnabled(true);
-                }
-                else{
-                   JOptionPane.showMessageDialog(this, "You have to specified an RData storing a clustered ConnectorList (FCM execution step). Observe that the name of the ConnectorList in the RData must be ConnectorList.FCM! ","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
-                }
-                
-                // Bind it to the combobox
-         
-            }  
-            input.close(); 
-    }
+
       
      
     FileFilter RDataFilter = new FileTypeFilter(".RData", "R enviroments");
@@ -342,11 +317,11 @@ public class DBindex extends javax.swing.JPanel {
         //execute code
         Runtime rt = Runtime.getRuntime();
         try{
-            String[] cmd = {"/bin/bash","-c"," bash ./ExecFile/ExecExtrapc.sh "};
+            String[] cmd = {"/bin/bash","-c"," bash ./ExecFile/ExecExtrap.sh "};
             cmd[2]+= " input.file=\\\""+ConnListText.getText()+"\\\"";
             cmd[2]+= " output.folder=\\\""+OutputFolderText.getText()+"\\\"";
-            cmd[2]+= " k=NULL ";
-            cmd[2]+= " mood=3 " ;
+            cmd[2]+= " k=\\\"0\\\"";
+            cmd[2]+= " mood=\\\"3\\\"" ;
             cmd[2]+=" "+OutputFolderText.getText() +" >& "+OutputFolderText.getText()+"/outputExecution ";            
 //ProcessStatus.setText(pr.toString());
             
@@ -424,10 +399,10 @@ public class DBindex extends javax.swing.JPanel {
         openDir.setFileSelectionMode(JFileChooser.FILES_ONLY);
         if (openDir.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
             File f = openDir.getSelectedFile();
-            ConnListText.setText(String.valueOf(f));
-            OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
+            
             try {
-                ClusteredDataCheck(f);
+                MainFrame.ClusteredDataCheck(this, f, ConnListText, 1 );
+                OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
             } catch (IOException ex) {
                 Logger.getLogger(DiscrPlotPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
