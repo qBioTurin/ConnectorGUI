@@ -2,13 +2,13 @@
 Categories=Application;
 Comment[en_US]=
 Comment=
-Exec=/home/user/4SeqGUI/4SeqGUIxBox.sh
+Exec=/home/user/ConnectorGUI/ConnectorGUIxBox.sh
 GenericName[en_US]=
 GenericName=
-Icon=/home/user/4SeqGUI/src/pkg4seqgui/images/iconDNA.png
+Icon=/home/user/ConnectorGUI/src/pkgConnector/images/icon.png
 MimeType=
-Name[en_US]=4SeqGUI
-Name=4SeqGUI
+Name[en_US]=ConnectorGUI
+Name=ConnectorGUI
 Path=
 StartupNotify=true
 Terminal=false

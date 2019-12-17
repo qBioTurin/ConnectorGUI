@@ -1471,133 +1471,49 @@
                       <Dimension value="[0, 0]"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                  </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
                       <JSplitPaneConstraints position="left"/>
                     </Constraint>
                   </Constraints>
 
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
                   <SubComponents>
-                    <Container class="javax.swing.JPanel" name="PreProcPanel">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                            <EmptyBorder bottom="0" left="0" right="0" top="0"/>
-                          </Border>
-                        </Property>
-                        <Property name="name" type="java.lang.String" value="" noResource="true"/>
-                      </Properties>
+                    <Container class="javax.swing.JScrollPane" name="PreprocessScrollPane">
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="PreProcPanel.setVisible(false);"/>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                       </AuxValues>
                       <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                          <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="23" weightX="1.0" weightY="1.0"/>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                          <CardConstraints cardName="PreProcCard"/>
                         </Constraint>
                       </Constraints>
 
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Container class="javax.swing.JPanel" name="DataImportPanelSub1">
+                        <Container class="javax.swing.JPanel" name="PreProcPanel">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
-                          </Properties>
-                          <Constraints>
-                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                              <GridBagConstraints gridX="-1" gridY="-1" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="0.0" weightY="0.0"/>
-                            </Constraint>
-                          </Constraints>
-
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
-                          <SubComponents>
-                            <Component class="javax.swing.JLabel" name="LabelDataCreation">
-                              <Properties>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Dialog" size="14" style="1"/>
-                                </Property>
-                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                  <Image iconType="3" name="/pkgConnector/images/PreProcSmall.png"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="Connector List Creation"/>
-                                <Property name="opaque" type="boolean" value="true"/>
-                              </Properties>
-                              <AccessibilityProperties>
-                                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Connector List Generation"/>
-                                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
-                              </AccessibilityProperties>
-                              <Constraints>
-                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                  <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="320" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0"/>
-                                </Constraint>
-                              </Constraints>
-                            </Component>
-                            <Container class="javax.swing.JPanel" name="jPanel2">
-                              <Properties>
-                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                </Property>
-                              </Properties>
-                              <Constraints>
-                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                  <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
-                                </Constraint>
-                              </Constraints>
-
-                              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
-                              <SubComponents>
-                                <Component class="javax.swing.JButton" name="ImportButton">
-                                  <Properties>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/pkgConnector/images/Import.png"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Data Import"/>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="horizontalAlignment" type="int" value="2"/>
-                                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[290, 64]"/>
-                                    </Property>
-                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[290, 64]"/>
-                                    </Property>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[290, 64]"/>
-                                    </Property>
-                                  </Properties>
-                                  <Events>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ImportButtonActionPerformed"/>
-                                  </Events>
-                                  <Constraints>
-                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                      <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
-                                    </Constraint>
-                                  </Constraints>
-                                </Component>
-                              </SubComponents>
-                            </Container>
-                          </SubComponents>
-                        </Container>
-                        <Container class="javax.swing.JPanel" name="DataVisualSub2">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                                <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                              </Border>
                             </Property>
+                            <Property name="name" type="java.lang.String" value="" noResource="true"/>
                           </Properties>
-                          <Constraints>
-                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                              <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="23" weightX="1.0" weightY="1.0"/>
-                            </Constraint>
-                          </Constraints>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//PreProcPanel.setVisible(false);"/>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                          </AuxValues>
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
                           <SubComponents>
-                            <Container class="javax.swing.JPanel" name="RNAseqPanelSub2M">
+                            <Container class="javax.swing.JPanel" name="DataImportPanelSub1">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1605,150 +1521,79 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                  <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                                  <GridBagConstraints gridX="-1" gridY="-1" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="0.0" weightY="0.0"/>
                                 </Constraint>
                               </Constraints>
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JButton" name="DataVisualButton">
+                                <Component class="javax.swing.JLabel" name="LabelDataCreation">
                                   <Properties>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/pkgConnector/images/Curves.png"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="1"/>
                                     </Property>
-                                    <Property name="text" type="java.lang.String" value="Growth curves and Time grid"/>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="hideActionText" type="boolean" value="true"/>
-                                    <Property name="horizontalAlignment" type="int" value="2"/>
+                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                      <Image iconType="3" name="/pkgConnector/images/PreProcSmall.png"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Connector List Creation"/>
+                                    <Property name="opaque" type="boolean" value="true"/>
                                   </Properties>
-                                  <Events>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DataVisualButtonActionPerformed"/>
-                                  </Events>
+                                  <AccessibilityProperties>
+                                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Connector List Generation"/>
+                                    <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+                                  </AccessibilityProperties>
                                   <Constraints>
                                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                      <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.0" weightY="0.0"/>
+                                      <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0"/>
                                     </Constraint>
                                   </Constraints>
                                 </Component>
-                                <Component class="javax.swing.JButton" name="CutDataButton">
+                                <Container class="javax.swing.JPanel" name="jPanel2">
                                   <Properties>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/pkgConnector/images/CurvesCut.png"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Data Cutting"/>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="horizontalAlignment" type="int" value="2"/>
-                                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[290, 64]"/>
-                                    </Property>
-                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[290, 64]"/>
-                                    </Property>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[290, 64]"/>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                                     </Property>
                                   </Properties>
-                                  <Events>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CutDataButtonActionPerformed"/>
-                                  </Events>
                                   <Constraints>
                                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                      <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
+                                      <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
                                     </Constraint>
                                   </Constraints>
-                                </Component>
+
+                                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+                                  <SubComponents>
+                                    <Component class="javax.swing.JButton" name="ImportButton">
+                                      <Properties>
+                                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                          <Image iconType="3" name="/pkgConnector/images/Import.png"/>
+                                        </Property>
+                                        <Property name="text" type="java.lang.String" value="Data Import"/>
+                                        <Property name="borderPainted" type="boolean" value="false"/>
+                                        <Property name="horizontalAlignment" type="int" value="2"/>
+                                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[290, 64]"/>
+                                        </Property>
+                                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[290, 64]"/>
+                                        </Property>
+                                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[290, 64]"/>
+                                        </Property>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ImportButtonActionPerformed"/>
+                                      </Events>
+                                      <Constraints>
+                                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                          <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
+                                        </Constraint>
+                                      </Constraints>
+                                    </Component>
+                                  </SubComponents>
+                                </Container>
                               </SubComponents>
                             </Container>
-                            <Component class="javax.swing.JLabel" name="jLabelRNAseq3">
-                              <Properties>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Dialog" size="14" style="1"/>
-                                </Property>
-                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                  <Image iconType="3" name="/pkgConnector/images/PreProcSmall.png"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="Data Visualization"/>
-                                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                                <Property name="opaque" type="boolean" value="true"/>
-                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                              </Properties>
-                              <Constraints>
-                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                  <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="320" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0"/>
-                                </Constraint>
-                              </Constraints>
-                            </Component>
-                          </SubComponents>
-                        </Container>
-                      </SubComponents>
-                    </Container>
-                    <Container class="javax.swing.JPanel" name="ParamEstimPanel">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="name" type="java.lang.String" value="ParameterEstimation" noResource="true"/>
-                      </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ParamEstimPanel.setVisible(false);"/>
-                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-                      </AuxValues>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                          <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="23" weightX="1.0" weightY="1.0"/>
-                        </Constraint>
-                      </Constraints>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
-                      <SubComponents>
-                        <Container class="javax.swing.JPanel" name="PestimSub1">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                          </Properties>
-                          <Constraints>
-                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                              <GridBagConstraints gridX="-1" gridY="-1" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="23" weightX="0.0" weightY="0.0"/>
-                            </Constraint>
-                          </Constraints>
-
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
-                          <SubComponents>
-                            <Component class="javax.swing.JLabel" name="jLabelmiRNA1">
-                              <Properties>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Dialog" size="14" style="1"/>
-                                </Property>
-                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                  <Image iconType="3" name="/pkgConnector/images/ParamEstimSmall_p.png"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="Setting p"/>
-                                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                                <Property name="opaque" type="boolean" value="true"/>
-                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                              </Properties>
-                              <Constraints>
-                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                  <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="2" ipadX="320" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0"/>
-                                </Constraint>
-                              </Constraints>
-                            </Component>
-                            <Container class="javax.swing.JPanel" name="miRNApanelSub1M">
+                            <Container class="javax.swing.JPanel" name="DataVisualSub2">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1756,275 +1601,97 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                  <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                                  <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="23" weightX="1.0" weightY="1.0"/>
                                 </Constraint>
                               </Constraints>
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JButton" name="PestimButton">
+                                <Container class="javax.swing.JPanel" name="RNAseqPanelSub2M">
                                   <Properties>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/pkgConnector/images/CrossLogLike.png"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Cross LogLikelihood"/>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="horizontalAlignment" type="int" value="2"/>
-                                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[271, 64]"/>
-                                    </Property>
-                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[271, 64]"/>
-                                    </Property>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[271, 64]"/>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                                     </Property>
                                   </Properties>
-                                  <Events>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PestimButtonActionPerformed"/>
-                                  </Events>
                                   <Constraints>
                                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                      <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
+                                      <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
                                     </Constraint>
                                   </Constraints>
-                                </Component>
-                              </SubComponents>
-                            </Container>
-                          </SubComponents>
-                        </Container>
-                        <Container class="javax.swing.JPanel" name="HestimpanelSub2">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                          </Properties>
-                          <Constraints>
-                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                              <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="23" weightX="0.0" weightY="0.0"/>
-                            </Constraint>
-                          </Constraints>
 
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
-                          <SubComponents>
-                            <Component class="javax.swing.JLabel" name="jLabelmiRNA2">
-                              <Properties>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Dialog" size="14" style="1"/>
-                                </Property>
-                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                  <Image iconType="3" name="/pkgConnector/images/ParamEstimSmall_h.png"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="Setting h"/>
-                                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                                <Property name="opaque" type="boolean" value="true"/>
-                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                              </Properties>
-                              <Constraints>
-                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                  <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="320" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0"/>
-                                </Constraint>
-                              </Constraints>
-                            </Component>
-                            <Container class="javax.swing.JPanel" name="miRNApanelSub2M">
-                              <Properties>
-                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                </Property>
-                              </Properties>
-                              <Constraints>
-                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                  <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="23" weightX="1.0" weightY="1.0"/>
-                                </Constraint>
-                              </Constraints>
-
-                              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
-                              <SubComponents>
-                                <Component class="javax.swing.JButton" name="HestimButton">
+                                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+                                  <SubComponents>
+                                    <Component class="javax.swing.JButton" name="DataVisualButton">
+                                      <Properties>
+                                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                          <Image iconType="3" name="/pkgConnector/images/Curves.png"/>
+                                        </Property>
+                                        <Property name="text" type="java.lang.String" value="Growth curves and Time grid"/>
+                                        <Property name="borderPainted" type="boolean" value="false"/>
+                                        <Property name="hideActionText" type="boolean" value="true"/>
+                                        <Property name="horizontalAlignment" type="int" value="2"/>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DataVisualButtonActionPerformed"/>
+                                      </Events>
+                                      <Constraints>
+                                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                          <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.0" weightY="0.0"/>
+                                        </Constraint>
+                                      </Constraints>
+                                    </Component>
+                                    <Component class="javax.swing.JButton" name="CutDataButton">
+                                      <Properties>
+                                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                          <Image iconType="3" name="/pkgConnector/images/CurvesCut.png"/>
+                                        </Property>
+                                        <Property name="text" type="java.lang.String" value="Data Cutting"/>
+                                        <Property name="borderPainted" type="boolean" value="false"/>
+                                        <Property name="horizontalAlignment" type="int" value="2"/>
+                                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[290, 64]"/>
+                                        </Property>
+                                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[290, 64]"/>
+                                        </Property>
+                                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[290, 64]"/>
+                                        </Property>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CutDataButtonActionPerformed"/>
+                                      </Events>
+                                      <Constraints>
+                                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                          <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
+                                        </Constraint>
+                                      </Constraints>
+                                    </Component>
+                                  </SubComponents>
+                                </Container>
+                                <Component class="javax.swing.JLabel" name="jLabelRNAseq3">
                                   <Properties>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/pkgConnector/images/PCA.png"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="1"/>
                                     </Property>
-                                    <Property name="text" type="java.lang.String" value="PCA"/>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="horizontalAlignment" type="int" value="2"/>
+                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                      <Image iconType="3" name="/pkgConnector/images/PreProcSmall.png"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Data Visualization"/>
                                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[271, 64]"/>
+                                      <Dimension value="[224, 31]"/>
                                     </Property>
                                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[271, 64]"/>
+                                      <Dimension value="[224, 31]"/>
                                     </Property>
+                                    <Property name="opaque" type="boolean" value="true"/>
                                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[271, 64]"/>
+                                      <Dimension value="[224, 31]"/>
                                     </Property>
                                   </Properties>
-                                  <Events>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HestimButtonActionPerformed"/>
-                                  </Events>
                                   <Constraints>
                                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                      <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
-                                    </Constraint>
-                                  </Constraints>
-                                </Component>
-                              </SubComponents>
-                            </Container>
-                          </SubComponents>
-                        </Container>
-                        <Container class="javax.swing.JPanel" name="GestimpanelSub2">
-                          <Constraints>
-                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                              <GridBagConstraints gridX="0" gridY="2" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="26" weightX="1.0" weightY="1.0"/>
-                            </Constraint>
-                          </Constraints>
-
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
-                          <SubComponents>
-                            <Component class="javax.swing.JLabel" name="jLabel4">
-                              <Properties>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Dialog" size="14" style="1"/>
-                                </Property>
-                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                  <Image iconType="3" name="/pkgConnector/images/ParamEstimSmall_G.png"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="Setting G"/>
-                                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                              </Properties>
-                              <Constraints>
-                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                  <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="320" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0"/>
-                                </Constraint>
-                              </Constraints>
-                            </Component>
-                            <Container class="javax.swing.JPanel" name="jPanel5">
-                              <Properties>
-                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                </Property>
-                                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                                  <Color id="Default Cursor"/>
-                                </Property>
-                              </Properties>
-                              <Constraints>
-                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                  <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
-                                </Constraint>
-                              </Constraints>
-
-                              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
-                              <SubComponents>
-                                <Component class="javax.swing.JButton" name="KestimButton">
-                                  <Properties>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/pkgConnector/images/Clusters.png"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="FCM execution "/>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="horizontalAlignment" type="int" value="2"/>
-                                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[271, 64]"/>
-                                    </Property>
-                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[271, 64]"/>
-                                    </Property>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[271, 64]"/>
-                                    </Property>
-                                  </Properties>
-                                  <Events>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="KestimButtonActionPerformed"/>
-                                  </Events>
-                                  <Constraints>
-                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                      <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
-                                    </Constraint>
-                                  </Constraints>
-                                </Component>
-                                <Component class="javax.swing.JButton" name="ConsMatrixButton">
-                                  <Properties>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/pkgConnector/images/ConsMatrix.png"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Consensus Matrix "/>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="horizontalAlignment" type="int" value="2"/>
-                                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[271, 64]"/>
-                                    </Property>
-                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[271, 64]"/>
-                                    </Property>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[271, 64]"/>
-                                    </Property>
-                                  </Properties>
-                                  <Events>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConsMatrixButtonActionPerformed"/>
-                                  </Events>
-                                  <Constraints>
-                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                      <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
-                                    </Constraint>
-                                  </Constraints>
-                                </Component>
-                                <Component class="javax.swing.JButton" name="DBindexButton">
-                                  <Properties>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/pkgConnector/images/ClustersInfo.png"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="fDB indexes"/>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="horizontalAlignment" type="int" value="2"/>
-                                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[271, 64]"/>
-                                    </Property>
-                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[271, 64]"/>
-                                    </Property>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[271, 64]"/>
-                                    </Property>
-                                  </Properties>
-                                  <Events>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DBindexButtonActionPerformed"/>
-                                  </Events>
-                                  <Constraints>
-                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                      <GridBagConstraints gridX="0" gridY="2" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
-                                    </Constraint>
-                                  </Constraints>
-                                </Component>
-                                <Component class="javax.swing.JButton" name="BestClusterButton">
-                                  <Properties>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/pkgConnector/images/ClustersOptim.png"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Best Cluster extrapolation"/>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="horizontalAlignment" type="int" value="2"/>
-                                  </Properties>
-                                  <Events>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BestClusterButtonActionPerformed"/>
-                                  </Events>
-                                  <Constraints>
-                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                      <GridBagConstraints gridX="0" gridY="3" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
+                                      <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0"/>
                                     </Constraint>
                                   </Constraints>
                                 </Component>
@@ -2034,60 +1701,36 @@
                         </Container>
                       </SubComponents>
                     </Container>
-                    <Container class="javax.swing.JPanel" name="ClustEstimPanel">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                      </Properties>
+                    <Container class="javax.swing.JScrollPane" name="ParamEstimationScrollPane">
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ClustEstimPanel.setVisible(false);"/>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                       </AuxValues>
                       <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                          <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="23" weightX="1.0" weightY="1.0"/>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                          <CardConstraints cardName="ParamEstimCard"/>
                         </Constraint>
                       </Constraints>
 
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Container class="javax.swing.JPanel" name="SubPanelClustPlots">
-                          <Constraints>
-                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                              <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="23" weightX="0.0" weightY="0.0"/>
-                            </Constraint>
-                          </Constraints>
+                        <Container class="javax.swing.JPanel" name="ParamEstimPanel">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                              <Color id="Default Cursor"/>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="ParameterEstimation" noResource="true"/>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//ParamEstimPanel.setVisible(false);"/>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                          </AuxValues>
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JLabel" name="jLabel2">
-                              <Properties>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Dialog" size="14" style="1"/>
-                                </Property>
-                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                  <Image iconType="3" name="/pkgConnector/images/ClustPlotsSmall.png"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="Clustering Plots"/>
-                                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                                <Property name="opaque" type="boolean" value="true"/>
-                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                              </Properties>
-                              <Constraints>
-                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                  <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="320" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0"/>
-                                </Constraint>
-                              </Constraints>
-                            </Component>
-                            <Container class="javax.swing.JPanel" name="jPanel6">
+                            <Container class="javax.swing.JPanel" name="PestimSub1">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2095,164 +1738,554 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                  <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                                  <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="23" weightX="0.0" weightY="0.0"/>
                                 </Constraint>
                               </Constraints>
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JButton" name="ClustCurveButton">
+                                <Component class="javax.swing.JLabel" name="jLabelmiRNA1">
                                   <Properties>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/pkgConnector/images/ClustPlotButt.png"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="1"/>
                                     </Property>
-                                    <Property name="text" type="java.lang.String" value="Cluster Curves"/>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="horizontalAlignment" type="int" value="2"/>
+                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                      <Image iconType="3" name="/pkgConnector/images/ParamEstimSmall_p.png"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Setting p"/>
                                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[221, 63]"/>
+                                      <Dimension value="[224, 31]"/>
                                     </Property>
                                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[221, 63]"/>
+                                      <Dimension value="[224, 31]"/>
                                     </Property>
+                                    <Property name="opaque" type="boolean" value="true"/>
                                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[221, 63]"/>
+                                      <Dimension value="[224, 31]"/>
                                     </Property>
                                   </Properties>
-                                  <Events>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ClustCurveButtonActionPerformed"/>
-                                  </Events>
                                   <Constraints>
                                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                      <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.0" weightY="0.0"/>
+                                      <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0"/>
                                     </Constraint>
                                   </Constraints>
                                 </Component>
-                                <Component class="javax.swing.JButton" name="SplineButton">
+                                <Container class="javax.swing.JPanel" name="CrossLogLikeSubpanel">
                                   <Properties>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/pkgConnector/images/spline.png"/>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                                     </Property>
-                                    <Property name="text" type="java.lang.String" value="Fitting Plots"/>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="horizontalAlignment" type="int" value="2"/>
+                                  </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                      <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                                    </Constraint>
+                                  </Constraints>
+
+                                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+                                  <SubComponents>
+                                    <Component class="javax.swing.JButton" name="PestimButton">
+                                      <Properties>
+                                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                          <Image iconType="3" name="/pkgConnector/images/CrossLogLike.png"/>
+                                        </Property>
+                                        <Property name="text" type="java.lang.String" value="Cross LogLikelihood"/>
+                                        <Property name="borderPainted" type="boolean" value="false"/>
+                                        <Property name="horizontalAlignment" type="int" value="2"/>
+                                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[271, 64]"/>
+                                        </Property>
+                                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[271, 64]"/>
+                                        </Property>
+                                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[271, 64]"/>
+                                        </Property>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PestimButtonActionPerformed"/>
+                                      </Events>
+                                      <Constraints>
+                                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                          <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
+                                        </Constraint>
+                                      </Constraints>
+                                    </Component>
+                                  </SubComponents>
+                                </Container>
+                              </SubComponents>
+                            </Container>
+                            <Container class="javax.swing.JPanel" name="HestimpanelSub2">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                  <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="25" weightX="0.0" weightY="0.0"/>
+                                </Constraint>
+                              </Constraints>
+
+                              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+                              <SubComponents>
+                                <Component class="javax.swing.JLabel" name="jLabelmiRNA2">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="1"/>
+                                    </Property>
+                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                      <Image iconType="3" name="/pkgConnector/images/ParamEstimSmall_h.png"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Setting h"/>
                                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[221, 63]"/>
+                                      <Dimension value="[224, 31]"/>
                                     </Property>
                                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[221, 63]"/>
+                                      <Dimension value="[224, 31]"/>
+                                    </Property>
+                                    <Property name="opaque" type="boolean" value="true"/>
+                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[224, 31]"/>
+                                    </Property>
+                                  </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                      <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0"/>
+                                    </Constraint>
+                                  </Constraints>
+                                </Component>
+                                <Container class="javax.swing.JPanel" name="PCAsubpanel">
+                                  <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </Property>
+                                  </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                      <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="23" weightX="1.0" weightY="1.0"/>
+                                    </Constraint>
+                                  </Constraints>
+
+                                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+                                  <SubComponents>
+                                    <Component class="javax.swing.JButton" name="HestimButton">
+                                      <Properties>
+                                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                          <Image iconType="3" name="/pkgConnector/images/PCA.png"/>
+                                        </Property>
+                                        <Property name="text" type="java.lang.String" value="PCA"/>
+                                        <Property name="borderPainted" type="boolean" value="false"/>
+                                        <Property name="horizontalAlignment" type="int" value="2"/>
+                                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[271, 64]"/>
+                                        </Property>
+                                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[271, 64]"/>
+                                        </Property>
+                                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[271, 64]"/>
+                                        </Property>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HestimButtonActionPerformed"/>
+                                      </Events>
+                                      <Constraints>
+                                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                          <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
+                                        </Constraint>
+                                      </Constraints>
+                                    </Component>
+                                  </SubComponents>
+                                </Container>
+                              </SubComponents>
+                            </Container>
+                            <Container class="javax.swing.JPanel" name="GestimpanelSub2">
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                  <GridBagConstraints gridX="0" gridY="2" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="25" weightX="1.0" weightY="1.0"/>
+                                </Constraint>
+                              </Constraints>
+
+                              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+                              <SubComponents>
+                                <Component class="javax.swing.JLabel" name="jLabel4">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="1"/>
+                                    </Property>
+                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                      <Image iconType="3" name="/pkgConnector/images/ParamEstimSmall_G.png"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Setting G"/>
+                                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[224, 31]"/>
+                                    </Property>
+                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[224, 31]"/>
                                     </Property>
                                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[221, 63]"/>
+                                      <Dimension value="[224, 31]"/>
                                     </Property>
                                   </Properties>
-                                  <Events>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SplineButtonActionPerformed"/>
-                                  </Events>
                                   <Constraints>
                                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                      <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.0" weightY="0.0"/>
+                                      <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0"/>
                                     </Constraint>
                                   </Constraints>
                                 </Component>
-                                <Component class="javax.swing.JButton" name="DiscrPlotButton">
+                                <Container class="javax.swing.JPanel" name="FCMsubPanel">
                                   <Properties>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/pkgConnector/images/DiscrPlot.png"/>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                                     </Property>
-                                    <Property name="text" type="java.lang.String" value="Discrimination Plot"/>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="horizontalAlignment" type="int" value="2"/>
+                                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                                      <Color id="Default Cursor"/>
+                                    </Property>
                                   </Properties>
-                                  <Events>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DiscrPlotButtonActionPerformed"/>
-                                  </Events>
                                   <Constraints>
                                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                      <GridBagConstraints gridX="0" gridY="2" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
+                                      <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
                                     </Constraint>
                                   </Constraints>
-                                </Component>
+
+                                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+                                  <SubComponents>
+                                    <Component class="javax.swing.JButton" name="KestimButton">
+                                      <Properties>
+                                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                          <Image iconType="3" name="/pkgConnector/images/Clusters.png"/>
+                                        </Property>
+                                        <Property name="text" type="java.lang.String" value="FCM execution "/>
+                                        <Property name="borderPainted" type="boolean" value="false"/>
+                                        <Property name="horizontalAlignment" type="int" value="2"/>
+                                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[271, 64]"/>
+                                        </Property>
+                                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[271, 64]"/>
+                                        </Property>
+                                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[271, 64]"/>
+                                        </Property>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="KestimButtonActionPerformed"/>
+                                      </Events>
+                                      <Constraints>
+                                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                          <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
+                                        </Constraint>
+                                      </Constraints>
+                                    </Component>
+                                    <Component class="javax.swing.JButton" name="ConsMatrixButton">
+                                      <Properties>
+                                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                          <Image iconType="3" name="/pkgConnector/images/ConsMatrix.png"/>
+                                        </Property>
+                                        <Property name="text" type="java.lang.String" value="Consensus Matrix "/>
+                                        <Property name="borderPainted" type="boolean" value="false"/>
+                                        <Property name="horizontalAlignment" type="int" value="2"/>
+                                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[271, 64]"/>
+                                        </Property>
+                                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[271, 64]"/>
+                                        </Property>
+                                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[271, 64]"/>
+                                        </Property>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConsMatrixButtonActionPerformed"/>
+                                      </Events>
+                                      <Constraints>
+                                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                          <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
+                                        </Constraint>
+                                      </Constraints>
+                                    </Component>
+                                    <Component class="javax.swing.JButton" name="DBindexButton">
+                                      <Properties>
+                                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                          <Image iconType="3" name="/pkgConnector/images/ClustersInfo.png"/>
+                                        </Property>
+                                        <Property name="text" type="java.lang.String" value="fDB indexes"/>
+                                        <Property name="borderPainted" type="boolean" value="false"/>
+                                        <Property name="horizontalAlignment" type="int" value="2"/>
+                                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[271, 64]"/>
+                                        </Property>
+                                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[271, 64]"/>
+                                        </Property>
+                                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[271, 64]"/>
+                                        </Property>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DBindexButtonActionPerformed"/>
+                                      </Events>
+                                      <Constraints>
+                                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                          <GridBagConstraints gridX="0" gridY="2" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
+                                        </Constraint>
+                                      </Constraints>
+                                    </Component>
+                                    <Component class="javax.swing.JButton" name="BestClusterButton">
+                                      <Properties>
+                                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                          <Image iconType="3" name="/pkgConnector/images/ClustersOptim.png"/>
+                                        </Property>
+                                        <Property name="text" type="java.lang.String" value="Best Cluster extrapolation"/>
+                                        <Property name="borderPainted" type="boolean" value="false"/>
+                                        <Property name="horizontalAlignment" type="int" value="2"/>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BestClusterButtonActionPerformed"/>
+                                      </Events>
+                                      <Constraints>
+                                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                          <GridBagConstraints gridX="0" gridY="3" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
+                                        </Constraint>
+                                      </Constraints>
+                                    </Component>
+                                  </SubComponents>
+                                </Container>
                               </SubComponents>
                             </Container>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JPanel" name="SubPanelCounting">
-                          <Constraints>
-                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                              <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="24" weightX="1.0" weightY="1.0"/>
-                            </Constraint>
-                          </Constraints>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JScrollPane" name="ClusInspectionScrollPane">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                      </AuxValues>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                          <CardConstraints cardName="ClustInspCard"/>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                      <SubComponents>
+                        <Container class="javax.swing.JPanel" name="ClustEstimPanel">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//ClustEstimPanel.setVisible(false);"/>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                          </AuxValues>
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JLabel" name="jLabel3">
-                              <Properties>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Dialog" size="14" style="1"/>
-                                </Property>
-                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                  <Image iconType="3" name="/pkgConnector/images/ClustersCountSmall.png"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="Clustering Examination"/>
-                                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                                <Property name="opaque" type="boolean" value="true"/>
-                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[224, 31]"/>
-                                </Property>
-                              </Properties>
+                            <Container class="javax.swing.JPanel" name="SubPanelClustPlots">
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                  <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="320" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0"/>
-                                </Constraint>
-                              </Constraints>
-                            </Component>
-                            <Container class="javax.swing.JPanel" name="Subpanel3">
-                              <Properties>
-                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                </Property>
-                              </Properties>
-                              <Constraints>
-                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                  <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                                  <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="23" weightX="0.0" weightY="0.0"/>
                                 </Constraint>
                               </Constraints>
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JButton" name="CountButton">
+                                <Component class="javax.swing.JLabel" name="jLabel2">
                                   <Properties>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/pkgConnector/images/ClustersCountButt.png"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="1"/>
                                     </Property>
-                                    <Property name="text" type="java.lang.String" value="Counting"/>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="horizontalAlignment" type="int" value="2"/>
+                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                      <Image iconType="3" name="/pkgConnector/images/ClustPlotsSmall.png"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Clustering Plots"/>
                                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[221, 63]"/>
+                                      <Dimension value="[224, 31]"/>
                                     </Property>
                                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[221, 63]"/>
+                                      <Dimension value="[224, 31]"/>
                                     </Property>
+                                    <Property name="opaque" type="boolean" value="true"/>
                                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[221, 63]"/>
+                                      <Dimension value="[224, 31]"/>
                                     </Property>
                                   </Properties>
-                                  <Events>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CountButtonActionPerformed"/>
-                                  </Events>
                                   <Constraints>
                                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                                      <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
+                                      <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0"/>
                                     </Constraint>
                                   </Constraints>
                                 </Component>
+                                <Container class="javax.swing.JPanel" name="jPanel6">
+                                  <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </Property>
+                                  </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                      <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                                    </Constraint>
+                                  </Constraints>
+
+                                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+                                  <SubComponents>
+                                    <Component class="javax.swing.JButton" name="ClustCurveButton">
+                                      <Properties>
+                                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                          <Image iconType="3" name="/pkgConnector/images/ClustPlotButt.png"/>
+                                        </Property>
+                                        <Property name="text" type="java.lang.String" value="Cluster Curves"/>
+                                        <Property name="borderPainted" type="boolean" value="false"/>
+                                        <Property name="horizontalAlignment" type="int" value="2"/>
+                                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[221, 63]"/>
+                                        </Property>
+                                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[221, 63]"/>
+                                        </Property>
+                                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[221, 63]"/>
+                                        </Property>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ClustCurveButtonActionPerformed"/>
+                                      </Events>
+                                      <Constraints>
+                                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                          <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.0" weightY="0.0"/>
+                                        </Constraint>
+                                      </Constraints>
+                                    </Component>
+                                    <Component class="javax.swing.JButton" name="SplineButton">
+                                      <Properties>
+                                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                          <Image iconType="3" name="/pkgConnector/images/spline.png"/>
+                                        </Property>
+                                        <Property name="text" type="java.lang.String" value="Fitting Plots"/>
+                                        <Property name="borderPainted" type="boolean" value="false"/>
+                                        <Property name="horizontalAlignment" type="int" value="2"/>
+                                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[221, 63]"/>
+                                        </Property>
+                                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[221, 63]"/>
+                                        </Property>
+                                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[221, 63]"/>
+                                        </Property>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SplineButtonActionPerformed"/>
+                                      </Events>
+                                      <Constraints>
+                                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                          <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.0" weightY="0.0"/>
+                                        </Constraint>
+                                      </Constraints>
+                                    </Component>
+                                    <Component class="javax.swing.JButton" name="DiscrPlotButton">
+                                      <Properties>
+                                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                          <Image iconType="3" name="/pkgConnector/images/DiscrPlot.png"/>
+                                        </Property>
+                                        <Property name="text" type="java.lang.String" value="Discrimination Plot"/>
+                                        <Property name="borderPainted" type="boolean" value="false"/>
+                                        <Property name="horizontalAlignment" type="int" value="2"/>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DiscrPlotButtonActionPerformed"/>
+                                      </Events>
+                                      <Constraints>
+                                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                          <GridBagConstraints gridX="0" gridY="2" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
+                                        </Constraint>
+                                      </Constraints>
+                                    </Component>
+                                  </SubComponents>
+                                </Container>
+                              </SubComponents>
+                            </Container>
+                            <Container class="javax.swing.JPanel" name="SubPanelCounting">
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                  <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="24" weightX="1.0" weightY="1.0"/>
+                                </Constraint>
+                              </Constraints>
+
+                              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+                              <SubComponents>
+                                <Component class="javax.swing.JLabel" name="jLabel3">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Dialog" size="14" style="1"/>
+                                    </Property>
+                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                      <Image iconType="3" name="/pkgConnector/images/ClustersCountSmall.png"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Clustering Examination"/>
+                                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[224, 31]"/>
+                                    </Property>
+                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[224, 31]"/>
+                                    </Property>
+                                    <Property name="opaque" type="boolean" value="true"/>
+                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[224, 31]"/>
+                                    </Property>
+                                  </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                      <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0"/>
+                                    </Constraint>
+                                  </Constraints>
+                                </Component>
+                                <Container class="javax.swing.JPanel" name="Subpanel3">
+                                  <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </Property>
+                                  </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                      <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="1" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                                    </Constraint>
+                                  </Constraints>
+
+                                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+                                  <SubComponents>
+                                    <Component class="javax.swing.JButton" name="CountButton">
+                                      <Properties>
+                                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                          <Image iconType="3" name="/pkgConnector/images/ClustersCountButt.png"/>
+                                        </Property>
+                                        <Property name="text" type="java.lang.String" value="Counting"/>
+                                        <Property name="borderPainted" type="boolean" value="false"/>
+                                        <Property name="horizontalAlignment" type="int" value="2"/>
+                                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[221, 63]"/>
+                                        </Property>
+                                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[221, 63]"/>
+                                        </Property>
+                                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                          <Dimension value="[221, 63]"/>
+                                        </Property>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CountButtonActionPerformed"/>
+                                      </Events>
+                                      <Constraints>
+                                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                                          <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="10" insetsBottom="10" insetsRight="10" anchor="18" weightX="0.1" weightY="0.0"/>
+                                        </Constraint>
+                                      </Constraints>
+                                    </Component>
+                                  </SubComponents>
+                                </Container>
                               </SubComponents>
                             </Container>
                           </SubComponents>

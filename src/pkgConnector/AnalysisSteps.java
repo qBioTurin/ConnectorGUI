@@ -207,9 +207,10 @@ public class AnalysisSteps extends javax.swing.JPanel {
         MainFrame.AnalysisBar.add(B4);
         
         MainFrame.mainSetCard("horizontalCard");
+        MainFrame.LeftSetCard("ParamEstimCard");
         MainFrame.setCard("Empty");
         
-        MainFrame.PanelsControl.showPanel("paramestimpanel");
+        //MainFrame.PanelsControl.showPanel("paramestimpanel");
         //MainFrame.refresh();
     }//GEN-LAST:event_ModelSelButtonActionPerformed
 
@@ -243,8 +244,9 @@ public class AnalysisSteps extends javax.swing.JPanel {
         
         MainFrame.mainSetCard("horizontalCard");
         MainFrame.setCard("Empty");
+        MainFrame.LeftSetCard("PreProcCard");
         
-        MainFrame.PanelsControl.showPanel("preprocpanel");
+        //MainFrame.PanelsControl.showPanel("preprocpanel");
         //MainFrame.refresh();
     }//GEN-LAST:event_PreProcButtonActionPerformed
 
@@ -274,30 +276,31 @@ public class AnalysisSteps extends javax.swing.JPanel {
         B5.setPreferredSize(new java.awt.Dimension(200, 55));
         
         MainFrame.mainSetCard("horizontalCard");
+        MainFrame.LeftSetCard("ClustInspCard");
         MainFrame.setCard("Empty");
         
-        MainFrame.PanelsControl.showPanel("clustestimpanel");
+        //MainFrame.PanelsControl.showPanel("clustestimpanel");
       
         //MainFrame.refresh();
     }//GEN-LAST:event_ClustResButtonActionPerformed
     
     private void B3ActionPerformed(java.awt.event.ActionEvent evt) {
         MainFrame.setCard("Empty");
-  
+        //MainFrame.LeftSetCard("PreProcCard");
        //MainFrame.refresh();
     }
     
     private void B4ActionPerformed(java.awt.event.ActionEvent evt) {
-        MainFrame.setCard("Empty");
-        
-        MainFrame.PanelsControl.showPanel("paramestimpanel");
+        MainFrame.setCard("Empty");        
+        //MainFrame.LeftSetCard("ParamEstimCard");
+        //MainFrame.PanelsControl.showPanel("paramestimpanel");
         
     }
     
     private void B5ActionPerformed(java.awt.event.ActionEvent evt) {
         MainFrame.setCard("Empty");
-        
-        MainFrame.PanelsControl.showPanel("clustestimpanel");
+        //MainFrame.LeftSetCard("ClustInspCard");
+        //MainFrame.PanelsControl.showPanel("clustestimpanel");
 
        //MainFrame.refresh();
     }
