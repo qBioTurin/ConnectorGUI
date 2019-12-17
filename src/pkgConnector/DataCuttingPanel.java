@@ -5,7 +5,7 @@
  */
 package pkgConnector;
 
-import com.sun.xml.internal.ws.util.StringUtils;
+//import com.sun.xml.internal.ws.util.StringUtils;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Desktop;
@@ -67,38 +67,7 @@ public class DataCuttingPanel extends javax.swing.JPanel {
      FileFilter RDataFilter = new FileTypeFilter(".RData", "R enviroments");
      FileFilter txtFilter =  new FileTypeFilter(".txt", "Text Documents");
 
-    
-    private void UpdateSlider(File ConnectorListCL) throws FileNotFoundException, IOException
-    {
-        String line;
-        String[]  lin2 = null;
-        int minV;
-        int maxV;
-        int val;
-        
-        Runtime rt = Runtime.getRuntime();
-            String cmdCL = ("Rscript --vanilla  ./Rscripts/TimeReading.R "+ ConnectorListCL + "  FALSE");
-            Process pr = rt.exec(cmdCL);            
-            BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));
-            line = input.readLine();             
-            System.out.println(line);
-            lin2 = line.split(","); 
-            minV = Integer.parseInt(lin2[1]);
-            maxV = Integer.parseInt(lin2[2]);
-            val = Integer.parseInt(lin2[3]);
-            
-            TrunSlider.setMaximum(maxV);
-            TrunSlider.setMinimum(minV);
-            TrunSlider.setValue(val);
-            TrunSlider.setMinorTickSpacing(1);  
-            TrunSlider.setMajorTickSpacing(10);  
-            TrunSlider.setPaintTicks(true);  
-            TrunSlider.setPaintLabels(true);  
-            
-            input.close();
-    }  
-             
-        
+      
     public DataCuttingPanel() {
         initComponents();
            
@@ -690,17 +659,18 @@ public class DataCuttingPanel extends javax.swing.JPanel {
         }
         openDir.setFileSelectionMode(JFileChooser.FILES_ONLY);
         if (openDir.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
-            File f = openDir.getSelectedFile();
-            ConnListText.setText(String.valueOf(f));
-            //UPDATE TO REMOVE OUTPUT FOLDER
-            OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
-           try {
-               MainFrame.UpdateComboBox(f, ComboFeatBox,1);
-               UpdateSlider(f);
-               
+            File f = openDir.getSelectedFile();            
+            try {
+                String outPath = openDir.getCurrentDirectory().getAbsolutePath();
+                MainFrame.CallingR(this, f, ConnListText, ComboFeatBox , null, TrunSlider, 4, outPath );                 
+                OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());                
             } catch (IOException ex) {
                 Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } catch (InterruptedException ex) {
+                    Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            //UPDATE TO REMOVE OUTPUT FOLDER
+            OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
 
         }
         MainFrame.getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());

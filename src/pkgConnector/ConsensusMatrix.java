@@ -449,8 +449,7 @@ public class ConsensusMatrix extends javax.swing.JPanel {
 
             try {
                 String outPath = openDir.getCurrentDirectory().getAbsolutePath();
-                MainFrame.CallingR(this, f, ConnListText, null , NumberClComboBox, 1, outPath );
-                 
+                MainFrame.CallingR(this, f, ConnListText, null , NumberClComboBox, null, 1, outPath );                 
                 OutputFolderText.setText(outPath);                
             } catch (IOException ex) {
                 Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);

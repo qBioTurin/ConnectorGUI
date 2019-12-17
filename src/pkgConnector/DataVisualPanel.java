@@ -5,7 +5,7 @@
  */
 package pkgConnector;
 
-import com.sun.xml.internal.ws.util.StringUtils;
+//import com.sun.xml.internal.ws.util.StringUtils;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Desktop;
@@ -599,14 +599,15 @@ public class DataVisualPanel extends javax.swing.JPanel {
         openDir.setFileSelectionMode(JFileChooser.FILES_ONLY);
         if (openDir.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
             File f = openDir.getSelectedFile();
-            ConnListText.setText(String.valueOf(f));
-            //UPDATE TO REMOVE OUTPUT FOLDER
-            OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
             try {
-                MainFrame.UpdateComboBox(f, ComboFeatBox,1);
+                String outPath = openDir.getCurrentDirectory().getAbsolutePath();
+                MainFrame.CallingR(this, f, ConnListText, ComboFeatBox , null, null, 3, outPath );                 
+                OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());                
             } catch (IOException ex) {
                 Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
-            }       
+            } catch (InterruptedException ex) {
+                    Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
+                }  
         }
         MainFrame.getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
         //ShowPlotButton1.setEnabled(Files.exists(Paths.get(OutputFolderText.getText(), "DataVisualization.pdf")));

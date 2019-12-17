@@ -47,9 +47,11 @@ import javax.swing.Icon;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import javax.swing.JSlider;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.JTree;
@@ -66,8 +68,39 @@ import static pkgConnector.PestimPanel.pMaxText;
  * @author beccuti
  */
 public class MainFrame extends javax.swing.JFrame {
-      
-     
+  
+    public void refresh ()
+    {
+      pack();
+    }
+    
+    public static class  PanelsControl 
+    {
+        static Map<String, JPanel> panelsName = null ;
+        
+        public static void initPanelsControl ()
+        {
+            panelsName = new HashMap<>();
+            panelsName.put( "preprocpanel", PreProcPanel);
+            panelsName.put( "paramestimpanel", ParamEstimPanel);
+            panelsName.put( "clustestimpanel", ClustEstimPanel);
+        }
+        
+        public static void showPanel ( String namePanel)
+        {
+            if (namePanel != null)
+                namePanel = namePanel.toLowerCase();
+            
+            for (Map.Entry<String, JPanel> entry: panelsName.entrySet())
+            {
+                entry.getValue().setVisible( namePanel != null && entry.getKey().equals(namePanel));        
+            }
+        }
+        
+    }
+    
+    
+    
     private class TabBarController {
         private class SingleTabInfo {
             public final int numTab;
@@ -287,20 +320,23 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
 
-    private final TabBarController tabsController;
     private final DockerImageManager dockerManager;
 
 
+    
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
+        
+        
+        MainFrame.PanelsControl.initPanelsControl();
 
-        tabsController = new TabBarController(jTabbedPane1).refreshTabs();
+        //tabsController = new TabBarController(jTabbedPane1).refreshTabs();
         dockerManager = new DockerImageManager(dockerImagesTable);
 
-        ImageIcon image = new ImageIcon(getClass().getResource("/pkgConnector/images/dna.png"));
+        //ImageIcon image = new ImageIcon(getClass().getResource("/pkgConnector/images/dna.png"));
 
         //DefaultTreeCellRenderer renderer =(DefaultTreeCellRenderer) AnalysisTree.getCellRenderer();
         //renderer.setLeafIcon(image);
@@ -324,6 +360,8 @@ public class MainFrame extends javax.swing.JFrame {
         CountingSample.setViewportView(new CountingSamplePanel());
         ConsMatrix.setViewportView(new ConsensusMatrix());
         DBindex.setViewportView(new DBindex());
+        AnalysisStep.setViewportView(new AnalysisSteps());
+        PreProcSteps.setViewportView(new PreProcessingSteps());
 //ADDING PANEL
 
         //indexingSTARPanel
@@ -485,24 +523,21 @@ public class MainFrame extends javax.swing.JFrame {
         pullImagesButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         manageDockerImagesButton = new javax.swing.JButton();
         jButton26 = new javax.swing.JButton();
-        ConfigureTabsButton = new javax.swing.JButton();
-        jButton35 = new javax.swing.JButton();
+        space = new javax.swing.JLabel();
+        AnalysisBar = new javax.swing.JToolBar();
+        arrow = new javax.swing.JLabel();
+        pathHome = new javax.swing.JButton();
         VerticalSplitPanel = new javax.swing.JSplitPane();
-        BottomPanel = new javax.swing.JPanel();
-        ProcStatusPanel = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        ProcList = new javax.swing.JList<>();
+        UpperPanel = new javax.swing.JPanel();
+        AnalysisStep = new javax.swing.JScrollPane();
         HorizontalSplitPanel = new javax.swing.JSplitPane();
         MainPanel = new javax.swing.JPanel();
         Empty = new javax.swing.JScrollPane();
         EmptyPanel = new javax.swing.JPanel();
-        jLabel24 = new javax.swing.JLabel();
+        MainFrameImage = new javax.swing.JLabel();
         ClusterPanel = new javax.swing.JScrollPane();
         DataVisualPanel = new javax.swing.JScrollPane();
         Pestim = new javax.swing.JScrollPane();
@@ -516,9 +551,8 @@ public class MainFrame extends javax.swing.JFrame {
         ClustCurve = new javax.swing.JScrollPane();
         Hestim = new javax.swing.JScrollPane();
         ConsMatrix = new javax.swing.JScrollPane();
+        PreProcSteps = new javax.swing.JScrollPane();
         LeftPanel = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        PreProcessScrollPane = new javax.swing.JScrollPane();
         PreProcPanel = new javax.swing.JPanel();
         DataImportPanelSub1 = new javax.swing.JPanel();
         LabelDataCreation = new javax.swing.JLabel();
@@ -529,7 +563,6 @@ public class MainFrame extends javax.swing.JFrame {
         DataVisualButton = new javax.swing.JButton();
         CutDataButton = new javax.swing.JButton();
         jLabelRNAseq3 = new javax.swing.JLabel();
-        ParamEstimScrollPanel = new javax.swing.JScrollPane();
         ParamEstimPanel = new javax.swing.JPanel();
         PestimSub1 = new javax.swing.JPanel();
         jLabelmiRNA1 = new javax.swing.JLabel();
@@ -546,7 +579,6 @@ public class MainFrame extends javax.swing.JFrame {
         ConsMatrixButton = new javax.swing.JButton();
         DBindexButton = new javax.swing.JButton();
         BestClusterButton = new javax.swing.JButton();
-        ClustPlotsScrollPanel = new javax.swing.JScrollPane();
         ClustEstimPanel = new javax.swing.JPanel();
         SubPanelClustPlots = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -558,6 +590,10 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         Subpanel3 = new javax.swing.JPanel();
         CountButton = new javax.swing.JButton();
+        BottomPanel = new javax.swing.JPanel();
+        ProcStatusPanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ProcList = new javax.swing.JList<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -1154,45 +1190,7 @@ public class MainFrame extends javax.swing.JFrame {
         jToolBar1.setBackground(new java.awt.Color(237, 237, 237));
         jToolBar1.setBorder(null);
         jToolBar1.setRollover(true);
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52.png"))); // NOI18N
-        jButton1.setToolTipText("Open a previous execution");
-        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 5));
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton1);
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/86.png"))); // NOI18N
-        jButton2.setToolTipText("Save current executions");
-        jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton2);
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/preference.png"))); // NOI18N
-        jButton3.setToolTipText("Configure ConnectorGUI");
-        jButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton3);
+        jToolBar1.setToolTipText(null);
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/docker.png"))); // NOI18N
         jButton9.setToolTipText("Remove docker containers");
@@ -1233,72 +1231,43 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton26);
 
-        ConfigureTabsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/tab.png"))); // NOI18N
-        ConfigureTabsButton.setToolTipText("Configure Tabs");
-        ConfigureTabsButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        ConfigureTabsButton.setEnabled(false);
-        ConfigureTabsButton.setFocusable(false);
-        ConfigureTabsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ConfigureTabsButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ConfigureTabsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConfigureTabsButtonActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(ConfigureTabsButton);
+        space.setText("        ");
+        space.setToolTipText(null);
+        jToolBar1.add(space);
 
-        jButton35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustersEstimSmall.png"))); // NOI18N
-        jButton35.setToolTipText("About ConnectorGUI");
-        jButton35.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 15, 5, 15));
-        jButton35.setFocusable(false);
-        jButton35.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton35.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton35.addActionListener(new java.awt.event.ActionListener() {
+        AnalysisBar.setRollover(true);
+        AnalysisBar.setToolTipText(null);
+
+        arrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/space.png"))); // NOI18N
+        arrow.setToolTipText(null
+        );
+        AnalysisBar.add(arrow);
+
+        pathHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/home.png"))); // NOI18N
+        pathHome.setText("Home");
+        pathHome.setToolTipText("Home page");
+        pathHome.setBorder(null);
+        pathHome.setFocusable(false);
+        pathHome.setMaximumSize(new java.awt.Dimension(110, 55));
+        pathHome.setMinimumSize(new java.awt.Dimension(110, 55));
+        pathHome.setName("AnalysisStep"); // NOI18N
+        pathHome.setPreferredSize(new java.awt.Dimension(110, 55));
+        pathHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton35ActionPerformed(evt);
+                pathHomeActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton35);
+        AnalysisBar.add(pathHome);
+
+        jToolBar1.add(AnalysisBar);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.NORTH);
 
         VerticalSplitPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 2, 2, 2));
         VerticalSplitPanel.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        BottomPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        BottomPanel.setLayout(new java.awt.GridBagLayout());
-
-        ProcStatusPanel.setLayout(new java.awt.GridBagLayout());
-
-        jScrollPane2.setBorder(null);
-
-        ProcList.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(20, 1, 1, 1), "Process status", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 82, 150))); // NOI18N
-        ProcList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        ProcList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ProcListMouseClicked(evt);
-            }
-        });
-        ProcList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                ProcListValueChanged(evt);
-            }
-        });
-        jScrollPane2.setViewportView(ProcList);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.weighty = 0.1;
-        ProcStatusPanel.add(jScrollPane2, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.weighty = 0.1;
-        BottomPanel.add(ProcStatusPanel, gridBagConstraints);
-
-        VerticalSplitPanel.setBottomComponent(BottomPanel);
+        UpperPanel.setLayout(new java.awt.CardLayout());
+        UpperPanel.add(AnalysisStep, "AnalysisStep");
 
         HorizontalSplitPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
@@ -1310,14 +1279,19 @@ public class MainFrame extends javax.swing.JFrame {
         EmptyPanel.setBackground(new java.awt.Color(255, 255, 255));
         EmptyPanel.setLayout(new java.awt.GridBagLayout());
 
-        jLabel24.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/background.png"))); // NOI18N
+        MainFrameImage.setBackground(new java.awt.Color(255, 255, 255));
+        MainFrameImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MainFrameImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/background.png"))); // NOI18N
+        MainFrameImage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MainFrameImageMouseClicked(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(12, 12, 12, 12);
-        EmptyPanel.add(jLabel24, gridBagConstraints);
+        EmptyPanel.add(MainFrameImage, gridBagConstraints);
 
         Empty.setViewportView(EmptyPanel);
 
@@ -1351,25 +1325,16 @@ public class MainFrame extends javax.swing.JFrame {
         MainPanel.add(ClustCurve, "ClustCurvesPlot");
         MainPanel.add(Hestim, "pca_h");
         MainPanel.add(ConsMatrix, "ConsMatrix");
+        MainPanel.add(PreProcSteps, "PreProcSteps");
 
         HorizontalSplitPanel.setRightComponent(MainPanel);
 
+        LeftPanel.setMinimumSize(new java.awt.Dimension(0, 0));
         LeftPanel.setLayout(new java.awt.GridBagLayout());
-
-        jTabbedPane1.setBackground(new java.awt.Color(238, 238, 238));
-        jTabbedPane1.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 255), 1, true)));
-        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.setAutoscrolls(true);
-
-        PreProcessScrollPane.setBackground(new java.awt.Color(51, 153, 255));
-        PreProcessScrollPane.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
-        PreProcessScrollPane.setHorizontalScrollBar(null);
-        PreProcessScrollPane.setName(""); // NOI18N
-        PreProcessScrollPane.setPreferredSize(new java.awt.Dimension(865, 276));
 
         PreProcPanel.setBackground(new java.awt.Color(255, 255, 255));
         PreProcPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        PreProcPanel.setName("rnaseq"); // NOI18N
+        PreProcPanel.setName(""); // NOI18N
         PreProcPanel.setLayout(new java.awt.GridBagLayout());
 
         DataImportPanelSub1.setBackground(new java.awt.Color(255, 255, 255));
@@ -1379,11 +1344,6 @@ public class MainFrame extends javax.swing.JFrame {
         LabelDataCreation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/PreProcSmall.png"))); // NOI18N
         LabelDataCreation.setText("Connector List Creation");
         LabelDataCreation.setOpaque(true);
-        LabelDataCreation.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LabelDataCreationMouseClicked(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -1486,11 +1446,6 @@ public class MainFrame extends javax.swing.JFrame {
         jLabelRNAseq3.setMinimumSize(new java.awt.Dimension(224, 31));
         jLabelRNAseq3.setOpaque(true);
         jLabelRNAseq3.setPreferredSize(new java.awt.Dimension(224, 31));
-        jLabelRNAseq3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelRNAseq3MouseClicked(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -1510,14 +1465,15 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         PreProcPanel.add(DataVisualSub2, gridBagConstraints);
 
-        PreProcessScrollPane.setViewportView(PreProcPanel);
-
-        jTabbedPane1.addTab("Pre Processing", new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/PreProc.png")), PreProcessScrollPane); // NOI18N
-
-        ParamEstimScrollPanel.setBackground(new java.awt.Color(51, 153, 255));
-        ParamEstimScrollPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
-        ParamEstimScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        ParamEstimScrollPanel.setName("mirna"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        LeftPanel.add(PreProcPanel, gridBagConstraints);
+        PreProcPanel.setVisible(false);
 
         ParamEstimPanel.setBackground(new java.awt.Color(255, 255, 255));
         ParamEstimPanel.setName("ParameterEstimation"); // NOI18N
@@ -1533,11 +1489,6 @@ public class MainFrame extends javax.swing.JFrame {
         jLabelmiRNA1.setMinimumSize(new java.awt.Dimension(224, 31));
         jLabelmiRNA1.setOpaque(true);
         jLabelmiRNA1.setPreferredSize(new java.awt.Dimension(224, 31));
-        jLabelmiRNA1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelmiRNA1MouseClicked(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -1592,11 +1543,6 @@ public class MainFrame extends javax.swing.JFrame {
         jLabelmiRNA2.setMinimumSize(new java.awt.Dimension(224, 31));
         jLabelmiRNA2.setOpaque(true);
         jLabelmiRNA2.setPreferredSize(new java.awt.Dimension(224, 31));
-        jLabelmiRNA2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelmiRNA2MouseClicked(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -1760,17 +1706,15 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         ParamEstimPanel.add(GestimpanelSub2, gridBagConstraints);
 
-        ParamEstimScrollPanel.setViewportView(ParamEstimPanel);
-
-        jTabbedPane1.addTab("Model Selection", new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ParamEstim.png")), ParamEstimScrollPanel); // NOI18N
-
-        ClustPlotsScrollPanel.setMinimumSize(new java.awt.Dimension(23, 6));
-        ClustPlotsScrollPanel.setPreferredSize(new java.awt.Dimension(865, 276));
-        ClustPlotsScrollPanel.setBackground(new java.awt.Color(51, 153, 255));
-
-        ClustPlotsScrollPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
-
-        ClustPlotsScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        LeftPanel.add(ParamEstimPanel, gridBagConstraints);
+        ParamEstimPanel.setVisible(false);
 
         ClustEstimPanel.setBackground(new java.awt.Color(255, 255, 255));
         ClustEstimPanel.setLayout(new java.awt.GridBagLayout());
@@ -1922,26 +1866,64 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         ClustEstimPanel.add(SubPanelCounting, gridBagConstraints);
 
-        ClustPlotsScrollPanel.setViewportView(ClustEstimPanel);
-
-        jTabbedPane1.addTab("Clustering Results", new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustPlots.png")), ClustPlotsScrollPanel); // NOI18N
-
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        LeftPanel.add(jTabbedPane1, gridBagConstraints);
-        jTabbedPane1.getAccessibleContext().setAccessibleDescription("");
+        LeftPanel.add(ClustEstimPanel, gridBagConstraints);
+        ClustEstimPanel.setVisible(false);
 
         HorizontalSplitPanel.setLeftComponent(LeftPanel);
 
-        VerticalSplitPanel.setTopComponent(HorizontalSplitPanel);
+        UpperPanel.add(HorizontalSplitPanel, "horizontalCard");
+
+        VerticalSplitPanel.setTopComponent(UpperPanel);
+
+        BottomPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        BottomPanel.setLayout(new java.awt.GridBagLayout());
+
+        ProcStatusPanel.setLayout(new java.awt.GridBagLayout());
+
+        jScrollPane2.setBorder(null);
+
+        ProcList.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(20, 1, 1, 1), "Process status", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 82, 150))); // NOI18N
+        ProcList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        ProcList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ProcListMouseClicked(evt);
+            }
+        });
+        ProcList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                ProcListValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(ProcList);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        ProcStatusPanel.add(jScrollPane2, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        BottomPanel.add(ProcStatusPanel, gridBagConstraints);
+
+        VerticalSplitPanel.setBottomComponent(BottomPanel);
 
         getContentPane().add(VerticalSplitPanel, java.awt.BorderLayout.CENTER);
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 3, 5, 3));
+        jMenuBar1.setToolTipText(null);
 
         jMenu3.setText("File");
+        jMenu3.setToolTipText(null);
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/52.png"))); // NOI18N
@@ -1976,6 +1958,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Edit");
+        jMenu4.setToolTipText(null);
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/preference.png"))); // NOI18N
@@ -2021,10 +2004,10 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("?");
-        jMenu5.setToolTipText("");
+        jMenu5.setToolTipText(null);
 
         jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/iconDNA-small.png"))); // NOI18N
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/ClustPlotsSmall.png"))); // NOI18N
         jMenuItem7.setText("About ConnectorGUI");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2949,15 +2932,6 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        saveAsMenuItemActionPerformed(evt);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-         openMenuItemActionPerformed(evt);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void ProcListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ProcListValueChanged
 
 
@@ -3302,10 +3276,6 @@ public class MainFrame extends javax.swing.JFrame {
         openAboutConnectorGUI(evt);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-    private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
-        openAboutConnectorGUI(evt);
-    }//GEN-LAST:event_jButton35ActionPerformed
-
     private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
        AboutConnectorGUIFrame.setVisible(false);
     }//GEN-LAST:event_jButton36ActionPerformed
@@ -3347,21 +3317,6 @@ public class MainFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_DlogButtonActionPerformed
 
-    private void ConfigureTabsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfigureTabsButtonActionPerformed
-        ConfigureTabsFrame.pack();
-        ConfigureTabsFrame.setLocationRelativeTo(null);
-        ConfigureTabsFrame.setVisible(true);
-
-        //enable and disable checkboxes based on saved preferences
-        for (Component c: enableTabsPanel.getComponents()) {
-            JCheckBox cb = (JCheckBox) c;
-            String varname = String.format("ConnectorGUI_EnableTab%s", cb.getName());
-            String varvalue = getPreferences().get(varname, "true");
-
-            cb.setSelected(varvalue.equals("true"));
-        }
-    }//GEN-LAST:event_ConfigureTabsButtonActionPerformed
-
     private void miRNATabCheckerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miRNATabCheckerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_miRNATabCheckerActionPerformed
@@ -3380,7 +3335,7 @@ public class MainFrame extends javax.swing.JFrame {
                 disabledTabs.add(c.getName());
         }
 
-        tabsController.refreshTabs();
+        //tabsController.refreshTabs();
 
        // visualizeTabs();
         ConfigureTabsFrame.setVisible(false);
@@ -3391,12 +3346,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_closeConfigureTabButtonActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        ConfigureTabsButtonActionPerformed(evt);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        configurationMenuItemActionPerformed(evt);
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void manageDockerImagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageDockerImagesButtonActionPerformed
         dockerImagesManager.pack();
@@ -3421,21 +3371,9 @@ public class MainFrame extends javax.swing.JFrame {
         setCard("pca_h");
     }//GEN-LAST:event_HestimButtonActionPerformed
 
-    private void jLabelmiRNA2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelmiRNA2MouseClicked
-        toggleMenu(miRNApanelSub2M, jLabelmiRNA2, getClass().getResource("/pkgConnector/images/tool.png"));
-    }//GEN-LAST:event_jLabelmiRNA2MouseClicked
-
     private void PestimButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PestimButtonActionPerformed
         setCard("Pestim");
     }//GEN-LAST:event_PestimButtonActionPerformed
-
-    private void jLabelmiRNA1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelmiRNA1MouseClicked
-        toggleMenu(miRNApanelSub1M, jLabelmiRNA1, getClass().getResource("/pkgConnector/images/miRNAtabB.png"));
-    }//GEN-LAST:event_jLabelmiRNA1MouseClicked
-
-    private void jLabelRNAseq3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRNAseq3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabelRNAseq3MouseClicked
 
     private void CutDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CutDataButtonActionPerformed
         setCard("DataCut");
@@ -3448,10 +3386,6 @@ public class MainFrame extends javax.swing.JFrame {
     private void ImportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportButtonActionPerformed
         setCard("DataImport");
     }//GEN-LAST:event_ImportButtonActionPerformed
-
-    private void LabelDataCreationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelDataCreationMouseClicked
-        toggleMenu(RNAseqPanelSub2M, LabelDataCreation, getClass().getResource("/pkgConnector/images/RNAtabB.png"));
-    }//GEN-LAST:event_LabelDataCreationMouseClicked
 
     private void BestClusterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BestClusterButtonActionPerformed
         setCard("BestCl");
@@ -3485,6 +3419,34 @@ public class MainFrame extends javax.swing.JFrame {
         setCard("MACS");
     }//GEN-LAST:event_DiscrPlotButtonActionPerformed
 
+    private void pathHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathHomeActionPerformed
+        Component[] c = AnalysisBar.getComponents();
+        boolean found=false;
+        for (int i=(c.length-1); !c[i].getName().equals("AnalysisStep"); i--) {
+            AnalysisBar.remove(i);
+        }
+        pack();
+        mainSetCard("AnalysisStep");
+        MainFrame.PanelsControl.showPanel(null);
+    }//GEN-LAST:event_pathHomeActionPerformed
+
+    private void MainFrameImageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MainFrameImageMouseClicked
+    }//GEN-LAST:event_MainFrameImageMouseClicked
+    
+        
+    private void B2ActionPerformed(java.awt.event.ActionEvent evt) {
+        
+        mainSetCard("AnalysisStep");
+        
+        MainFrame.PanelsControl.showPanel(null);
+        
+        Component[] c = AnalysisBar.getComponents();
+        for (int i=(c.length-1); !c[i].getName().equals("AnalysisSteps"); i--) {
+                AnalysisBar.remove(i);
+                }
+       pack();
+    }
+    
     /**
      * Toggle menu panel
      * @param panel Panel to toggle
@@ -3508,9 +3470,31 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     // Simone's functions
+
+    /**
+     *
+     * @param caller
+     * @param ConnectorListCL
+     * @param ConnListText
+     * @param ComboBoxFeat
+     * @param ComboBoxCL
+     * @param TrunSlider
+     * @param mood
+     * @param path
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws InterruptedException
+     */
     
-        public static void CallingR(Component caller, File ConnectorListCL, JTextField ConnListText, JComboBox<String> ComboBoxFeat , JComboBox<String> ComboBoxCL, int mood, String path) throws FileNotFoundException, IOException, InterruptedException
+        public static void CallingR(Component caller, File ConnectorListCL, JTextField ConnListText, JComboBox<String> ComboBoxFeat , JComboBox<String> ComboBoxCL, JSlider TrunSlider, int mood, String path) throws FileNotFoundException, IOException, InterruptedException
     {
+        /**
+         * mood = 1 check if it is an RData with multiple clustering + reading of the clusters
+         * mood = 2 check if it is an RData with the most probable clustering
+         * mood = 3 reading the features
+         * mood = 4 reading the features and the time grid 
+         **/
+        
         String line;
         String[]  lin2 = null;       
          if(ComboBoxCL != null)
@@ -3531,10 +3515,11 @@ public class MainFrame extends javax.swing.JFrame {
             BufferedReader input =  new BufferedReader(new FileReader(file) );
             while ((line = input.readLine()) != null) {  
                 
+                System.out.println(line);
                 line = line.replaceAll("\\s","");
                 line = line.replaceAll("\"",",");
                 lin2 = line.split(",");
-                System.out.println(lin2[1]);
+                
             // mood 1 for the multiple clustering!
                 if(mood == 1){
                 // Check if the list is right!
@@ -3561,15 +3546,21 @@ public class MainFrame extends javax.swing.JFrame {
                     if(lin2[1].equals("CheckList") ){
                         if(lin2[2].equals("4")  ) 
                            JOptionPane.showMessageDialog(caller, "Intern error, no mood selected...simone's fault","Error: mood ",JOptionPane.ERROR_MESSAGE);     
-
+                        if(lin2[2].equals("2") )
+                            JOptionPane.showMessageDialog(caller, "You have to specified an RData storing the ConnectorList (Data Import step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
                         if(lin2[2].equals("0") )
                             JOptionPane.showMessageDialog(caller, "You have to specified an RData storing the optimal clustered ConnectorList (Best Cluster extrapolation step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
                     }
-                    // Check if the h value is right!
-                    if(lin2[1].equals("Check.h") ){
-                        if(lin2[2].equals("0") )
-                            JOptionPane.showMessageDialog(caller, "You have to specified an RData storing the optimal clustered ConnectorList (Best Cluster extrapolation step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
+                    // Features reading
+                    if(ComboBoxFeat != null)
+                    {                        
+                        if(lin2[1].equals("Feat") ){                            
+                            for (int i = 2; i < lin2.length ; i++) {                        
+                                    ComboBoxFeat.addItem(lin2[i]);
+                            } 
+                        }
                     }
+                    
                 }
             // mood 3 for the features!
                 if(mood == 3){
@@ -3578,7 +3569,7 @@ public class MainFrame extends javax.swing.JFrame {
                         if(lin2[2].equals("4") ) 
                            JOptionPane.showMessageDialog(caller, "Intern error, no mood selected...simone's fault","Error: mood ",JOptionPane.ERROR_MESSAGE);     
 
-                        if(lin2[2].equals("0") )
+                        if(lin2[2].equals("2") )
                             JOptionPane.showMessageDialog(caller, "You have to specified an RData storing the ConnectorList (Data Import step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
                     }
                     // Features reading
@@ -3591,6 +3582,77 @@ public class MainFrame extends javax.swing.JFrame {
                         }
                     }
                 }
+                // mood 4 for the features + timegrid!
+                if(mood == 4){
+                    int minV;
+                    int maxV;
+                    int val;
+                    
+                    // Check if the list is right!
+                    if(lin2[1].equals("CheckList") ){
+                        if(lin2[2].equals("4") ) 
+                           JOptionPane.showMessageDialog(caller, "Intern error, no mood selected...simone's fault","Error: mood ",JOptionPane.ERROR_MESSAGE);     
+
+                        if(lin2[2].equals("2") )
+                            JOptionPane.showMessageDialog(caller, "You have to specified an RData storing the ConnectorList (Data Import step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
+                    }
+                    // Features reading
+                    if(ComboBoxFeat != null)
+                    {                        
+                        if(lin2[1].equals("Feat") ){                            
+                            for (int i = 2; i < lin2.length ; i++) {                        
+                                    ComboBoxFeat.addItem(lin2[i]);
+                            } 
+                        }
+                    }
+                    
+                    if(lin2[1].equals("Timegrid") ){                            
+                        if(TrunSlider != null )
+                        {
+                            minV = Integer.parseInt(lin2[2]);
+                            maxV = Integer.parseInt(lin2[3]);
+                            val = Integer.parseInt(lin2[4]);
+
+                            TrunSlider.setMaximum(maxV);
+                            TrunSlider.setMinimum(minV);
+                            TrunSlider.setValue(val);
+                            TrunSlider.setMinorTickSpacing(1);  
+                            TrunSlider.setMajorTickSpacing(10);  
+                            TrunSlider.setPaintTicks(true);  
+                            TrunSlider.setPaintLabels(true);
+                        }
+
+                    }
+                    
+                }
+                // mood 5 for h checking
+                if(mood == 5){
+                    // Check if the list is right!
+                    if(lin2[1].equals("CheckList") ){
+                        if(lin2[2].equals("4")  ) 
+                           JOptionPane.showMessageDialog(caller, "Intern error, no mood selected...simone's fault","Error: mood ",JOptionPane.ERROR_MESSAGE);     
+                        if(lin2[2].equals("2") )
+                            JOptionPane.showMessageDialog(caller, "You have to specified an RData storing the ConnectorList (Data Import step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
+                        if(lin2[2].equals("0") )
+                            JOptionPane.showMessageDialog(caller, "You have to specified an RData storing the optimal clustered ConnectorList (Best Cluster extrapolation step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
+                    }
+                    // Check if the h value is right!
+                    if(lin2[1].equals("Check.h") ){
+                        if(lin2[2].equals("0") )
+                            JOptionPane.showMessageDialog(caller, "You have to specified an RData storing the optimal clustered ConnectorList (Best Cluster extrapolation step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
+                    }
+                    // In the case that the fetarues are needed:
+                    // Features reading
+                    if(ComboBoxFeat != null)
+                    {                        
+                        if(lin2[1].equals("Feat") ){                            
+                            for (int i = 2; i < lin2.length ; i++) {                        
+                                    ComboBoxFeat.addItem(lin2[i]);
+                            } 
+                        }
+                    }
+                    
+                }
                     
             }
             ConnListText.setText(String.valueOf(ConnectorListCL));
@@ -3598,75 +3660,6 @@ public class MainFrame extends javax.swing.JFrame {
             //Process proc = new ProcessBuilder(args).start();
             
     }
-        
-    public static void UpdateComboBox(File ConnectorListCL, JComboBox<String> ComboBox, int mood ) throws FileNotFoundException, IOException
-    {
-        String line;
-        String[]  lin2 = null;
-        ComboBox.removeAllItems();
-        Runtime rt = Runtime.getRuntime();
-        String cmdCL=null;
-        
-        if (mood == 1){            
-            cmdCL = ("Rscript --vanilla  ./Rscripts/FeaturesReading.R "+ ConnectorListCL );
-            Process pr = rt.exec(cmdCL);            
-            BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));
-            while ((line = input.readLine()) != null) {  
-                
-                    line = line.replaceAll("\\s","");
-                    line = line.replaceAll("\"",",");
-                    lin2 = line.split(",");                      
-                    //System.out.println(line);
-                    for (int i = 1; i < lin2.length ; i++) {                        
-                        ComboBox.addItem(lin2[i]);
-                    }  
-            }  
-            input.close(); 
-        }else if (mood == 2){
-            cmdCL = ("Rscript --vanilla  ./Rscripts/NumberClustReading.R "+ ConnectorListCL );
-                        Process pr = rt.exec(cmdCL);            
-            BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));
-            while ((line = input.readLine()) != null) {  
-                //System.out.println(line);
-                    lin2 = line.split(" ");               
-                    for (int i = 1; i < lin2.length ; i++) {                        
-                        ComboBox.addItem(lin2[i]);
-                    }  
-            }  
-            input.close(); 
-        }
-
-    }
-    
-    public static void  ClusteredDataCheck(Component caller, File ConnectorListCL, JTextField ConnListText, int mood) throws FileNotFoundException, IOException
-    {
-        String line;
-        String[]  lin2 = null;      
-        
-        Runtime rt = Runtime.getRuntime();
-
-        String cmdcheck = ("Rscript --vanilla  ./Rscripts/ClusteredDataCheck.R "+ ConnectorListCL +" "+ mood);
-                
-        Process pr = rt.exec(cmdcheck);            
-        BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));  
-            
-            while ((line = input.readLine()) != null) {  
-                //System.out.println(line);
-                if(line.contentEquals("[1] 1"))
-                {
-                    ConnListText.setText(String.valueOf(ConnectorListCL));                    
-                }
-                else{
-                   if(mood == 1){
-                        JOptionPane.showMessageDialog(caller, "You have to specified an RData storing a clustered ConnectorList with multiple clustering (FCM execution step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
-                   }else if(mood == 2){
-                        JOptionPane.showMessageDialog(caller, "You have to specified an RData storing the optimal clustered ConnectorList (Best Cluster extrapolation step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
-                   }
-                }         
-            }  
-            input.close(); 
-    }
-
     /**
      * @param args the command line arguments
      */
@@ -3713,6 +3706,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JFrame AboutConnectorGUIFrame;
     private javax.swing.JTextField Adapter3TextField;
     private javax.swing.JTextField Adapter5TextField;
+    public static javax.swing.JToolBar AnalysisBar;
+    private javax.swing.JScrollPane AnalysisStep;
     private javax.swing.JComboBox<String> BatchComboBox;
     private javax.swing.JScrollPane BestCLchoice;
     private javax.swing.JButton BestClusterButton;
@@ -3720,12 +3715,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JToggleButton CloseOutput;
     private javax.swing.JScrollPane ClustCurve;
     private javax.swing.JButton ClustCurveButton;
-    private javax.swing.JPanel ClustEstimPanel;
-    private javax.swing.JScrollPane ClustPlotsScrollPanel;
+    public static javax.swing.JPanel ClustEstimPanel;
     private javax.swing.JScrollPane ClusterPanel;
     private javax.swing.JButton ConfCancell;
     public static javax.swing.JFrame ConfigurationFrame;
-    private javax.swing.JButton ConfigureTabsButton;
     private javax.swing.JFrame ConfigureTabsFrame;
     private javax.swing.JScrollPane ConsMatrix;
     private javax.swing.JButton ConsMatrixButton;
@@ -3760,17 +3753,17 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.ButtonGroup MExecution;
     private javax.swing.ButtonGroup MRemoveDuplicates;
     private javax.swing.ButtonGroup MSeq;
+    private javax.swing.JLabel MainFrameImage;
     public static javax.swing.JPanel MainPanel;
     public static javax.swing.JFrame OutputFrame;
     public static javax.swing.JTextArea OutputText;
     private javax.swing.JTextField ParallelTextField;
-    private javax.swing.JPanel ParamEstimPanel;
-    private javax.swing.JScrollPane ParamEstimScrollPanel;
+    public static javax.swing.JPanel ParamEstimPanel;
     private javax.swing.JScrollPane Pestim;
     private javax.swing.JButton PestimButton;
     private javax.swing.JPanel PestimSub1;
-    private javax.swing.JPanel PreProcPanel;
-    private javax.swing.JScrollPane PreProcessScrollPane;
+    public static javax.swing.JPanel PreProcPanel;
+    private javax.swing.JScrollPane PreProcSteps;
     public static javax.swing.JList<ListEntry> ProcList;
     private javax.swing.JPanel ProcStatusPanel;
     private javax.swing.JPanel RNAseqPanelSub2M;
@@ -3782,8 +3775,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel SubPanelCounting;
     private javax.swing.JPanel Subpanel3;
     private javax.swing.JTextField ThreadTextField;
+    public static javax.swing.JPanel UpperPanel;
     private javax.swing.JSplitPane VerticalSplitPanel;
     private javax.swing.JButton addImagesButton;
+    private javax.swing.JLabel arrow;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chipseqTabChecker;
     private javax.swing.JCheckBox circRNATabChecker;
@@ -3793,17 +3788,13 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JFrame dockerImagesManager;
     private javax.swing.JTable dockerImagesTable;
     private javax.swing.JPanel enableTabsPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
-    private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton36;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel100;
@@ -3815,7 +3806,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel96;
@@ -3848,17 +3838,18 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JButton manageDockerImagesButton;
     private javax.swing.JCheckBox miRNA2TabChecker;
     private javax.swing.JCheckBox miRNATabChecker;
     private javax.swing.JPanel miRNApanelSub1M;
     private javax.swing.JPanel miRNApanelSub2M;
+    private javax.swing.JButton pathHome;
     private javax.swing.JButton pullImagesButton;
     private javax.swing.JButton removeImagesButton;
     private javax.swing.JCheckBox rnaSeqTabChecker;
     private javax.swing.JCheckBox singleCellTabChecker;
+    private javax.swing.JLabel space;
     private javax.swing.JCheckBox toolsTabChecker;
     // End of variables declaration//GEN-END:variables
 
@@ -4086,6 +4077,7 @@ extends JLabel implements ListCellRenderer<Object>
    }
 }
 static    String CurrentLayout="Empty";
+static    String CurrentLayoutStarting="AnalysisStep";
 
 
  static public  Timer t,outputTime=new Timer();
@@ -4537,6 +4529,14 @@ public static DefaultContextMenu contextMenu = new DefaultContextMenu();
         CardLayout card = (CardLayout) MainPanel.getLayout();
         card.show(MainPanel, cardName);
         CurrentLayout = cardName;
+    }
+    
+    public static void mainSetCard(String cardName) {
+        cardName = cardName == null ? "AnalysisStep" : cardName;
+
+        CardLayout card = (CardLayout) UpperPanel.getLayout();
+        card.show(UpperPanel, cardName);
+        CurrentLayoutStarting = cardName;
     }
 
     public static String browsePath(Component caller, int mode, FileNameExtensionFilter filter) {

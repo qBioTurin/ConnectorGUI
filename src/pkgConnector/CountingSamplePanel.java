@@ -311,6 +311,11 @@ public class CountingSamplePanel extends javax.swing.JPanel {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Parameter:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 14))); // NOI18N
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
+        ComboFeatBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboFeatBoxActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -388,14 +393,15 @@ public class CountingSamplePanel extends javax.swing.JPanel {
         openDir.setFileSelectionMode(JFileChooser.FILES_ONLY);
         if (openDir.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
             File f = openDir.getSelectedFile();
-            
             try {
-                MainFrame.ClusteredDataCheck(this, f, ConnListText, 2 ); 
-                MainFrame.UpdateComboBox(f, ComboFeatBox, 1);
-                OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
+                String outPath = openDir.getCurrentDirectory().getAbsolutePath();
+                MainFrame.CallingR(this, f, ConnListText, ComboFeatBox,  null , null, 2, outPath );                 
+                OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());                
             } catch (IOException ex) {
                 Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } catch (InterruptedException ex) {
+                    Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
+            } 
 
         }
         getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
@@ -479,6 +485,10 @@ public class CountingSamplePanel extends javax.swing.JPanel {
         MainFrame.CurrentLayout="Empty";
         // AnalysisTree.clearSelection();
     }//GEN-LAST:event_CCloseButton1ActionPerformed
+
+    private void ComboFeatBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboFeatBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboFeatBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

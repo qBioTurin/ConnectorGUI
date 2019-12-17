@@ -436,11 +436,14 @@ public class SplinePanel extends javax.swing.JPanel {
         openDir.setFileSelectionMode(JFileChooser.FILES_ONLY);
         if (openDir.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
             File f = openDir.getSelectedFile();
-            
             try {
-                MainFrame.ClusteredDataCheck(this, f, ConnListText, 2 );                
+                String outPath = openDir.getCurrentDirectory().getAbsolutePath();
+                MainFrame.CallingR(this, f, ConnListText, null , null, null, 2, outPath );                 
+                OutputFolderText.setText(outPath);                
             } catch (IOException ex) {
                 Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException ex) {
+                    Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
             }
             OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
 

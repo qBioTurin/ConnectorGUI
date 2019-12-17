@@ -565,15 +565,15 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         }
         openDir.setFileSelectionMode(JFileChooser.FILES_ONLY);
         if (openDir.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
-            File f = openDir.getSelectedFile();
-            
+            File f = openDir.getSelectedFile();            
             try {
-                MainFrame.ClusteredDataCheck(this, f, ConnListText, 2 ); 
-                hCheck(f);
-                MainFrame.UpdateComboBox(f, ComboFeatBox, 1); 
-                
+                String outPath = openDir.getCurrentDirectory().getAbsolutePath();
+                MainFrame.CallingR(this, f, ConnListText, ComboFeatBox , null, null, 5, outPath );                 
+                OutputFolderText.setText(outPath);                
             } catch (IOException ex) {
                 Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException ex) {
+                    Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
             }
             //UPDATE TO REMOVE OUTPUT FOLDER
             OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());

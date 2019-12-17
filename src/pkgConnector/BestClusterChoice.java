@@ -470,12 +470,14 @@ public class BestClusterChoice extends javax.swing.JPanel {
         if (openDir.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
             File f = openDir.getSelectedFile();            
             try {
-                MainFrame.ClusteredDataCheck(this, f, ConnListText, 1 );
-                MainFrame.UpdateComboBox(f, NumberClComboBox, 2);
-                OutputFolderText.setText(openDir.getCurrentDirectory().getAbsolutePath());
+                String outPath = openDir.getCurrentDirectory().getAbsolutePath();
+                MainFrame.CallingR(this, f, ConnListText, null , NumberClComboBox, null, 1, outPath );                 
+                OutputFolderText.setText(outPath);                
             } catch (IOException ex) {
-                Logger.getLogger(DiscrPlotPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException ex) {
+                    Logger.getLogger(ConsensusMatrix.class.getName()).log(Level.SEVERE, null, ex);
+                }
         }
         getPreferences().put("open-dir",openDir.getCurrentDirectory().getAbsolutePath());
         
