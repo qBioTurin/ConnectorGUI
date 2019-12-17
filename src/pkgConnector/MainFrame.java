@@ -3656,8 +3656,8 @@ public class MainFrame extends javax.swing.JFrame {
                     
             }
             ConnListText.setText(String.valueOf(ConnectorListCL));
-            //String[] args = new String[] {"rm", file.toString()};
-            //Process proc = new ProcessBuilder(args).start();
+            String[] args = new String[] {"rm", file.toString()};
+            Process proc = new ProcessBuilder(args).start();
             
     }
     /**

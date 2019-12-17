@@ -106,9 +106,6 @@ docker.Truncation<-function(input.file,output.PlotFolder,Trunc.Time,feature,titl
     
   }
   
-  system("echo 0 > ExitStatusFile 2>&1")
-  
-}
 
 
 ###################################

@@ -106,9 +106,7 @@ docker.dataimport<-function(group=c("docker", "sudo"),GrowDataFile,AnnotationFil
   
 }
 
-system("echo 0 > ExitStatusFile 2>&1")
-  
-}
+
 
 
 docker.dataimport(GrowDataFile=GrowDataFile,AnnotationFile=AnnotationFile,output.folder=output.folder)

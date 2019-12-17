@@ -324,6 +324,7 @@ public class ConsensusMatrix extends javax.swing.JPanel {
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         NumberClComboBox.setToolTipText("Select the number of clusters for obtaining the respective consensus matrix. Observe that the number of clusters showed are the ones contained in the input ConnectorList.");
+        NumberClComboBox.setMaximumSize(new java.awt.Dimension(32, 24));
         NumberClComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NumberClComboBoxActionPerformed(evt);

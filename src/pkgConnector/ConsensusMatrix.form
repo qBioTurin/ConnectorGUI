@@ -363,6 +363,9 @@
                   <StringArray count="0"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Select the number of clusters for obtaining the respective consensus matrix. Observe that the number of clusters showed are the ones contained in the input ConnectorList."/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[32, 24]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NumberClComboBoxActionPerformed"/>
