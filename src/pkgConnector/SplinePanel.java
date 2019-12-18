@@ -358,7 +358,7 @@ public class SplinePanel extends javax.swing.JPanel {
                         
             cmd[2]+= " input.file=\\\""+ConnListText.getText()+"\\\"";
             cmd[2]+= " output.folder=\\\""+OutputFolderText.getText()+"\\\"";
-            cmd[2]+= " feature=ID\\\"";
+            cmd[2]+= " feature=\\\"ID\\\"";
             cmd[2]+= " mood=2";
             cmd[2]+=  " title=\\\""+"null"+"\\\" labels.x=\\\""+"null"+"\\\" labels.y=\\\""+"null"+ "\\\"";
             cmd[2]+=" "+ OutputFolderText.getText()+" >& "+OutputFolderText.getText()+"/outputExecution ";

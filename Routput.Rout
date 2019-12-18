@@ -1,0 +1,90 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-redhat-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> ##First read in the arguments listed at the command line
+> args=(commandArgs(TRUE))
+> 
+> ##args is now a list of character vectors
+> ## First check to see if arguments are passed.
+> ## Then cycle through each element of the list and evaluate the expressions.
+> if(length(args)==0){
++   print("No arguments supplied.")
++   ##supply default values
++   containers.file=NULL
++ }else{
++   for(i in 1:length(args)){
++     eval(parse(text=args[[i]]))
++   }
++ }
+> 
+> library(connector)
+> downloadContainers(containers.file=containers.file)
+Trying to pull repository docker.io/qbioturin/connector ... 
+sha256:b79836eea5d071228665ff0c44ace3dfd120d277dabbf49326fea443f7cadaf3: Pulling from docker.io/qbioturin/connector
+2666d10a4f80: Already exists
+368c9265f897: Already exists
+6f87d56509ae: Already exists
+a959851a7386: Already exists
+b996468f4c35: Already exists
+7534b13feebb: Already exists
+39217d7ccd19: Pulling fs layer
+91b1b65527cf: Pulling fs layer
+93693648fe16: Pulling fs layer
+73dd2f1ddd33: Pulling fs layer
+e3bbd991833f: Pulling fs layer
+5cb94f68c252: Pulling fs layer
+b48c34423d40: Pulling fs layer
+378c4ca23a9b: Pulling fs layer
+0ca4272da270: Pulling fs layer
+f85d35d93892: Pulling fs layer
+e3bbd991833f: Download complete
+91b1b65527cf: Download complete
+f85d35d93892: Download complete
+5cb94f68c252: Download complete
+b48c34423d40: Download complete
+378c4ca23a9b: Download complete
+93693648fe16: Download complete
+0ca4272da270: Download complete
+73dd2f1ddd33: Download complete
+39217d7ccd19: Pull complete
+91b1b65527cf: Pull complete
+93693648fe16: Pull complete
+73dd2f1ddd33: Pull complete
+e3bbd991833f: Pull complete
+5cb94f68c252: Pull complete
+b48c34423d40: Pull complete
+378c4ca23a9b: Pull complete
+0ca4272da270: Pull complete
+f85d35d93892: Pull complete
+Digest: sha256:b79836eea5d071228665ff0c44ace3dfd120d277dabbf49326fea443f7cadaf3
+Status: Image is up to date for docker.io/qbioturin/connector:latest
+> 
+> proc.time()
+   user  system elapsed 
+  2.158   0.156  39.262 
+40: Pull complete
+378c4ca23a9b: Pull complete
+0ca4272da270: Pull complete
+f85d35d93892: Pull complete
+Digest: sha256:b79836eea5d071228665ff0c44ace3dfd120d277dabbf49326fea443f7cadaf3
+Status: Downloaded newer image for docker.io/qbioturin/connector:latest
+> 
+> proc.time()
+   user  system elapsed 
+  2.136   0.203  84.779 

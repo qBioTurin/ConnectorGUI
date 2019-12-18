@@ -1,0 +1,18 @@
+
+=======================================================
+			  INPUT PARAMETERS
+=======================================================
+
+Container file:          containers.file=NULL
+
+=======================================================
+
+ Current folder: /home/pernice/GIT/ConnectorGUI
+ 
+Executing R script
+R CMD BATCH --no-save --no-restore  '--args   containers.file=NULL ' ./Rscripts/DownloadImage.R  /home/pernice/GIT/ConnectorGUI/Routput.Rout
+
+
+=======================================================
+			           END EXECUTION
+=======================================================

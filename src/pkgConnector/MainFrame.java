@@ -26,6 +26,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.Clock;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -3241,11 +3242,12 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
         String containerListFile = Downloadtext.getText();
-        String commandArgs = String.format("containers.list=%s",
+        String commandArgs = String.format("containers.file=%s",
                 containerListFile.isEmpty() ? "NULL" : "'" + containerListFile + "'")
                 .replace("'", "\\\"");
+        //System.out.println(commandArgs);
         //execute code
-        execCommand(this, "Download Docker images", "execDownloadImage.sh", commandArgs, System.getProperty("user.dir"));
+        execCommand(this, "Download Docker images", "ExecFile/execDownloadImage.sh", commandArgs, System.getProperty("user.dir"));
 
         DownloadFrame.setVisible(false);
         Downloadtext.setText("");
@@ -3623,7 +3625,7 @@ public class MainFrame extends javax.swing.JFrame {
                     // Check if the h value is right!
                     if(lin2[1].equals("Check.h") ){
                         if(lin2[2].equals("0") )
-                            JOptionPane.showMessageDialog(caller, "You have to specified an RData storing the optimal clustered ConnectorList (Best Cluster extrapolation step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
+                            JOptionPane.showMessageDialog(caller, "The discriminant plot is available just for h = 1 or 2. You have to specified the RData storing a right ConnectorList (Best Cluster extrapolation step).","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
                     }
                     // In the case that the fetarues are needed:
                     // Features reading
@@ -4428,6 +4430,7 @@ public static DefaultContextMenu contextMenu = new DefaultContextMenu();
         }
 
         String outputFolder = script.outputFolder;
+        
         String[] cmd = {"/bin/bash","-c", String.format("%s >& %s/outputExecution", command, outputFolder)};
         Runtime rt = Runtime.getRuntime();
 
@@ -4468,9 +4471,10 @@ public static DefaultContextMenu contextMenu = new DefaultContextMenu();
     }
 
     public static void execCommand(Component stuff, String commandName, String script, String commandArgs, String outputFolder) {
-        //bash ./nomescript argList outputFolder >& outputFolder/outputExecution
+    //bash ./nomescript argList outputFolder >& outputFolder/outputExecution
         String bashString = String.format(
             "bash ./%s %s %s >& %s/outputExecution", script, commandArgs, outputFolder, outputFolder);
+        System.out.println(bashString);
         String[] cmd = {"/bin/bash","-c", bashString};
         Runtime rt = Runtime.getRuntime();
 

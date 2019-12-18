@@ -7,12 +7,12 @@ args=(commandArgs(TRUE))
 if(length(args)==0){
   print("No arguments supplied.")
   ##supply default values
-
+  containers.file=NULL
 }else{
   for(i in 1:length(args)){
     eval(parse(text=args[[i]]))
   }
 }
 
-library(docker4seq)
-downloadContainers (containers.file=containers.file)
+library(connector)
+downloadContainers(containers.file=containers.file)

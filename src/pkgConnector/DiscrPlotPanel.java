@@ -52,36 +52,7 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
       
      FileFilter RDataFilter = new FileTypeFilter(".RData", "R enviroments");
      FileFilter txtFilter =  new FileTypeFilter(".txt", "Text Documents");
-
-     
-         
-        private void hCheck(File ConnectorListCL) throws FileNotFoundException, IOException
-    {
-        String line;
-        String[]  lin2 = null;        
-        ExecDiscrBottun.setEnabled(false);
-        
-        Runtime rt = Runtime.getRuntime();
-            String cmdhcheck = ("Rscript --vanilla  ./Rscripts/hcheck.R "+ ConnectorListCL);
-            Process pr = rt.exec(cmdhcheck);            
-            BufferedReader input =  new BufferedReader(new InputStreamReader(pr.getInputStream()));  
-            
-            while ((line = input.readLine()) != null) {  
-                System.out.println(line);
-                if(line.contentEquals("[1] 1"))
-                {
-                    ExecDiscrBottun.setEnabled(true);
-                }
-                else{
-                   JOptionPane.showMessageDialog(this, "You have to specified an RData storing a clustered ConnectorList whit h = 1 or 2. Observe that the name of the ConnectorList in the RData must be ConnectorList.FCM! ","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);     
-                }
-                
-                // Bind it to the combobox
-         
-            }  
-            input.close(); 
-    }
-     
+ 
     /**
      * Creates new form HeatmapPanel
      */
@@ -135,7 +106,6 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
         ExecDiscrBottun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkgConnector/images/exec.png"))); // NOI18N
         ExecDiscrBottun.setText("Execute");
         ExecDiscrBottun.setToolTipText(null);
-        ExecDiscrBottun.setEnabled(false);
         ExecDiscrBottun.setMaximumSize(new java.awt.Dimension(140, 30));
         ExecDiscrBottun.setMinimumSize(new java.awt.Dimension(140, 30));
         ExecDiscrBottun.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -466,9 +436,6 @@ public class DiscrPlotPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ExecDiscrBottunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExecDiscrBottunActionPerformed
-
-        
-        
 
         if (ConnListText.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "You have to specified an input file","Error: Data  input file ",JOptionPane.ERROR_MESSAGE);
